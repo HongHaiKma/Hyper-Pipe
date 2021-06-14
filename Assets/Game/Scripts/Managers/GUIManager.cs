@@ -399,6 +399,9 @@ public class GUIManager : MonoBehaviour
             case UIID.POPUP_WIN:
                 prefabName = "PopupWin";
                 break;
+            case UIID.POPUP_BONUS_REWARD:
+                prefabName = "PopupBonusReward";
+                break;
         }
         prefab = GetPopupPrefabByName(prefabName);
         return prefab;
@@ -447,4 +450,5 @@ public enum UIID
     PANEL_INGAME = 0,
     POPUP_OUTFIT = 1,
     POPUP_WIN = 2,
+    POPUP_BONUS_REWARD = 3,
 }

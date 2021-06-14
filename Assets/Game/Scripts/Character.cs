@@ -218,6 +218,8 @@ public class Character : InGameObject
             pipe.Setup();
         }
 
+        PlaySceneManager.Instance.Event_ADD_PIPE(m_SpringManager.springBones.Count - 1);
+
         EventManager.CallEvent(GameEvent.TEST_POS);
     }
 
@@ -227,7 +229,7 @@ public class Character : InGameObject
         anim_Owner.SetTrigger(ConfigKeys.m_Run);
         // EventManager1<bool>.CallEvent(GameEvent.GAME_START, false);
         PlaySceneManager.Instance.btn_Outfit.gameObject.SetActive(false);
-        PlaySceneManager.Instance.txt_Level.gameObject.SetActive(false);
+        // PlaySceneManager.Instance.txt_Level.gameObject.SetActive(false);
     }
 
     public void OnRunExecute()
@@ -397,7 +399,10 @@ public class Character : InGameObject
         }
         else if (other.tag.Equals(ConfigKeys.m_KeyInGame))
         {
-            ProfileManager.Instance.AddKeys(1);
+            if (ProfileManager.GetKeys() < 3)
+            {
+                ProfileManager.AddKeys(1);
+            }
             Destroy(other.gameObject);
         }
         else if (other.tag.Equals("DeadPlane"))

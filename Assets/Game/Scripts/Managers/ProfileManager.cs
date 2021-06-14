@@ -61,10 +61,10 @@ public class ProfileManager : MonoBehaviour
         //     Helper.DebugLog("Selected Character: " + GetSelectedCharacter());
         // }
 
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            Helper.DebugLog("Keys = " + GetKeys());
-        }
+        // if (Input.GetKeyDown(KeyCode.V))
+        // {
+        //     Helper.DebugLog("Keys = " + GetKeys());
+        // }
     }
 
     private void OnEnable()
@@ -173,6 +173,7 @@ public class ProfileManager : MonoBehaviour
                     pipeCount = 1;
                 }
                 BigNumber totalGold = (configs[i].m_MinGold + (1 + (level - 1) * 0.5f) * 10) * pipeCount;
+                Helper.DebugLog("Total gold:" + totalGold);
                 AddGold(totalGold);
                 break;
             }
@@ -285,12 +286,12 @@ public class ProfileManager : MonoBehaviour
 
     #region KEYS
 
-    public void AddKeys(BigNumber _value)
+    public static void AddKeys(BigNumber _value)
     {
         MyProfile.AddKeys(_value);
     }
 
-    public BigNumber GetKeys()
+    public static BigNumber GetKeys()
     {
         return MyProfile.GetKeys();
     }

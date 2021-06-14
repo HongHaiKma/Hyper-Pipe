@@ -10,24 +10,25 @@ public class GameData : Singleton<GameData>
 
     private Dictionary<int, CharacterDataConfig> m_CharacterDataConfigs = new Dictionary<int, CharacterDataConfig>();
     private Dictionary<int, LevelConfig> m_LevelConfigs = new Dictionary<int, LevelConfig>();
+    private Dictionary<int, BonusRewardConfig> m_BonusRewardConfigs = new Dictionary<int, BonusRewardConfig>();
 
     private void Awake()
     {
         LoadCharacterConfig();
         LoadLevelConfig();
+        LoadBonusRewardConfig();
+    }
 
-        // CharacterDataConfig charrr = GetCharacterDataConfig(CharacterType.FIREMAN);
-
-        // Helper.DebugLog("m_Id: " + charrr.m_Id);
-        // Helper.DebugLog("m_Name: " + charrr.m_Name);
-        // Helper.DebugLog("m_RunSpeed: " + charrr.m_RunSpeed);
-        // Helper.DebugLog("m_Price: " + charrr.m_Price);
-        // Helper.DebugLog("m_AdsCheck: " + charrr.m_AdsCheck);
-        // Helper.DebugLog("m_AdsNumber: " + charrr.m_AdsNumber);
-
-        // Dictionary<int, CharacterDataConfig> characterDataConfig = GameData.Instance.GetCharacterDataConfig();
-
-        // Helper.DebugLog("Name: " + characterDataConfig[0].m_Name);
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            // for (int i = 0; i < GetLegendCharacterDataConfig().Count; i++)
+            // {
+            //     Helper.DebugLog(GetLegendCharacterDataConfig()[i].m_Id);
+            //     Helper.DebugLog(GetLegendCharacterDataConfig()[i].m_Name);
+            // }
+        }
     }
 
     public void LoadCharacterConfig()
@@ -116,6 +117,32 @@ public class GameData : Singleton<GameData>
         }
     }
 
+    public void LoadBonusRewardConfig()
+    {
+        m_BonusRewardConfigs.Clear();
+        TextAsset ta = GetDataAssets(GameDataType.BONUS_REWARD);
+        var js1 = JSONNode.Parse(ta.text);
+        for (int i = 0; i < js1.Count; i++)
+        {
+            JSONNode iNode = JSONNode.Parse(js1[i].ToString());
+
+            int id = int.Parse(iNode["Slot"]);
+
+            string colName = "";
+
+            BigNumber gold = 0;
+            colName = "Gold";
+            if (iNode[colName].ToString().Length > 0)
+            {
+                gold = new BigNumber(iNode[colName]) + 0;
+            }
+
+            BonusRewardConfig bonusRewardConfigs = new BonusRewardConfig();
+            bonusRewardConfigs.Init(id, gold);
+            m_BonusRewardConfigs.Add(id, bonusRewardConfigs);
+        }
+    }
+
     public TextAsset GetDataAssets(GameDataType _id)
     {
         return m_DataText[(int)_id];
@@ -134,7 +161,26 @@ public class GameData : Singleton<GameData>
         return m_CharacterDataConfigs;
     }
 
+    public List<CharacterDataConfig> GetLegendCharacterDataConfig()
+    {
+        List<CharacterDataConfig> configs = new List<CharacterDataConfig>();
+        int count = m_CharacterDataConfigs.Count;
+        for (int i = 1; i <= count; i++)
+        {
+            if (m_CharacterDataConfigs[i].GetRatity() == (int)OutfitRarity.LEGEND)
+            {
+                configs.Add(m_CharacterDataConfigs[i]);
+            }
+        }
+        return configs;
+    }
+
     public Dictionary<int, LevelConfig> GetLevelConfig()
+    {
+        return m_LevelConfigs;
+    }
+
+    public Dictionary<int, LevelConfig> GetBonusRewardConfig()
     {
         return m_LevelConfigs;
     }
@@ -143,5 +189,6 @@ public class GameData : Singleton<GameData>
     {
         DATA_CHAR = 0,
         LEVEL_CONfIG = 1,
+        BONUS_REWARD = 2,
     }
 }

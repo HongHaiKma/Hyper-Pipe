@@ -7,7 +7,7 @@ public class LevelData
 
 }
 
-public class LevelConfig
+public struct LevelConfig
 {
     public int m_Id;
     public BigNumber m_MaxLevel;

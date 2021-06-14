@@ -4,6 +4,7 @@ using UnityEngine;
 using ControlFreak2;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class PlaySceneManager : Singleton<PlaySceneManager>
 {
@@ -20,8 +21,12 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
 
     public TextMeshProUGUI txt_TotalGold;
     public TextMeshProUGUI txt_Level;
+    public TextMeshProUGUI txt_Pipe;
 
     public GameObject g_Hand;
+
+    public GameObject g_Keyss;
+    public GameObject[] g_Keys;
 
     private void Awake()
     {
@@ -33,7 +38,20 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
     {
         txt_TotalGold.text = ProfileManager.GetGold();
         txt_Level.text = "Level " + ProfileManager.GetLevel().ToString();
+        txt_Pipe.text = 0.ToString() + "m";
         base.OnEnable();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (ProfileManager.GetKeys() < 3)
+            {
+                ProfileManager.AddKeys(1);
+                Event_ADD_KEY();
+            }
+        }
     }
 
     public override void StartListenToEvents()
@@ -71,6 +89,34 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
     public void Event_GAME_START(bool _value)
     {
         btn_Outfit.gameObject.SetActive(_value);
+    }
+
+    public void Event_ADD_KEY()
+    {
+        BigNumber totalKeys = ProfileManager.GetKeys();
+        for (int i = 0; i < g_Keys.Length; i++)
+        {
+            if (i < totalKeys)
+            {
+                g_Keys[i].SetActive(true);
+            }
+            else
+            {
+                g_Keys[i].SetActive(false);
+            }
+        }
+        g_Keyss.transform.DOKill();
+        g_Keyss.transform.DOLocalMoveX(-467f, 1f).OnComplete(
+            () => g_Keyss.transform.DOLocalMoveX(-625f, 1f).SetDelay(1.5f)
+        );
+    }
+
+    public void Event_ADD_PIPE(int _value)
+    {
+        txt_Pipe.text = _value.ToString() + "m";
+        txt_Pipe.transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 0.2f).OnComplete(
+            () => txt_Pipe.transform.DOScale(new Vector3(1f, 1f, 1f), 0.2f)
+        );
     }
 
     public void OpenOutfitPopup()

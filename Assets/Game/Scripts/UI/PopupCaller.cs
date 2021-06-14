@@ -17,4 +17,11 @@ public class PopupCaller : MonoBehaviour
 
         GUIManager.Instance.ShowUIPopup(popup);
     }
+
+    public static void OpenBonusRewardPopup()
+    {
+        PopupBonusReward popup = GUIManager.Instance.GetUICanvasByID(UIID.POPUP_BONUS_REWARD) as PopupBonusReward;
+
+        GUIManager.Instance.ShowUIPopup(popup);
+    }
 }

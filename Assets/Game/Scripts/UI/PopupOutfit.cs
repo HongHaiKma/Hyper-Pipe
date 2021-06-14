@@ -67,10 +67,10 @@ public class PopupOutfit : UICanvas
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            SpawnGoldEffect();
-        }
+        // if (Input.GetKeyDown(KeyCode.Z))
+        // {
+        //     SpawnGoldEffect();
+        // }
     }
 
     public override void StartListenToEvents()
