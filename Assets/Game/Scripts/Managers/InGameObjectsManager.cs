@@ -31,6 +31,7 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
     public int m_ScoreLine;
 
     public List<GameObject> g_GoldEffects = new List<GameObject>();
+    public List<GameObject> g_ScoreLines = new List<GameObject>();
 
     public override void OnEnable()
     {
@@ -68,6 +69,16 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
             // g_GoldEffects.Dokill
             g_GoldEffects[i].transform.DOKill();
             PrefabManager.Instance.DespawnPool(g_GoldEffects[i]);
+        }
+        g_GoldEffects.Clear();
+    }
+
+    public void DespawnRedundantScoreLines(int _scoreLine)
+    {
+        int count = g_ScoreLines.Count;
+        for (int i = _scoreLine; i < count; i++)
+        {
+            PrefabManager.Instance.DespawnPool(g_ScoreLines[i]);
         }
         g_GoldEffects.Clear();
     }
@@ -126,21 +137,8 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
         ending.transform.localEulerAngles = new Vector3(-90f, 0f, 0f);
         m_MapLength += ending.GetComponent<BoxCollider>().size.y * 10f;
 
-        for (int i = 0; i < 20; i++)
-        {
-            if (i == 0)
-            {
-                GameObject go = PrefabManager.Instance.SpawnScoreLine(ConfigKeys.m_ScoreLine, new Vector3(0f, 0f, ending.transform.position.z + 4f + 1f));
-                go.GetComponent<Score>().SetScore(m_ScoreLine, i + 1, GameManager.Instance.m_ScoreLineColor[i % 7]);
-                m_ScoreLine++;
-            }
-            else
-            {
-                GameObject go = PrefabManager.Instance.SpawnScoreLine(ConfigKeys.m_ScoreLine, new Vector3(0f, 0f, ending.transform.position.z + i * 2 * 2 + 4f + i * 2f));
-                go.GetComponent<Score>().SetScore(m_ScoreLine, i + 1, GameManager.Instance.m_ScoreLineColor[i % 7]);
-                m_ScoreLine++;
-            }
-        }
+        GameObject score = PrefabManager.Instance.SpawnScoreLine(ConfigKeys.m_ScoreLine, new Vector3(0f, 0f, ending.transform.position.z + 4f + 5f));
+        score.GetComponent<Score>().SetScore(GameManager.Instance.m_ScoreLineColor[0]);
 
         for (int i = 0; i < 10; i++)
         {

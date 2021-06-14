@@ -33,30 +33,53 @@ public class Score : InGameObject
     public void Event_SCORE_LINE_PICK(int _result)
     {
         Character charrr = InGameObjectsManager.Instance.m_Char;
-
-        if (m_ScoreLine == _result)
+        if (_result < 7)
         {
-            InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(tf_Owner.position.z + 25f).GetComponent<House>();
-            charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete
-            (
-                () =>
-                {
-                    charrr.ChangeState(IdleState.Instance);
-                    charrr.m_LastAction = true;
-                    EventManager1<bool>.CallEvent(GameEvent.WATER, true);
-                    InGameObjectsManager.Instance.m_House.m_Start = true;
-                }
-            );
+            if (m_ScoreLine == _result)
+            {
+                InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(tf_Owner.position.z + 25f).GetComponent<House>();
+                charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete
+                (
+                    () =>
+                    {
+                        charrr.ChangeState(IdleState.Instance);
+                        charrr.m_LastAction = true;
+                        EventManager1<bool>.CallEvent(GameEvent.WATER, true);
+                        InGameObjectsManager.Instance.m_House.m_Start = true;
+                    }
+                );
+
+                InGameObjectsManager.Instance.DespawnRedundantScoreLines(m_ScoreLine);
+            }
+        }
+        else
+        {
+            if (m_ScoreLine == 7)
+            {
+                InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(tf_Owner.position.z + 25f).GetComponent<House>();
+                charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete
+                (
+                    () =>
+                    {
+                        charrr.ChangeState(IdleState.Instance);
+                        charrr.m_LastAction = true;
+                        EventManager1<bool>.CallEvent(GameEvent.WATER, true);
+                        InGameObjectsManager.Instance.m_House.m_Start = true;
+                    }
+                );
+
+                InGameObjectsManager.Instance.DespawnRedundantScoreLines(m_ScoreLine);
+            }
         }
     }
 
 
-    public void SetScore(int _scoreLine, int _value, Color _color)
+    public void SetScore(Color _color)
     {
         m_Score++;
         // m_ScoreLine = _scoreLine;
         m_ScoreLine = m_Score;
-        txt_Score.text = "x" + _value.ToString();
+        txt_Score.text = "x" + m_Score.ToString();
         img_BG.color = new Color(_color.r, _color.g, _color.b);
     }
 

@@ -37,7 +37,7 @@ public class PlayerProfile
         // PlayerPrefs.SetInt(ConfigKeys.noAds, 0);
         // PlayerPrefs.SetInt(ConfigKeys.rateUs, 1);
 
-        ic_Gold = "9000";
+        ic_Gold = "0";
         m_Gold = new BigNumber(ic_Gold);
 
         ic_Keys = "0";

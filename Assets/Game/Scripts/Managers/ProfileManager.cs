@@ -160,18 +160,19 @@ public class ProfileManager : MonoBehaviour
 
     public void PassLevel()
     {
-        Helper.DebugLog("profilemanager pass level");
         int level = GetLevel();
         Dictionary<int, LevelConfig> configs = GameData.Instance.GetLevelConfig();
         int pipeCount = InGameObjectsManager.Instance.m_Char.m_SpringManager.springBones.Count - 1;
-
-        Helper.DebugLog("Pipe count: " + pipeCount);
 
         for (int i = 1; i <= configs.Count; i++)
         {
             if (configs[i].CheckInRange(level))
             {
-                BigNumber totalGold = configs[i].m_MinGold + (1 + (level - 1) * 0.5f) * 10 * pipeCount;
+                if (pipeCount == 0)
+                {
+                    pipeCount = 1;
+                }
+                BigNumber totalGold = (configs[i].m_MinGold + (1 + (level - 1) * 0.5f) * 10) * pipeCount;
                 AddGold(totalGold);
                 break;
             }

@@ -130,10 +130,10 @@ public class Character : InGameObject
         //     Helper.DebugLog("Char is not grounded");
         // }
 
-        // if (Input.GetKeyDown(KeyCode.C))
-        // {
-        //     AddPipe();
-        // }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            AddPipe();
+        }
 
         // if (Input.GetKeyDown(KeyCode.B))
         // {
@@ -163,9 +163,7 @@ public class Character : InGameObject
                 if (pipeCount == 1)
                 {
                     pipe.tf_Owner.parent = tf_PipeHolder;
-                    // pipe.tf_Owner.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                     pipe.tf_Owner.transform.localScale = new Vector3(0.0025f, 0.0025f, 0.0025f);
-                    // pipe.tf_Owner.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                     if (m_EState != EState.HANGING && m_EState != EState.JUMP_DOWN && m_EState != EState.JUMP_UP)
                     {
                         pipe.tf_Owner.localPosition = new Vector3(0f, tf_TargetPipe.position.y + 1.1f, 0f);
@@ -173,14 +171,16 @@ public class Character : InGameObject
                     else
                     {
                         pipe.tf_Owner.localPosition = new Vector3(0f, 0.8899996f, 0f);
-                        // pipe.tf_Owner.localPosition = new Vector3(0f, 0.5f, 0f);
                     }
-                    // pipe.tf_Owner.transform.eulerAngles = new Vector3(0f, 0f, 90f);
+
+                    GameObject go = PrefabManager.Instance.SpawnScoreLine(ConfigKeys.m_ScoreLine, new Vector3(0f, 0f, InGameObjectsManager.Instance.g_Ending.transform.position.z + Score.m_Score * 2 * 7 + 9f));
+                    go.GetComponent<Score>().SetScore(GameManager.Instance.m_ScoreLineColor[Score.m_Score % 7]);
+
+                    InGameObjectsManager.Instance.g_ScoreLines.Add(go);
                 }
                 else
                 {
                     pipe.tf_Owner.parent = tf_TargetPipe;
-                    // pipe.tf_Owner.transform.localScale = new Vector3(1f, 1f, 1f);
                     pipe.tf_Owner.transform.localScale = new Vector3(1f, 1f, 1f);
                     if (m_EState != EState.HANGING && m_EState != EState.JUMP_DOWN && m_EState != EState.JUMP_UP)
                     {
@@ -189,17 +189,16 @@ public class Character : InGameObject
                     else
                     {
                         pipe.tf_Owner.localPosition = new Vector3(0f, 0.8899996f, 0f);
-                        // pipe.tf_Owner.localPosition = new Vector3(0f, 0.5f, 0f);
                     }
-                    // pipe.tf_Owner.transform.eulerAngles = new Vector3(0f, 0f, 90f);
+
+                    GameObject go = PrefabManager.Instance.SpawnScoreLine(ConfigKeys.m_ScoreLine, new Vector3(0f, 0f, InGameObjectsManager.Instance.g_Ending.transform.position.z + Score.m_Score * 2 * 7 + 9f));
+                    go.GetComponent<Score>().SetScore(GameManager.Instance.m_ScoreLineColor[Score.m_Score % 7]);
+
+                    InGameObjectsManager.Instance.g_ScoreLines.Add(go);
                 }
                 pipe.tf_Owner.localEulerAngles = new Vector3(0f, 0f, 90f);
 
                 pipe.Setup();
-
-                GameObject go = PrefabManager.Instance.SpawnScoreLine(ConfigKeys.m_ScoreLine, new Vector3(0f, 0f, InGameObjectsManager.Instance.g_Ending.transform.position.z + Score.m_Score * 2 * 2 + 4f + Score.m_Score * 2));
-                go.GetComponent<Score>().SetScore(InGameObjectsManager.Instance.m_ScoreLine, Score.m_Score, GameManager.Instance.m_ScoreLineColor[Score.m_Score % 7]);
-                InGameObjectsManager.Instance.m_ScoreLine++;
             }
         }
         else
@@ -386,9 +385,10 @@ public class Character : InGameObject
             int value = m_SpringManager.springBones.Count - 1;
             int result = value / GameManager.Instance.m_ScoreFactor;
 
-            if (result < 0)
+            if (result <= 0)
             {
-                EventManager1<int>.CallEvent(GameEvent.DESTROY_SCORE_LINE, result);
+                EventManager1<int>.CallEvent(GameEvent.DESTROY_SCORE_LINE, 1);
+                Helper.DebugLog("result < 0");
                 return;
             }
 

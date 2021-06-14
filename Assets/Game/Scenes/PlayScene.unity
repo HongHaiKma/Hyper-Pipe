@@ -3257,6 +3257,7 @@ MonoBehaviour:
   g_Ending: {fileID: 0}
   m_ScoreLine: 0
   g_GoldEffects: []
+  g_ScoreLines: []
 --- !u!1 &1167145098
 GameObject:
   m_ObjectHideFlags: 0
