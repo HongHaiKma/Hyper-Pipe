@@ -175,14 +175,28 @@ public class GameData : Singleton<GameData>
         return configs;
     }
 
+    public CharacterDataConfig GetLegendCharacterDataConfig(int _id)
+    {
+        List<CharacterDataConfig> configs = new List<CharacterDataConfig>();
+        int count = m_CharacterDataConfigs.Count;
+        for (int i = 1; i <= count; i++)
+        {
+            if (m_CharacterDataConfigs[i].GetRatity() == (int)OutfitRarity.LEGEND)
+            {
+                configs.Add(m_CharacterDataConfigs[i]);
+            }
+        }
+        return configs[_id];
+    }
+
     public Dictionary<int, LevelConfig> GetLevelConfig()
     {
         return m_LevelConfigs;
     }
 
-    public Dictionary<int, LevelConfig> GetBonusRewardConfig()
+    public Dictionary<int, BonusRewardConfig> GetBonusRewardConfig()
     {
-        return m_LevelConfigs;
+        return m_BonusRewardConfigs;
     }
 
     public enum GameDataType

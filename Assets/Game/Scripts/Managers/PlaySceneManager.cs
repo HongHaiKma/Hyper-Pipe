@@ -46,11 +46,13 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            if (ProfileManager.GetKeys() < 3)
-            {
-                ProfileManager.AddKeys(1);
-                Event_ADD_KEY();
-            }
+            // if (ProfileManager.GetKeys() < 3)
+            // {
+            //     // ProfileManager.AddKeys(1);
+            //     // Event_ADD_KEY();
+
+            // }
+            PopupCaller.OpenBonusRewardPopup();
         }
     }
 
