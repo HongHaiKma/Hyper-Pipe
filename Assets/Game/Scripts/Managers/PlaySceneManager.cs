@@ -29,21 +29,11 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
         // GUIManager.Instance.AddClickEvent(btn_TestAds, TestAds);
     }
 
-    private void OnEnable()
+    public override void OnEnable()
     {
         txt_TotalGold.text = ProfileManager.GetGold();
         txt_Level.text = "Level " + ProfileManager.GetLevel().ToString();
-        StartListenToEvents();
-    }
-
-    private void OnDisable()
-    {
-        StopListenToEvents();
-    }
-
-    private void OnDestroy()
-    {
-        StopListenToEvents();
+        base.OnEnable();
     }
 
     public override void StartListenToEvents()
@@ -76,7 +66,6 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
     public void Event_END_GAME()
     {
         m_TouchTrackPad.gameObject.SetActive(false);
-        Helper.DebugLog("PlaySceneManager end game!!!!");
     }
 
     public void Event_GAME_START(bool _value)
@@ -87,10 +76,5 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
     public void OpenOutfitPopup()
     {
         PopupCaller.OpenOutfitPopup();
-    }
-
-    public void TestAds()
-    {
-        // AdsManager.Instance.WatchInterstitial();
     }
 }

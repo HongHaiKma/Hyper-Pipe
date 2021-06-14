@@ -386,9 +386,11 @@ public class Character : InGameObject
             int value = m_SpringManager.springBones.Count - 1;
             int result = value / GameManager.Instance.m_ScoreFactor;
 
-            // Helper.DebugLog("Value is: " + value);
-            // Helper.DebugLog("m_ScoreFactor is: " + GameManager.Instance.m_ScoreFactor);
-            // Helper.DebugLog("Result is: " + result);
+            if (result < 0)
+            {
+                EventManager1<int>.CallEvent(GameEvent.DESTROY_SCORE_LINE, result);
+                return;
+            }
 
             EventManager1<int>.CallEvent(GameEvent.DESTROY_SCORE_LINE, result);
             // Helper.DebugLog("Ending calledddddddddddddddddddd");

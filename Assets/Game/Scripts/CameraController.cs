@@ -19,7 +19,7 @@ public class CameraController : Singleton<CameraController>
     float endValue = 0f;
     float valueToLerp;
 
-    private void OnEnable()
+    public override void OnEnable()
     {
         timeElapsed = 4f;
     }

@@ -36,7 +36,6 @@ public class Score : InGameObject
 
         if (m_ScoreLine == _result)
         {
-            Helper.DebugLog("m_ScoreLine: " + m_ScoreLine + " Get picked!!!!!!");
             InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(tf_Owner.position.z + 25f).GetComponent<House>();
             charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete
             (
@@ -49,19 +48,6 @@ public class Score : InGameObject
                 }
             );
         }
-        // else
-        // {
-        //     Helper.DebugLog("m_ScoreLine: " + m_ScoreLine + " Get destroyed!!!!!!");
-        //     Destroy(gameObject);
-        // }
-
-        // if (m_ScoreLine != _result)
-        // {
-        //     Helper.DebugLog("Score line destroy is: " + m_ScoreLine);
-        //     PrefabManager.Instance.DespawnPool(this.gameObject);
-        // }
-        // Helper.DebugLog("Score line destroy is: " + m_ScoreLine);
-        // Destroy(gameObject);
     }
 
 
@@ -83,22 +69,6 @@ public class Score : InGameObject
         (
             () => img_BG.DOColor(new Color(r, g, b), 0.5f)
         );
-    }
-
-    private void Update()
-    {
-        // img_BG.DOColor();
-        // if (Input.GetKeyDown(KeyCode.Z))
-        // {
-        //     // img_BG.color = GameManager.Instance.m_Gradients[0].colorKeys;
-        //     float r = img_BG.color.r;
-        //     float g = img_BG.color.g;
-        //     float b = img_BG.color.b;
-        //     // img_BG.DOColor(Color.white, 0.3f).OnComplete
-        //     // (
-        //     //     () => img_BG.DOColor(new Color(r, g, b), 0.5f)
-        //     // );
-        // }
     }
 
     private void OnTriggerEnter(Collider other)
