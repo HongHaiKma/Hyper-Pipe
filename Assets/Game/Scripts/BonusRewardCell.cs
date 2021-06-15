@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class BonusRewardCell : MonoBehaviour
 {
@@ -23,6 +22,11 @@ public class BonusRewardCell : MonoBehaviour
     private void OnEnable()
     {
         btn_Claim.interactable = true;
+        Reset();
+    }
+
+    public void Reset()
+    {
         g_Chest.SetActive(true);
         g_Char.SetActive(false);
         g_Gold.SetActive(false);
@@ -43,11 +47,35 @@ public class BonusRewardCell : MonoBehaviour
                 g_Char.SetActive(false);
                 g_Gold.SetActive(true);
                 ProfileManager.AddGold(m_Gold);
+                EventManager.CallEvent(GameEvent.UPDATE_GOLD);
+                SpawnGoldEffect();
             }
 
             g_Chest.SetActive(false);
             ProfileManager.AddKeys(-1);
             PopupCaller.GetBonusRewardPopup().UpdateKeys();
+        }
+    }
+
+    public void SpawnGoldEffect()
+    {
+        InGameObjectsManager.Instance.DespawnGoldEffectPool();
+
+        for (int i = 0; i < 15; i++)
+        {
+            GameObject g_EffectGold = PrefabManager.Instance.SpawnGoldEffect(ConfigKeys.m_GoldEffect1, transform.position);
+            g_EffectGold.transform.SetParent(this.transform);
+            g_EffectGold.transform.localScale = new Vector3(1, 1, 1);
+            g_EffectGold.transform.position = transform.position;
+
+            InGameObjectsManager.Instance.g_GoldEffects.Add(g_EffectGold);
+
+            g_EffectGold.transform.DOMove(PlaySceneManager.Instance.txt_TotalGold.gameObject.transform.position, 0.7f).SetDelay(0.1f + i * 0.1f).OnComplete(
+                () =>
+                {
+                    PrefabManager.Instance.DespawnPool(g_EffectGold);
+                }
+            );
         }
     }
 }

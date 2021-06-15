@@ -404,6 +404,7 @@ public class Character : InGameObject
                 ProfileManager.AddKeys(1);
             }
             Destroy(other.gameObject);
+            PlaySceneManager.Instance.Event_ADD_KEY();
         }
         else if (other.tag.Equals("DeadPlane"))
         {

@@ -153,6 +153,12 @@ public class PlayerProfile
         SaveDataToLocal();
     }
 
+    public void SetKeys(BigNumber _keys)
+    {
+        m_Keys = _keys;
+        SaveDataToLocal();
+    }
+
     #endregion
 
     #region CHARACTER

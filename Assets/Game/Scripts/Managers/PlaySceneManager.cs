@@ -30,11 +30,13 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
     public Button btn_LoadMapTest;
     public Button btn_AddPipeTest;
     public Button btn_OpenBonusReward;
+    public Button btn_AddKey;
 
     private void Awake()
     {
         GUIManager.Instance.AddClickEvent(btn_Outfit, OpenOutfitPopup);
-        // GUIManager.Instance.AddClickEvent(btn_OpenBonusReward, OpenBonusRewardPopup);
+        GUIManager.Instance.AddClickEvent(btn_OpenBonusReward, OpenBonusRewardPopup);
+        GUIManager.Instance.AddClickEvent(btn_AddKey, AddKey);
         // GUIManager.Instance.AddClickEvent(btn_TestAds, TestAds);
     }
 
@@ -139,5 +141,10 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
     public void OpenBonusRewardPopup()
     {
         PopupCaller.OpenBonusRewardPopup();
+    }
+
+    public void AddKey()
+    {
+        ProfileManager.AddKeys(1);
     }
 }

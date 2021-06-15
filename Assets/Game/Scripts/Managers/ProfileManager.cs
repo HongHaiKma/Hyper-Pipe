@@ -296,6 +296,11 @@ public class ProfileManager : MonoBehaviour
         return MyProfile.GetKeys();
     }
 
+    public static void SetKeys(BigNumber _keys)
+    {
+        MyProfile.SetKeys(_keys);
+    }
+
     #endregion
 
     public static int GetSelectedChar()

@@ -114,6 +114,7 @@ public class UICanvas : MonoBehaviour
 
     public void ShowPopup()
     {
+        gameObject.SetActive(false);
         gameObject.SetActive(true);
         OnStartOpen();
         //if (m_CanvasGroup != null)

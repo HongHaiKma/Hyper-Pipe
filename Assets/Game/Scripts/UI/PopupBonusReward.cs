@@ -24,11 +24,8 @@ public class PopupBonusReward : UICanvas
     public override void OnEnable()
     {
         base.OnEnable();
-        SetupRandom();
-        UpdateKeys();
-        g_Keyss.SetActive(true);
-        btn_Ads3Keys.gameObject.SetActive(false);
-        btn_LoseIt.gameObject.SetActive(false);
+        Helper.DebugLog("POpup bonus reward on enableeeeeeeeeeeeeeeee");
+        ResetPopup();
     }
 
     public override void StartListenToEvents()
@@ -52,30 +49,53 @@ public class PopupBonusReward : UICanvas
         }
     }
 
+    public void ResetPopup()
+    {
+        SetupRandom();
+        UpdateKeys();
+        g_Keyss.SetActive(true);
+        btn_Ads3Keys.gameObject.SetActive(false);
+        btn_LoseIt.gameObject.SetActive(false);
+
+        // for (int i = 0; i < m_BonusCells.Count; i++)
+        // {
+        //     m_BonusCells[i].Reset();
+        // }
+    }
+
     public void UpdateKeys()
     {
+        if (ProfileManager.GetKeys() > 3)
+        {
+            ProfileManager.SetGold(3);
+        }
+
         for (int i = 0; i < g_Keys.Length; i++)
         {
             g_Keys[i].SetActive(false);
         }
+
         for (int i = 0; i < ProfileManager.GetKeys(); i++)
         {
+            if (i >= 3)
+            {
+                break;
+            }
             g_Keys[i].SetActive(true);
         }
 
-        // if (ProfileManager.GetKeys() <= 0)
-        // {
-        //     StartCoroutine(IEOutOfKeys());
-        // }
+        if (ProfileManager.GetKeys() <= 0)
+        {
+            StartCoroutine(IEOutOfKeys());
+        }
     }
 
     IEnumerator IEOutOfKeys()
     {
-
         btn_Ads3Keys.gameObject.SetActive(true);
         g_Keyss.SetActive(false);
-        yield return Yielders.Get(2f);
-        btn_LoseIt.gameObject.SetActive(false);
+        yield return new WaitForSeconds(2f);
+        btn_LoseIt.gameObject.SetActive(true);
     }
 
     public void SetupRandom()
@@ -141,5 +161,11 @@ public class PopupBonusReward : UICanvas
     public void Watch3Keys()
     {
         AdsManager.Instance.WatchRewardVideo(RewardType.KEYS3_1);
+    }
+
+    public override void OnClose()
+    {
+        base.OnClose();
+        PopupCaller.OpenWinPopup();
     }
 }

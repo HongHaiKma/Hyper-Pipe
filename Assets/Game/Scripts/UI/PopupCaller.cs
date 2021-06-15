@@ -18,11 +18,11 @@ public class PopupCaller
         GUIManager.Instance.ShowUIPopup(popup);
     }
 
-    public static void OpenBonusRewardPopup()
+    public static void OpenBonusRewardPopup(bool _isClose = false)
     {
         PopupBonusReward popup = GUIManager.Instance.GetUICanvasByID(UIID.POPUP_BONUS_REWARD) as PopupBonusReward;
 
-        GUIManager.Instance.ShowUIPopup(popup);
+        GUIManager.Instance.ShowUIPopup(popup, _isClose);
     }
 
     public static PopupBonusReward GetBonusRewardPopup()

@@ -374,7 +374,7 @@ public class AdsManager : Singleton<AdsManager>
             //     EventManager.CallEvent(GameEvent.ADS_CHARACTER_2_ANIM);
             //     break;
             case RewardType.KEYS3_1:
-                // PopupCaller.OpenBonusRewardPopup();
+                PopupCaller.OpenBonusRewardPopup();
                 // EventManager.CallEvent(GameEvent.ADS_3KEYS_1_ANIM);
                 break;
         }
@@ -407,7 +407,7 @@ public class AdsManager : Singleton<AdsManager>
             //     EventManager.CallEvent(GameEvent.ADS_GOLD_2_LOGIC);
             //     break;
             case RewardType.KEYS3_1:
-                // EventManager.CallEvent(GameEvent.ADS_3KEYS_1_LOGIC);
+                EventManager.CallEvent(GameEvent.ADS_3KEYS_1_LOGIC);
                 ProfileManager.AddKeys(3);
                 break;
         }
