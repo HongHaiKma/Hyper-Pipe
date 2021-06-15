@@ -367,12 +367,16 @@ public class AdsManager : Singleton<AdsManager>
             case RewardType.GOLD_1:
                 EventManager.CallEvent(GameEvent.ADS_GOLD_1_ANIM);
                 break;
-                // case RewardType.GOLD_2:
-                //     EventManager.CallEvent(GameEvent.ADS_GOLD_2_ANIM);
-                //     break;
-                // case RewardType.CHARACTER_2:
-                //     EventManager.CallEvent(GameEvent.ADS_CHARACTER_2_ANIM);
-                //     break;
+            // case RewardType.GOLD_2:
+            //     EventManager.CallEvent(GameEvent.ADS_GOLD_2_ANIM);
+            //     break;
+            // case RewardType.CHARACTER_2:
+            //     EventManager.CallEvent(GameEvent.ADS_CHARACTER_2_ANIM);
+            //     break;
+            case RewardType.KEYS3_1:
+                // PopupCaller.OpenBonusRewardPopup();
+                // EventManager.CallEvent(GameEvent.ADS_3KEYS_1_ANIM);
+                break;
         }
     }
 
@@ -398,10 +402,14 @@ public class AdsManager : Singleton<AdsManager>
             case RewardType.GOLD_1:
                 EventManager.CallEvent(GameEvent.ADS_GOLD_1_LOGIC);
                 break;
-                // case RewardType.GOLD_2:
-                //     m_WatchInter = false;
-                //     EventManager.CallEvent(GameEvent.ADS_GOLD_2_LOGIC);
-                //     break;
+            // case RewardType.GOLD_2:
+            //     m_WatchInter = false;
+            //     EventManager.CallEvent(GameEvent.ADS_GOLD_2_LOGIC);
+            //     break;
+            case RewardType.KEYS3_1:
+                // EventManager.CallEvent(GameEvent.ADS_3KEYS_1_LOGIC);
+                ProfileManager.AddKeys(3);
+                break;
         }
     }
 
@@ -449,4 +457,5 @@ public enum RewardType
     CHARACTER_2,
     GOLD_1,
     GOLD_2,
+    KEYS3_1,
 }

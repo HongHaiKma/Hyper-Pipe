@@ -23,11 +23,11 @@ public class GameData : Singleton<GameData>
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
-            // for (int i = 0; i < GetLegendCharacterDataConfig().Count; i++)
-            // {
-            //     Helper.DebugLog(GetLegendCharacterDataConfig()[i].m_Id);
-            //     Helper.DebugLog(GetLegendCharacterDataConfig()[i].m_Name);
-            // }
+            for (int i = 0; i < GetBonusRewardConfig().Count; i++)
+            {
+                Helper.DebugLog(GetBonusRewardConfig()[i].m_Slot);
+                Helper.DebugLog(GetBonusRewardConfig()[i].m_Gold.ToString());
+            }
         }
     }
 
@@ -140,6 +140,7 @@ public class GameData : Singleton<GameData>
             BonusRewardConfig bonusRewardConfigs = new BonusRewardConfig();
             bonusRewardConfigs.Init(id, gold);
             m_BonusRewardConfigs.Add(id, bonusRewardConfigs);
+            Helper.DebugLog("Bonus data row 1");
         }
     }
 

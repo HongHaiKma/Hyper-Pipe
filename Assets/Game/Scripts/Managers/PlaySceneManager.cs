@@ -13,8 +13,6 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
     public GameObject g_JoystickTrackPad;
     public TouchJoystick m_JoystickTrackPad;
 
-    public Button btn_LoadMapTest;
-    public Button btn_AddPipeTest;
     public Button btn_Outfit;
 
     public Button btn_TestAds;
@@ -28,9 +26,15 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
     public GameObject g_Keyss;
     public GameObject[] g_Keys;
 
+    [Header("Test")]
+    public Button btn_LoadMapTest;
+    public Button btn_AddPipeTest;
+    public Button btn_OpenBonusReward;
+
     private void Awake()
     {
         GUIManager.Instance.AddClickEvent(btn_Outfit, OpenOutfitPopup);
+        // GUIManager.Instance.AddClickEvent(btn_OpenBonusReward, OpenBonusRewardPopup);
         // GUIManager.Instance.AddClickEvent(btn_TestAds, TestAds);
     }
 
@@ -53,6 +57,12 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
 
             // }
             PopupCaller.OpenBonusRewardPopup();
+            // PopupCaller.OpenOutfitPopup();
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            ProfileManager.AddKeys(1);
         }
     }
 
@@ -124,5 +134,10 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
     public void OpenOutfitPopup()
     {
         PopupCaller.OpenOutfitPopup();
+    }
+
+    public void OpenBonusRewardPopup()
+    {
+        PopupCaller.OpenBonusRewardPopup();
     }
 }

@@ -96,6 +96,6 @@ public class Score : InGameObject
 
     private void OnTriggerEnter(Collider other)
     {
-        Blink();
+
     }
 }

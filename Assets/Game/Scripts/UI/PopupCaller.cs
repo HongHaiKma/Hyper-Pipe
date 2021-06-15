@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PopupCaller : MonoBehaviour
+public class PopupCaller
 {
     public static void OpenOutfitPopup()
     {
@@ -23,5 +23,12 @@ public class PopupCaller : MonoBehaviour
         PopupBonusReward popup = GUIManager.Instance.GetUICanvasByID(UIID.POPUP_BONUS_REWARD) as PopupBonusReward;
 
         GUIManager.Instance.ShowUIPopup(popup);
+    }
+
+    public static PopupBonusReward GetBonusRewardPopup()
+    {
+        PopupBonusReward popup = GUIManager.Instance.GetUICanvasByID(UIID.POPUP_BONUS_REWARD) as PopupBonusReward;
+
+        return popup;
     }
 }

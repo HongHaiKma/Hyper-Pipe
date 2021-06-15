@@ -30,20 +30,24 @@ public class BonusRewardCell : MonoBehaviour
 
     public void Claim()
     {
-        if (m_IsChar)
+        if (ProfileManager.GetKeys() > 0)
         {
-            g_Char.SetActive(true);
-            g_Gold.SetActive(false);
-            ProfileManager.UnlockNewCharacter(PopupBonusReward.m_Char);
-        }
-        else
-        {
-            g_Char.SetActive(false);
-            g_Gold.SetActive(true);
-            ProfileManager.AddGold(m_Gold);
-        }
+            if (m_IsChar)
+            {
+                g_Char.SetActive(true);
+                g_Gold.SetActive(false);
+                ProfileManager.UnlockNewCharacter(PopupBonusReward.m_Char);
+            }
+            else
+            {
+                g_Char.SetActive(false);
+                g_Gold.SetActive(true);
+                ProfileManager.AddGold(m_Gold);
+            }
 
-        g_Chest.SetActive(false);
-        ProfileManager.AddKeys(-1);
+            g_Chest.SetActive(false);
+            ProfileManager.AddKeys(-1);
+            PopupCaller.GetBonusRewardPopup().UpdateKeys();
+        }
     }
 }

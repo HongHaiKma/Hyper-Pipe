@@ -10,9 +10,9 @@ public class TestRotate : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            agent.Move(tf_Target.position);
-        }
+        // if (Input.GetKeyDown(KeyCode.A))
+        // {
+        //     agent.Move(tf_Target.position);
+        // }
     }
 }

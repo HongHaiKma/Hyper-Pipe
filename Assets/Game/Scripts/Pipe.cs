@@ -32,7 +32,8 @@ public class Pipe : InGameObject
     {
         if (m_PipeNo != 0 && m_PipeNo != 1)
         {
-            tf_Owner.transform.localPosition = new Vector3(0.1f, 468f, 0f);
+            // tf_Owner.transform.localPosition = new Vector3(0.1f, 468f, 0f);
+            tf_Owner.transform.localPosition = new Vector3(0.1f, 150f, 0f);
         }
     }
 
