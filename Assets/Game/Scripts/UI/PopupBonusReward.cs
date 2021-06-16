@@ -13,6 +13,8 @@ public class PopupBonusReward : UICanvas
     public Button btn_Ads3Keys;
     public Button btn_LoseIt;
 
+    public Image img_Char;
+
     private void Awake()
     {
         m_ID = UIID.POPUP_BONUS_REWARD;
@@ -45,7 +47,8 @@ public class PopupBonusReward : UICanvas
         if (Input.GetKeyDown(KeyCode.C))
         {
             // ProfileManager.UnlockNewCharacter(CharacterType.WORKER);
-            SetupRandom();
+            // SetupRandom();
+
         }
     }
 
@@ -67,7 +70,7 @@ public class PopupBonusReward : UICanvas
     {
         if (ProfileManager.GetKeys() > 3)
         {
-            ProfileManager.SetGold(3);
+            ProfileManager.SetKeys(3);
         }
 
         for (int i = 0; i < g_Keys.Length; i++)
@@ -122,6 +125,7 @@ public class PopupBonusReward : UICanvas
         {
             int random = Random.Range(0, count - 1);
             charId = GameData.Instance.GetCharacterDataConfig(config[random].m_Id).m_Id - 1;
+            img_Char.sprite = SpriteManager.Instance.m_CharCards[charId];
             m_Char = charId + 1;
             Helper.DebugLog("m_Char = " + m_Char);
         }
@@ -166,6 +170,13 @@ public class PopupBonusReward : UICanvas
     public override void OnClose()
     {
         base.OnClose();
-        PopupCaller.OpenWinPopup();
+        if (((ProfileManager.GetLevel() - 1) % 5 == 0) && (GameData.Instance.GetEpicCharacterDataConfig().Count > 0))
+        {
+            PopupCaller.OpenOutfitProgressPopup();
+        }
+        else
+        {
+            PopupCaller.OpenWinPopup();
+        }
     }
 }

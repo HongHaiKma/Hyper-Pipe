@@ -191,9 +191,26 @@ public class PlayerProfile
     {
         if (GetCharacterProfile(characterType) == null)
         {
+            Helper.DebugLog("Character Unlocked:" + characterType.ToString());
             CharacterProfileData newCharacter = new CharacterProfileData();
             newCharacter.Init(characterType);
             newCharacter.Load();
+            m_CharacterData.Add(newCharacter);
+        }
+    }
+
+    public void UnlockEpicCharacter(CharacterType characterType)
+    {
+        if (GetCharacterProfile(characterType) == null)
+        {
+            CharacterDataConfig config = GameData.Instance.GetCharacterDataConfig(characterType);
+            int adsNumber = config.m_AdsNumber;
+
+            Helper.DebugLog("Character Unlocked:" + characterType.ToString());
+            CharacterProfileData newCharacter = new CharacterProfileData();
+            newCharacter.Init(characterType);
+            newCharacter.Load();
+            newCharacter.m_AdsNumber = adsNumber;
             m_CharacterData.Add(newCharacter);
         }
     }

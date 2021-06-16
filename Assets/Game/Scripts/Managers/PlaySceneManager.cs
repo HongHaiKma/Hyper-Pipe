@@ -26,17 +26,30 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
     public GameObject g_Keyss;
     public GameObject[] g_Keys;
 
+    public Button btn_StartLonger;
+
+
+    [Header("Level String")]
+    public GameObject g_LevelString;
+    public LevelStringCell[] m_LevelStringCells;
+
+    public GameObject g_LoadingAds;
+
+
     [Header("Test")]
     public Button btn_LoadMapTest;
     public Button btn_AddPipeTest;
     public Button btn_OpenBonusReward;
     public Button btn_AddKey;
+    public Button btn_JumpLevel;
 
     private void Awake()
     {
         GUIManager.Instance.AddClickEvent(btn_Outfit, OpenOutfitPopup);
         GUIManager.Instance.AddClickEvent(btn_OpenBonusReward, OpenBonusRewardPopup);
         GUIManager.Instance.AddClickEvent(btn_AddKey, AddKey);
+        GUIManager.Instance.AddClickEvent(btn_JumpLevel, JumpLevel);
+        GUIManager.Instance.AddClickEvent(btn_StartLonger, OnStartLonger);
         // GUIManager.Instance.AddClickEvent(btn_TestAds, TestAds);
     }
 
@@ -45,6 +58,8 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
         txt_TotalGold.text = ProfileManager.GetGold();
         txt_Level.text = "Level " + ProfileManager.GetLevel().ToString();
         txt_Pipe.text = 0.ToString() + "m";
+        btn_StartLonger.gameObject.SetActive(false);
+        SetupLevelString();
         base.OnEnable();
     }
 
@@ -66,6 +81,11 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
         {
             ProfileManager.AddKeys(1);
         }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            Event_ADD_KEY();
+        }
     }
 
     public override void StartListenToEvents()
@@ -82,6 +102,24 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
         EventManager.RemoveListener(GameEvent.END_GAME, Event_END_GAME);
         EventManager.RemoveListener(GameEvent.UPDATE_GOLD, Event_UPDATE_GOLD);
         EventManager1<bool>.AddListener(GameEvent.GAME_START, Event_GAME_START);
+    }
+
+    public void SetupLevelString()
+    {
+        g_LevelString.SetActive(true);
+
+        int factor = (ProfileManager.GetLevel() / 5);
+        int odd = (ProfileManager.GetLevel() % 5);
+
+        if (factor != 0 && odd == 0)
+        {
+            factor--;
+        }
+
+        for (int i = 0; i < m_LevelStringCells.Length; i++)
+        {
+            m_LevelStringCells[i].SetupCell(factor * 5 + i);
+        }
     }
 
     public void Event_UPDATE_GOLD()
@@ -120,8 +158,8 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
             }
         }
         g_Keyss.transform.DOKill();
-        g_Keyss.transform.DOLocalMoveX(-467f, 1f).OnComplete(
-            () => g_Keyss.transform.DOLocalMoveX(-625f, 1f).SetDelay(1.5f)
+        g_Keyss.transform.DOLocalMoveX(-400f, 0.5f).OnComplete(
+            () => g_Keyss.transform.DOLocalMoveX(-625f, 0.5f).SetDelay(1.5f)
         );
     }
 
@@ -131,6 +169,11 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
         txt_Pipe.transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 0.2f).OnComplete(
             () => txt_Pipe.transform.DOScale(new Vector3(1f, 1f, 1f), 0.2f)
         );
+    }
+
+    public void OnStartLonger()
+    {
+        AdsManager.Instance.WatchRewardVideo(RewardType.START_LONGER);
     }
 
     public void OpenOutfitPopup()
@@ -146,5 +189,11 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
     public void AddKey()
     {
         ProfileManager.AddKeys(1);
+    }
+
+    public void JumpLevel()
+    {
+        ProfileManager.Instance.PassOnlyLevel();
+        GUIManager.Instance.LoadPlayScene();
     }
 }

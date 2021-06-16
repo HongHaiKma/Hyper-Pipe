@@ -35,6 +35,7 @@ public class Character : InGameObject
         EventManager1<int>.AddListener(GameEvent.CUT_PIPE, RemovePipe);
         EventManager1<CharacterType>.AddListener(GameEvent.CHAR_DESTROY, DestroyChar);
         EventManager.AddListener(GameEvent.LOAD_MAP, DestroyChar);
+        EventManager.AddListener(GameEvent.ADS_START_LONGER, Event_START_LONGER);
     }
 
     public override void StopListenToEvents()
@@ -42,6 +43,7 @@ public class Character : InGameObject
         EventManager1<int>.RemoveListener(GameEvent.CUT_PIPE, RemovePipe);
         EventManager1<CharacterType>.RemoveListener(GameEvent.CHAR_DESTROY, DestroyChar);
         EventManager.RemoveListener(GameEvent.LOAD_MAP, DestroyChar);
+        EventManager.RemoveListener(GameEvent.ADS_START_LONGER, Event_START_LONGER);
     }
 
     public void DestroyChar()
@@ -223,12 +225,30 @@ public class Character : InGameObject
         EventManager.CallEvent(GameEvent.TEST_POS);
     }
 
+    public void Event_START_LONGER()
+    {
+        AddPipe();
+        AddPipe();
+        AddPipe();
+        AddPipe();
+        AddPipe();
+        AddPipe();
+        AddPipe();
+        AddPipe();
+        AddPipe();
+        AddPipe();
+        AddPipe();
+        AddPipe();
+    }
+
     public void OnRunEnter()
     {
         m_EState = EState.RUN;
         anim_Owner.SetTrigger(ConfigKeys.m_Run);
         // EventManager1<bool>.CallEvent(GameEvent.GAME_START, false);
         PlaySceneManager.Instance.btn_Outfit.gameObject.SetActive(false);
+        PlaySceneManager.Instance.g_LevelString.gameObject.SetActive(false);
+        PlaySceneManager.Instance.btn_StartLonger.gameObject.SetActive(false);
         // PlaySceneManager.Instance.txt_Level.gameObject.SetActive(false);
     }
 
@@ -399,6 +419,7 @@ public class Character : InGameObject
         }
         else if (other.tag.Equals(ConfigKeys.m_KeyInGame))
         {
+            other.enabled = false;
             if (ProfileManager.GetKeys() < 3)
             {
                 ProfileManager.AddKeys(1);

@@ -367,15 +367,22 @@ public class AdsManager : Singleton<AdsManager>
             case RewardType.GOLD_1:
                 EventManager.CallEvent(GameEvent.ADS_GOLD_1_ANIM);
                 break;
-            // case RewardType.GOLD_2:
-            //     EventManager.CallEvent(GameEvent.ADS_GOLD_2_ANIM);
-            //     break;
+            case RewardType.GOLD_2:
+                EventManager.CallEvent(GameEvent.ADS_GOLD_2_ANIM);
+                break;
             // case RewardType.CHARACTER_2:
             //     EventManager.CallEvent(GameEvent.ADS_CHARACTER_2_ANIM);
             //     break;
             case RewardType.KEYS3_1:
                 PopupCaller.OpenBonusRewardPopup();
                 // EventManager.CallEvent(GameEvent.ADS_3KEYS_1_ANIM);
+                break;
+            case RewardType.START_LONGER:
+                PlaySceneManager.Instance.btn_StartLonger.gameObject.SetActive(false);
+                EventManager.CallEvent(GameEvent.ADS_START_LONGER);
+                break;
+            case RewardType.OUTFIT_PROGRESS:
+                EventManager.CallEvent(GameEvent.ADS_OUTFIT_PROGRESS_ANIM);
                 break;
         }
     }
@@ -402,14 +409,18 @@ public class AdsManager : Singleton<AdsManager>
             case RewardType.GOLD_1:
                 EventManager.CallEvent(GameEvent.ADS_GOLD_1_LOGIC);
                 break;
-            // case RewardType.GOLD_2:
-            //     m_WatchInter = false;
-            //     EventManager.CallEvent(GameEvent.ADS_GOLD_2_LOGIC);
-            //     break;
+            case RewardType.GOLD_2:
+                m_WatchInter = false;
+                ProfileManager.AddGold(GameManager.Instance.m_GoldWin * 2);
+                break;
             case RewardType.KEYS3_1:
                 EventManager.CallEvent(GameEvent.ADS_3KEYS_1_LOGIC);
                 ProfileManager.AddKeys(3);
                 break;
+                // case RewardType.START_LONGER:
+                //     // EventManager.CallEvent(GameEvent.ADS_3KEYS_1_LOGIC);
+                //     // ProfileManager.AddKeys(3);
+                //     break;
         }
     }
 
@@ -425,12 +436,12 @@ public class AdsManager : Singleton<AdsManager>
         m_RewardType = _rewardType;
         openRwdAds = true;
 
-        // GUIManager.Instance.GetPanelLoadingAds().g_Content.SetActive(true);
+        PlaySceneManager.Instance.g_LoadingAds.SetActive(true);
 
         yield return Yielders.Get(1f);
         yield return Yielders.EndOfFrame;
 
-        // GUIManager.Instance.GetPanelLoadingAds().g_Content.SetActive(false);
+        PlaySceneManager.Instance.g_LoadingAds.SetActive(false);
 
         if (this.rewardedAd.IsLoaded())
         {
@@ -440,7 +451,7 @@ public class AdsManager : Singleton<AdsManager>
         {
             LoadRewardVideo();
             // GUIManager.Instance.GetPanelLoadingAds().g_NetworkError.SetActive(true);
-            yield return Yielders.Get(0.5f);
+            // yield return Yielders.Get(0.5f);
             // GUIManager.Instance.GetPanelLoadingAds().g_NetworkError.SetActive(false);
         }
     }
@@ -458,4 +469,6 @@ public enum RewardType
     GOLD_1,
     GOLD_2,
     KEYS3_1,
+    START_LONGER,
+    OUTFIT_PROGRESS,
 }

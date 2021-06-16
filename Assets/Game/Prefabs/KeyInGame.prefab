@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6341063202733426313}
   - component: {fileID: 1697946344219207345}
   - component: {fileID: 3972348327884656192}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: pTorus2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3872268075411765659}
   - component: {fileID: 3554672054606372384}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: KeyInGame
   m_TagString: KeyInGame
   m_Icon: {fileID: 0}

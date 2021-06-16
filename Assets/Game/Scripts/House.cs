@@ -51,17 +51,25 @@ public class House : MonoBehaviour
 
         if (!aaa)
         {
-            // if (ProfileManager.GetKeys() < 3)
-            // {
-            //     PopupCaller.OpenWinPopup();
-            // }
-            // else
-            // {
-            PopupCaller.OpenBonusRewardPopup();
-            // }
+            if (ProfileManager.GetKeys() < 3)
+            {
+                if (((ProfileManager.GetLevel() - 1) % 5 == 0) && (GameData.Instance.GetEpicCharacterDataConfig().Count > 0))
+                {
+                    PopupCaller.OpenOutfitProgressPopup();
+                }
+                else
+                {
+                    PopupCaller.OpenWinPopup();
+                }
+
+            }
+            else
+            {
+                PopupCaller.OpenBonusRewardPopup();
+            }
 
             this.enabled = false;
-            Time.timeScale = 0;
+            // Time.timeScale = 0;
         }
 
         for (int i = 0; i < g_Waters.Length; i++)

@@ -38,7 +38,22 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
     public override void OnEnable()
     {
         base.OnEnable();
+        DespawnAllPools();
         m_ScoreLine = 1;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            // for (int i = 0; i < GetBonusRewardConfig().Count; i++)
+            // {
+            //     Helper.DebugLog(GetBonusRewardConfig()[i].m_Slot);
+            //     Helper.DebugLog(GetBonusRewardConfig()[i].m_Gold.ToString());
+            // }
+            // DespawnGoldEffectPool();
+            g_GoldEffects.Clear();
+        }
     }
 
     public override void StartListenToEvents()
@@ -61,18 +76,37 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
     public void DespawnAllPools()
     {
         DespawnGoldEffectPool();
+        DespawnScoreLines();
     }
 
     public void DespawnGoldEffectPool()
     {
         int count = g_GoldEffects.Count;
-        for (int i = 0; i < count; i++)
+        if (count > 0)
         {
-            // g_GoldEffects.Dokill
-            g_GoldEffects[i].transform.DOKill();
-            PrefabManager.Instance.DespawnPool(g_GoldEffects[i]);
+            for (int i = 0; i < count; i++)
+            {
+                // g_GoldEffects.Dokill
+                // g_GoldEffects[i].transform.DOComplete();
+                // g_GoldEffects[i].transform.DOKill();
+                PrefabManager.Instance.DespawnPool(g_GoldEffects[i]);
+                // g_GoldEffects.Remove(g_GoldEffects[i]);
+            }
         }
         g_GoldEffects.Clear();
+    }
+
+    public void DespawnScoreLines()
+    {
+        int count = g_ScoreLines.Count;
+        if (count > 0)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                PrefabManager.Instance.DespawnPool(g_ScoreLines[i]);
+            }
+        }
+        g_ScoreLines.Clear();
     }
 
     public void DespawnRedundantScoreLines(int _scoreLine)
@@ -82,7 +116,7 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
         {
             PrefabManager.Instance.DespawnPool(g_ScoreLines[i]);
         }
-        g_GoldEffects.Clear();
+        g_ScoreLines.Clear();
     }
 
     public void LoadMap()
@@ -134,12 +168,19 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
             if (cell.g_KeyInGame != null)
             {
                 keysInGame.Add(cell.g_KeyInGame);
+                Helper.DebugLog("Add key in Game");
             }
             m_MapLength += cell.CalculateTotalLength();
         }
 
 
         if ((level % GameManager.Instance.m_KeyInGameStep) == 1)
+        {
+            Helper.DebugLog("Enable key in game");
+            keysInGame[Random.Range(0, keysInGame.Count)].SetActive(true);
+        }
+
+        if (level == 1)
         {
             keysInGame[Random.Range(0, keysInGame.Count)].SetActive(true);
         }
@@ -169,6 +210,8 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
             {
                 // EventManager1<bool>.CallEvent(GameEvent.GAME_START, true);
                 PlaySceneManager.Instance.btn_Outfit.gameObject.SetActive(true);
+                PlaySceneManager.Instance.g_LevelString.gameObject.SetActive(true);
+                PlaySceneManager.Instance.btn_StartLonger.gameObject.SetActive(true);
                 int index = ProfileManager.GetSelectedChar();
                 GameObject charrr = PrefabManager.Instance.SpawnChar(index - 1);
                 m_Char = charrr.GetComponent<Character>();
