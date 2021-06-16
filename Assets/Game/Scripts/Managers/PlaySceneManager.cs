@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 
+[DefaultExecutionOrder(-90)]
 public class PlaySceneManager : Singleton<PlaySceneManager>
 {
     public GameObject g_Map;

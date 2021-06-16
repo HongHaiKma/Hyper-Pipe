@@ -88,7 +88,7 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
             {
                 // g_GoldEffects.Dokill
                 // g_GoldEffects[i].transform.DOComplete();
-                // g_GoldEffects[i].transform.DOKill();
+                g_GoldEffects[i].transform.DOKill();
                 PrefabManager.Instance.DespawnPool(g_GoldEffects[i]);
                 // g_GoldEffects.Remove(g_GoldEffects[i]);
             }

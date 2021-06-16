@@ -28,10 +28,10 @@ public class GameData : Singleton<GameData>
             //     Helper.DebugLog(GetBonusRewardConfig()[i].m_Slot);
             //     Helper.DebugLog(GetBonusRewardConfig()[i].m_Gold.ToString());
             // }
-            for (int i = 0; i < GetEpicCharacterDataConfig().Count; i++)
-            {
-                Helper.DebugLog(GetEpicCharacterDataConfig()[i].m_Name);
-            }
+            // for (int i = 0; i < GetEpicCharacterDataConfig().Count; i++)
+            // {
+            //     Helper.DebugLog(GetEpicCharacterDataConfig()[i].m_Name);
+            // }
         }
     }
 

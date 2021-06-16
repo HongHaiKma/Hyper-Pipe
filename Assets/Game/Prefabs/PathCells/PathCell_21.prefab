@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tf_Owner: {fileID: 0}
   g_Grounds:
-  - {fileID: 0}
+  - {fileID: 7073750294786108122}
   g_KeyInGame: {fileID: 7591991718190493796}
 --- !u!1 &1827116835047881143
 GameObject:
@@ -1214,6 +1214,11 @@ PrefabInstance:
 --- !u!4 &7073750294786108126 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4327943246501177792, guid: 4aa53f7cdc6aa3b4193351e97304fb14, type: 3}
+  m_PrefabInstance: {fileID: 6783814231340516126}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7073750294786108122 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4327943246501177796, guid: 4aa53f7cdc6aa3b4193351e97304fb14, type: 3}
   m_PrefabInstance: {fileID: 6783814231340516126}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7630635037057887676

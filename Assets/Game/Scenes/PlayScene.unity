@@ -4011,8 +4011,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977780174}
-  m_LocalRotation: {x: -0.28432375, y: 0.0074601984, z: -0.0022125987, w: -0.9586968}
-  m_LocalPosition: {x: 0.89288986, y: 37.3141, z: 63.13138}
+  m_LocalRotation: {x: 0.23887235, y: 0, z: 0, w: 0.971051}
+  m_LocalPosition: {x: -0.19447628, y: 15.2954445, z: -36.696526}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1852854003}
@@ -4870,8 +4870,8 @@ MonoBehaviour:
   m_MapLength: 0
   g_Map: {fileID: 1126036294}
   m_House: {fileID: 0}
-  m_MapMinConfig: 6
-  m_MapMaxConfig: 8
+  m_MapMinConfig: 4
+  m_MapMaxConfig: 6
   m_MapPrefabMinConfig: 1
   m_MapPrefabMaxConfig: 21
   m_LevelConfigs:

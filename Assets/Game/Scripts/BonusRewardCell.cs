@@ -70,7 +70,7 @@ public class BonusRewardCell : MonoBehaviour
             g_EffectGold.transform.position = transform.position;
 
             InGameObjectsManager.Instance.g_GoldEffects.Add(g_EffectGold);
-
+            g_EffectGold.transform.DOKill();
             g_EffectGold.transform.DOMove(PlaySceneManager.Instance.txt_TotalGold.gameObject.transform.position, 0.7f).SetDelay(0.1f + i * 0.1f).OnComplete(
                 () =>
                 {

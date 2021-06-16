@@ -123,6 +123,7 @@ public class GUIManager : MonoBehaviour
 
     IEnumerator LoadScreen()
     {
+        InGameObjectsManager.Instance.DespawnAllPools();
         Debug.Log("Start Load");
         SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
 
@@ -155,7 +156,7 @@ public class GUIManager : MonoBehaviour
 
         yield return Yielders.Get(0.1f);
 
-        InGameObjectsManager.Instance.DespawnAllPools();
+        // InGameObjectsManager.Instance.DespawnAllPools();
         InGameObjectsManager.Instance.LoadMap();
 
         FindMainCanvas();

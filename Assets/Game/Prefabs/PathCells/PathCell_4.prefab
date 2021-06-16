@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tf_Owner: {fileID: 0}
   g_Grounds:
-  - {fileID: 2659762943106391042}
+  - {fileID: 2350619661276237848}
   g_KeyInGame: {fileID: 619954062395380702}
 --- !u!1 &6105972091322071762
 GameObject:
@@ -876,6 +876,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6979832781798992187, guid: 20b1b71f6da77204ea3d42a6b41bdbf7, type: 3}
   m_PrefabInstance: {fileID: 4630347821359970599}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2350619661276237848 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6979832781798992191, guid: 20b1b71f6da77204ea3d42a6b41bdbf7, type: 3}
+  m_PrefabInstance: {fileID: 4630347821359970599}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4638789572311642721
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1247,11 +1252,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c67600b4930be644af6f125d81647cf, type: 3}
---- !u!1 &2659762943106391042 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5515261610854859842, guid: 9c67600b4930be644af6f125d81647cf, type: 3}
-  m_PrefabInstance: {fileID: 7521932187638224960}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2659762943106391046 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5515261610854859846, guid: 9c67600b4930be644af6f125d81647cf, type: 3}

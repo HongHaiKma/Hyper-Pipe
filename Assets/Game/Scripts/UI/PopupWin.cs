@@ -79,7 +79,8 @@ public class PopupWin : UICanvas
 
     public void WatchAdsGold()
     {
-        AdsManager.Instance.WatchRewardVideo(RewardType.GOLD_2);
+        // AdsManager.Instance.WatchRewardVideo(RewardType.GOLD_2);
+        SpawnGoldEffectFromAds();
     }
 
     public void SpawnGoldEffectFromAds()
@@ -109,18 +110,23 @@ public class PopupWin : UICanvas
 
             InGameObjectsManager.Instance.g_GoldEffects.Add(g_EffectGold);
 
+            g_EffectGold.transform.DOKill();
+
             g_EffectGold.transform.DOMove(PlaySceneManager.Instance.txt_TotalGold.gameObject.transform.position, 0.7f).SetDelay(0.1f + i * 0.1f).OnComplete(
                 () =>
                 {
                     PrefabManager.Instance.DespawnPool(g_EffectGold);
-                    if (i == 15)
-                    {
-                        // Time.timeScale = 1;
-                        GUIManager.Instance.LoadPlayScene();
-                    }
                 }
             );
         }
+
+        StartCoroutine(IELoadScene());
+    }
+
+    IEnumerator IELoadScene()
+    {
+        yield return Yielders.Get(2.5f);
+        GUIManager.Instance.LoadPlayScene();
     }
 
     IEnumerator IENextLevelAppear()
