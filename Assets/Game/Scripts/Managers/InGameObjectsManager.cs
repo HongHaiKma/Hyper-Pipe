@@ -18,11 +18,11 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
     public int m_MapPrefabMinConfig;
     public int m_MapPrefabMaxConfig;
 
-    public int m_MapMin;
-    public int m_MapMax;
+    private int m_MapMin;
+    private int m_MapMax;
 
-    public int m_MapPrefabMin;
-    public int m_MapPrefabMax;
+    private int m_MapPrefabMin;
+    private int m_MapPrefabMax;
 
     public List<LevelMapConfig> m_LevelConfigs;
 
