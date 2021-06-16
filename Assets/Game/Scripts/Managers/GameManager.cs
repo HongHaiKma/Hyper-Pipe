@@ -11,6 +11,7 @@ public class GameManager : Singleton<GameManager>
     public int m_ScoreFactor;
     public List<Color> m_ScoreLineColor;
     public int m_KeyInGameStep;
+    public BigNumber m_GoldWin;
 
     private void Awake()
     {

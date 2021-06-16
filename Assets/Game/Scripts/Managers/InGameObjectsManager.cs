@@ -33,6 +33,8 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
     public List<GameObject> g_GoldEffects = new List<GameObject>();
     public List<GameObject> g_ScoreLines = new List<GameObject>();
 
+    public bool m_Play10Lelevel;
+
     public override void OnEnable()
     {
         base.OnEnable();
@@ -94,12 +96,22 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
 
         int level = ProfileManager.GetLevel();
 
-        if (level <= 10)
+        if (m_Play10Lelevel)
         {
-            m_MapMin = m_LevelConfigs[level - 1].m_MapMin;
-            m_MapMax = m_LevelConfigs[level - 1].m_MapMax;
-            m_MapPrefabMin = m_LevelConfigs[level - 1].m_MapPrefabMin;
-            m_MapPrefabMax = m_LevelConfigs[level - 1].m_MapPrefabMax;
+            if (level <= 10)
+            {
+                m_MapMin = m_LevelConfigs[level - 1].m_MapMin;
+                m_MapMax = m_LevelConfigs[level - 1].m_MapMax;
+                m_MapPrefabMin = m_LevelConfigs[level - 1].m_MapPrefabMin;
+                m_MapPrefabMax = m_LevelConfigs[level - 1].m_MapPrefabMax;
+            }
+            else
+            {
+                m_MapMin = m_MapMinConfig;
+                m_MapMax = m_MapMaxConfig;
+                m_MapPrefabMin = m_MapPrefabMinConfig;
+                m_MapPrefabMax = m_MapPrefabMaxConfig;
+            }
         }
         else
         {

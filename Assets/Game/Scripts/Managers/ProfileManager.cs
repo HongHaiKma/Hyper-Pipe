@@ -174,6 +174,7 @@ public class ProfileManager : MonoBehaviour
                 }
                 BigNumber totalGold = (configs[i].m_MinGold + (1 + (level - 1) * 0.5f) * 10) * pipeCount;
                 Helper.DebugLog("Total gold:" + totalGold);
+                GameManager.Instance.m_GoldWin = totalGold;
                 AddGold(totalGold);
                 break;
             }

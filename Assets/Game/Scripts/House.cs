@@ -51,14 +51,14 @@ public class House : MonoBehaviour
 
         if (!aaa)
         {
-            if (ProfileManager.GetKeys() < 3)
-            {
-                PopupCaller.OpenWinPopup();
-            }
-            else
-            {
-                PopupCaller.OpenBonusRewardPopup();
-            }
+            // if (ProfileManager.GetKeys() < 3)
+            // {
+            //     PopupCaller.OpenWinPopup();
+            // }
+            // else
+            // {
+            PopupCaller.OpenBonusRewardPopup();
+            // }
 
             this.enabled = false;
             Time.timeScale = 0;
