@@ -182,6 +182,12 @@ public class ProfileManager : MonoBehaviour
 
         MyProfile.PassLevel();
     }
+
+    public void PassOnlyLevel()
+    {
+        MyProfile.PassLevel();
+    }
+
     public static int GetLevel()
     {
         return MyProfile.GetLevel();
@@ -270,6 +276,11 @@ public class ProfileManager : MonoBehaviour
     public static void UnlockNewCharacter(CharacterType _id)
     {
         MyProfile.UnlockCharacter(_id);
+    }
+
+    public static void UnlockEpicNewCharacter(int _id)
+    {
+        MyProfile.UnlockEpicCharacter((CharacterType)_id);
     }
 
     public int GetTotalGoldChar()

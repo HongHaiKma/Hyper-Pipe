@@ -23,10 +23,14 @@ public class GameData : Singleton<GameData>
     {
         if (Input.GetKeyDown(KeyCode.V))
         {
-            for (int i = 0; i < GetBonusRewardConfig().Count; i++)
+            // for (int i = 0; i < GetBonusRewardConfig().Count; i++)
+            // {
+            //     Helper.DebugLog(GetBonusRewardConfig()[i].m_Slot);
+            //     Helper.DebugLog(GetBonusRewardConfig()[i].m_Gold.ToString());
+            // }
+            for (int i = 0; i < GetEpicCharacterDataConfig().Count; i++)
             {
-                Helper.DebugLog(GetBonusRewardConfig()[i].m_Slot);
-                Helper.DebugLog(GetBonusRewardConfig()[i].m_Gold.ToString());
+                Helper.DebugLog(GetEpicCharacterDataConfig()[i].m_Name);
             }
         }
     }
@@ -188,6 +192,20 @@ public class GameData : Singleton<GameData>
             }
         }
         return configs[_id];
+    }
+
+    public List<CharacterDataConfig> GetEpicCharacterDataConfig()
+    {
+        List<CharacterDataConfig> configs = new List<CharacterDataConfig>();
+        int count = m_CharacterDataConfigs.Count;
+        for (int i = 1; i <= count; i++)
+        {
+            if (m_CharacterDataConfigs[i].GetRatity() == (int)OutfitRarity.EPIC)
+            {
+                configs.Add(m_CharacterDataConfigs[i]);
+            }
+        }
+        return configs;
     }
 
     public Dictionary<int, LevelConfig> GetLevelConfig()

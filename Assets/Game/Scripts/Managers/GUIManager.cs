@@ -146,11 +146,16 @@ public class GUIManager : MonoBehaviour
         {
             yield return null;
         }
+        SimplePool.Release();
+        Resources.UnloadUnusedAssets();
+        System.GC.Collect();
 
+        // yield return Yielders.Get(0.1f);
         async.allowSceneActivation = true;
 
         yield return Yielders.Get(0.1f);
 
+        InGameObjectsManager.Instance.DespawnAllPools();
         InGameObjectsManager.Instance.LoadMap();
 
         FindMainCanvas();
@@ -402,6 +407,9 @@ public class GUIManager : MonoBehaviour
             case UIID.POPUP_BONUS_REWARD:
                 prefabName = "PopupBonusReward";
                 break;
+            case UIID.POPUP_OUTFIT_REWARD:
+                prefabName = "PopupOutfitReward";
+                break;
         }
         prefab = GetPopupPrefabByName(prefabName);
         return prefab;
@@ -451,4 +459,5 @@ public enum UIID
     POPUP_OUTFIT = 1,
     POPUP_WIN = 2,
     POPUP_BONUS_REWARD = 3,
+    POPUP_OUTFIT_REWARD = 4,
 }

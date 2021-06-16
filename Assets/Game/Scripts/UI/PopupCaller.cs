@@ -31,4 +31,11 @@ public class PopupCaller
 
         return popup;
     }
+
+    public static void OpenOutfitProgressPopup()
+    {
+        PopupOutfitReward popup = GUIManager.Instance.GetUICanvasByID(UIID.POPUP_OUTFIT_REWARD) as PopupOutfitReward;
+
+        GUIManager.Instance.ShowUIPopup(popup);
+    }
 }
