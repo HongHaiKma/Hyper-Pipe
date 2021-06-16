@@ -949,6 +949,8 @@ MonoBehaviour:
   - {fileID: 5078428508544336826, guid: 837a6e0b985f04d499e53f57566e751b, type: 3}
   - {fileID: 6390475664792887602, guid: 78024bc70e018d1409153ba3fac1d5ee, type: 3}
   - {fileID: 681070585776046814, guid: 16c2eb99be55c47458f0ec4a83eb16e6, type: 3}
+  - {fileID: 3584007575998269092, guid: 4d7f3b1f4afd3da48afabc48ed6bb107, type: 3}
+  - {fileID: 1827116835017972373, guid: 7f9230f1d98bbf64eb622abf92a9c9a8, type: 3}
   m_CharPrefabs:
   - {fileID: 809560069312002693, guid: d8f6bd9847d23f349932a369855d3a27, type: 3}
   - {fileID: 5815159846989703008, guid: d9f00aef2a9e26a4397bbc328c9657f3, type: 3}
@@ -4009,8 +4011,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977780174}
-  m_LocalRotation: {x: 0.23887235, y: 0, z: 0, w: 0.971051}
-  m_LocalPosition: {x: -0.19447628, y: 15.2954445, z: -36.696526}
+  m_LocalRotation: {x: -0.28432375, y: 0.0074601984, z: -0.0022125987, w: -0.9586968}
+  m_LocalPosition: {x: 0.89288986, y: 37.3141, z: 63.13138}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1852854003}
@@ -4868,10 +4870,10 @@ MonoBehaviour:
   m_MapLength: 0
   g_Map: {fileID: 1126036294}
   m_House: {fileID: 0}
-  m_MapMinConfig: 1
-  m_MapMaxConfig: 1
+  m_MapMinConfig: 6
+  m_MapMaxConfig: 8
   m_MapPrefabMinConfig: 1
-  m_MapPrefabMaxConfig: 1
+  m_MapPrefabMaxConfig: 21
   m_LevelConfigs:
   - m_MapMin: 4
     m_MapMax: 4
@@ -4917,7 +4919,7 @@ MonoBehaviour:
   m_ScoreLine: 0
   g_GoldEffects: []
   g_ScoreLines: []
-  m_Play10Lelevel: 0
+  m_Play10Lelevel: 1
 --- !u!1 &1167145098
 GameObject:
   m_ObjectHideFlags: 0

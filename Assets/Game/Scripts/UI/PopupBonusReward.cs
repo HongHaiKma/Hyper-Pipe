@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using DG.Tweening;
 
 public class PopupBonusReward : UICanvas
 {
@@ -10,17 +12,26 @@ public class PopupBonusReward : UICanvas
     public GameObject[] g_Keys;
     public GameObject g_Keyss;
 
+    public TextMeshProUGUI txt_KeyCount;
+
     public Button btn_Ads3Keys;
     public Button btn_LoseIt;
+    public Button btn_NextLevel;
 
     public Image img_Char;
+
+    public bool m_OpenAgain;
 
     private void Awake()
     {
         m_ID = UIID.POPUP_BONUS_REWARD;
         Init();
 
+        m_OpenAgain = false;
         GUIManager.Instance.AddClickEvent(btn_Ads3Keys, Watch3Keys);
+        GUIManager.Instance.AddClickEvent(btn_NextLevel, OnClose);
+
+        btn_NextLevel.gameObject.SetActive(false);
     }
 
     public override void OnEnable()
@@ -33,13 +44,13 @@ public class PopupBonusReward : UICanvas
     public override void StartListenToEvents()
     {
         base.StartListenToEvents();
-        EventManager.AddListener(GameEvent.POPUP_BONUS_REWARD_UPDATE, UpdateKeys);
+        // EventManager.AddListener(GameEvent.POPUP_BONUS_REWARD_UPDATE, UpdateKeys);
     }
 
     public override void StopListenToEvents()
     {
         base.StopListenToEvents();
-        EventManager.AddListener(GameEvent.POPUP_BONUS_REWARD_UPDATE, UpdateKeys);
+        // EventManager.AddListener(GameEvent.POPUP_BONUS_REWARD_UPDATE, UpdateKeys);
     }
 
     private void Update()
@@ -68,29 +79,74 @@ public class PopupBonusReward : UICanvas
 
     public void UpdateKeys()
     {
-        if (ProfileManager.GetKeys() > 3)
+        if (!m_OpenAgain)
         {
-            ProfileManager.SetKeys(3);
-        }
-
-        for (int i = 0; i < g_Keys.Length; i++)
-        {
-            g_Keys[i].SetActive(false);
-        }
-
-        for (int i = 0; i < ProfileManager.GetKeys(); i++)
-        {
-            if (i >= 3)
+            if (ProfileManager.GetKeys() > 3)
             {
-                break;
+                ProfileManager.SetKeys(3);
             }
-            g_Keys[i].SetActive(true);
+        }
+        else
+        {
+            if (ProfileManager.GetKeys() > 6)
+            {
+                ProfileManager.SetKeys(6);
+            }
         }
 
-        if (ProfileManager.GetKeys() <= 0)
-        {
-            StartCoroutine(IEOutOfKeys());
-        }
+        g_Keyss.transform.DOScale(1.5f, 0.25f).OnComplete(
+            () =>
+            {
+                txt_KeyCount.text = "X" + ProfileManager.GetKeys().ToString();
+                g_Keyss.transform.DOScale(1f, 0.25f).OnComplete(
+                    () =>
+                    {
+                        if (ProfileManager.GetKeys() <= 0)
+                        {
+                            if (m_OpenAgain)
+                            {
+                                btn_NextLevel.gameObject.SetActive(true);
+                                btn_Ads3Keys.gameObject.SetActive(false);
+                                btn_LoseIt.gameObject.SetActive(false);
+                                g_Keyss.SetActive(false);
+                            }
+                            else
+                            {
+                                StartCoroutine(IEOutOfKeys());
+                            }
+                        }
+                    }
+                );
+            }
+        );
+
+        // for (int i = 0; i < g_Keys.Length; i++)
+        // {
+        //     g_Keys[i].SetActive(false);
+        // }
+
+        // for (int i = 0; i < ProfileManager.GetKeys(); i++)
+        // {
+        //     if (i >= 3)
+        //     {
+        //         break;
+        //     }
+        //     g_Keys[i].SetActive(true);
+        // }
+
+        // if (ProfileManager.GetKeys() <= 0)
+        // {
+        //     if (m_OpenAgain)
+        //     {
+        //         btn_NextLevel.gameObject.SetActive(true);
+        //         btn_Ads3Keys.gameObject.SetActive(false);
+        //         btn_LoseIt.gameObject.SetActive(false);
+        //     }
+        //     else
+        //     {
+        //         StartCoroutine(IEOutOfKeys());
+        //     }
+        // }
     }
 
     IEnumerator IEOutOfKeys()

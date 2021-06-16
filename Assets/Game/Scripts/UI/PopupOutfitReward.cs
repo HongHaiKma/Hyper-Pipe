@@ -56,6 +56,7 @@ public class PopupOutfitReward : UICanvas
         int charId = randomEpicChar[m_RandomEpicChar].m_Id;
         img_Char.sprite = SpriteManager.Instance.m_CharCards[charId - 1];
         ProfileManager.UnlockEpicNewCharacter(charId);
+        ProfileManager.SetSelectedCharacter(charId);
     }
 
     IEnumerator IENextLevelAppear()

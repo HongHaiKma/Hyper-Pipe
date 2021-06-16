@@ -41,6 +41,7 @@ public class BonusRewardCell : MonoBehaviour
                 g_Char.SetActive(true);
                 g_Gold.SetActive(false);
                 ProfileManager.UnlockNewCharacter(PopupBonusReward.m_Char);
+                ProfileManager.SetSelectedCharacter(PopupBonusReward.m_Char);
             }
             else
             {

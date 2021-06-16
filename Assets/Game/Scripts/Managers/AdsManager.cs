@@ -415,7 +415,8 @@ public class AdsManager : Singleton<AdsManager>
                 break;
             case RewardType.KEYS3_1:
                 EventManager.CallEvent(GameEvent.ADS_3KEYS_1_LOGIC);
-                ProfileManager.AddKeys(3);
+                PopupCaller.GetBonusRewardPopup().m_OpenAgain = true;
+                ProfileManager.AddKeys(6);
                 break;
                 // case RewardType.START_LONGER:
                 //     // EventManager.CallEvent(GameEvent.ADS_3KEYS_1_LOGIC);
