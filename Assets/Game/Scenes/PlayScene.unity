@@ -951,6 +951,7 @@ MonoBehaviour:
   - {fileID: 681070585776046814, guid: 16c2eb99be55c47458f0ec4a83eb16e6, type: 3}
   - {fileID: 3584007575998269092, guid: 4d7f3b1f4afd3da48afabc48ed6bb107, type: 3}
   - {fileID: 1827116835017972373, guid: 7f9230f1d98bbf64eb622abf92a9c9a8, type: 3}
+  - {fileID: 3560198735896487995, guid: 137da67e828e1234f9d3e0024c7f46e6, type: 3}
   m_CharPrefabs:
   - {fileID: 809560069312002693, guid: d8f6bd9847d23f349932a369855d3a27, type: 3}
   - {fileID: 5815159846989703008, guid: d9f00aef2a9e26a4397bbc328c9657f3, type: 3}
@@ -4873,7 +4874,7 @@ MonoBehaviour:
   m_MapMinConfig: 4
   m_MapMaxConfig: 6
   m_MapPrefabMinConfig: 1
-  m_MapPrefabMaxConfig: 21
+  m_MapPrefabMaxConfig: 22
   m_LevelConfigs:
   - m_MapMin: 4
     m_MapMax: 4

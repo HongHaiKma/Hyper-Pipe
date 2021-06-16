@@ -79,8 +79,8 @@ public class PopupWin : UICanvas
 
     public void WatchAdsGold()
     {
-        // AdsManager.Instance.WatchRewardVideo(RewardType.GOLD_2);
-        SpawnGoldEffectFromAds();
+        AdsManager.Instance.WatchRewardVideo(RewardType.GOLD_2);
+        // SpawnGoldEffectFromAds();
     }
 
     public void SpawnGoldEffectFromAds()
