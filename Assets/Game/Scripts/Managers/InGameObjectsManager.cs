@@ -35,6 +35,9 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
 
     public bool m_Play10Lelevel;
 
+    [Header("Level")]
+    public int level;
+
     public override void OnEnable()
     {
         base.OnEnable();
@@ -44,16 +47,16 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            // for (int i = 0; i < GetBonusRewardConfig().Count; i++)
-            // {
-            //     Helper.DebugLog(GetBonusRewardConfig()[i].m_Slot);
-            //     Helper.DebugLog(GetBonusRewardConfig()[i].m_Gold.ToString());
-            // }
-            // DespawnGoldEffectPool();
-            g_GoldEffects.Clear();
-        }
+        // if (Input.GetKeyDown(KeyCode.V))
+        // {
+        //     // for (int i = 0; i < GetBonusRewardConfig().Count; i++)
+        //     // {
+        //     //     Helper.DebugLog(GetBonusRewardConfig()[i].m_Slot);
+        //     //     Helper.DebugLog(GetBonusRewardConfig()[i].m_Gold.ToString());
+        //     // }
+        //     // DespawnGoldEffectPool();
+        //     g_GoldEffects.Clear();
+        // }
     }
 
     public override void StartListenToEvents()
@@ -129,6 +132,7 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
         m_MapLength = 0;
 
         int level = ProfileManager.GetLevel();
+        this.level = level;
 
         if (m_Play10Lelevel)
         {
@@ -159,20 +163,53 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
 
         List<GameObject> keysInGame = new List<GameObject>();
 
-        for (int i = 0; i < mapLengthRandom; i++)
+        LevelEasyConfig lv = new LevelEasyConfig();
+
+        if (level <= 10)
         {
-            int mapCellRandom = Random.Range(m_MapPrefabMin - 1, m_MapPrefabMax);
-            GameObject go = PrefabManager.Instance.SpawnPathCell(mapCellRandom, m_MapLength);
-            go.transform.parent = PlaySceneManager.Instance.g_Map.transform;
-            PathCell cell = go.GetComponent<PathCell>();
-            if (cell.g_KeyInGame != null)
-            {
-                keysInGame.Add(cell.g_KeyInGame);
-                Helper.DebugLog("Add key in Game");
-            }
-            m_MapLength += cell.CalculateTotalLength();
+            lv = GameData.Instance.GetLevelEasyConfig(level);
         }
 
+        List<int> listMap = new List<int>();
+        listMap.Add(lv.m_PathCell1);
+        listMap.Add(lv.m_PathCell2);
+        listMap.Add(lv.m_PathCell3);
+        listMap.Add(lv.m_PathCell4);
+
+        if (level <= 10)
+        {
+            Helper.DebugLog("Level <= 10");
+            mapLengthRandom = 4;
+            for (int i = 0; i < mapLengthRandom; i++)
+            {
+                int mapCellRandom = listMap[i];
+                GameObject go = PrefabManager.Instance.SpawnPathCell(mapCellRandom, m_MapLength);
+                go.transform.parent = PlaySceneManager.Instance.g_Map.transform;
+                PathCell cell = go.GetComponent<PathCell>();
+                if (cell.g_KeyInGame != null)
+                {
+                    keysInGame.Add(cell.g_KeyInGame);
+                    Helper.DebugLog("Add key in Game");
+                }
+                m_MapLength += cell.CalculateTotalLength();
+            }
+        }
+        else
+        {
+            for (int i = 0; i < mapLengthRandom; i++)
+            {
+                int mapCellRandom = Random.Range(m_MapPrefabMin - 1, m_MapPrefabMax);
+                GameObject go = PrefabManager.Instance.SpawnPathCell(mapCellRandom, m_MapLength);
+                go.transform.parent = PlaySceneManager.Instance.g_Map.transform;
+                PathCell cell = go.GetComponent<PathCell>();
+                if (cell.g_KeyInGame != null)
+                {
+                    keysInGame.Add(cell.g_KeyInGame);
+                    Helper.DebugLog("Add key in Game");
+                }
+                m_MapLength += cell.CalculateTotalLength();
+            }
+        }
 
         if ((level % GameManager.Instance.m_KeyInGameStep) == 1)
         {

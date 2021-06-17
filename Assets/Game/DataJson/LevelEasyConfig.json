@@ -1,0 +1,72 @@
+[
+    {
+        "ID": "1",
+        "PathCell1": "0",
+        "PathCell2": "2",
+        "PathCell3": "4",
+        "PathCell4": "1"
+    },
+    {
+        "ID": "2",
+        "PathCell1": "3",
+        "PathCell2": "5",
+        "PathCell3": "6",
+        "PathCell4": "1"
+    },
+    {
+        "ID": "3",
+        "PathCell1": "3",
+        "PathCell2": "1",
+        "PathCell3": "4",
+        "PathCell4": "7"
+    },
+    {
+        "ID": "4",
+        "PathCell1": "12",
+        "PathCell2": "8",
+        "PathCell3": "4",
+        "PathCell4": "5"
+    },
+    {
+        "ID": "5",
+        "PathCell1": "6",
+        "PathCell2": "5",
+        "PathCell3": "3",
+        "PathCell4": "1"
+    },
+    {
+        "ID": "6",
+        "PathCell1": "4",
+        "PathCell2": "5",
+        "PathCell3": "12",
+        "PathCell4": "7"
+    },
+    {
+        "ID": "7",
+        "PathCell1": "11",
+        "PathCell2": "8",
+        "PathCell3": "6",
+        "PathCell4": "4"
+    },
+    {
+        "ID": "8",
+        "PathCell1": "16",
+        "PathCell2": "13",
+        "PathCell3": "17",
+        "PathCell4": "7"
+    },
+    {
+        "ID": "9",
+        "PathCell1": "3",
+        "PathCell2": "4",
+        "PathCell3": "5",
+        "PathCell4": "6"
+    },
+    {
+        "ID": "10",
+        "PathCell1": "4",
+        "PathCell2": "11",
+        "PathCell3": "13",
+        "PathCell4": "3"
+    }
+]

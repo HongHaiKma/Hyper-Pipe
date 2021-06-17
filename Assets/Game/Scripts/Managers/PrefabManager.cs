@@ -246,12 +246,12 @@ public class PrefabManager : Singleton<PrefabManager>
 
     public GameObject SpawnHouse(Vector3 _pos)
     {
-        return Instantiate(g_Houses[0], new Vector3(_pos.x - 21.3f, g_Houses[0].transform.position.y, _pos.z), Quaternion.identity);
+        return Instantiate(g_Houses[0], new Vector3(_pos.x - 25.3f, g_Houses[0].transform.position.y, _pos.z), Quaternion.identity);
     }
 
     public GameObject SpawnPlaneHouse(Vector3 _pos)
     {
-        return Instantiate(g_PlaneHouse, new Vector3(_pos.x, 0f, _pos.z), Quaternion.identity);
+        return Instantiate(g_PlaneHouse, new Vector3(_pos.x + 4, 0f, _pos.z), Quaternion.identity);
     }
 
     // public GameObject ScoreLine(float _zPos)

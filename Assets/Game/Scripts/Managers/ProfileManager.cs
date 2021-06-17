@@ -61,10 +61,10 @@ public class ProfileManager : MonoBehaviour
         //     Helper.DebugLog("Selected Character: " + GetSelectedCharacter());
         // }
 
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            GUIManager.Instance.LoadPlayScene();
-        }
+        // if (Input.GetKeyDown(KeyCode.V))
+        // {
+        //     GUIManager.Instance.LoadPlayScene();
+        // }
     }
 
     private void OnEnable()

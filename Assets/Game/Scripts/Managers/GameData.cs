@@ -10,6 +10,7 @@ public class GameData : Singleton<GameData>
 
     private Dictionary<int, CharacterDataConfig> m_CharacterDataConfigs = new Dictionary<int, CharacterDataConfig>();
     private Dictionary<int, LevelConfig> m_LevelConfigs = new Dictionary<int, LevelConfig>();
+    private Dictionary<int, LevelEasyConfig> m_LevelEasyConfigs = new Dictionary<int, LevelEasyConfig>();
     private Dictionary<int, BonusRewardConfig> m_BonusRewardConfigs = new Dictionary<int, BonusRewardConfig>();
 
     private void Awake()
@@ -17,6 +18,7 @@ public class GameData : Singleton<GameData>
         LoadCharacterConfig();
         LoadLevelConfig();
         LoadBonusRewardConfig();
+        LoadLevelEasyConfig();
     }
 
     private void Update()
@@ -121,6 +123,28 @@ public class GameData : Singleton<GameData>
         }
     }
 
+    public void LoadLevelEasyConfig()
+    {
+        m_LevelEasyConfigs.Clear();
+        TextAsset ta = GetDataAssets(GameDataType.LEVEL_EASY_CONFIG);
+        var js1 = JSONNode.Parse(ta.text);
+        for (int i = 0; i < js1.Count; i++)
+        {
+            JSONNode iNode = JSONNode.Parse(js1[i].ToString());
+
+            int id = int.Parse(iNode["ID"]);
+
+            int p1 = int.Parse(iNode["PathCell1"]);
+            int p2 = int.Parse(iNode["PathCell2"]);
+            int p3 = int.Parse(iNode["PathCell3"]);
+            int p4 = int.Parse(iNode["PathCell4"]);
+
+            LevelEasyConfig levelEasyConfig = new LevelEasyConfig();
+            levelEasyConfig.Init(id, p1, p2, p3, p4);
+            m_LevelEasyConfigs.Add(id, levelEasyConfig);
+        }
+    }
+
     public void LoadBonusRewardConfig()
     {
         m_BonusRewardConfigs.Clear();
@@ -213,6 +237,11 @@ public class GameData : Singleton<GameData>
         return m_LevelConfigs;
     }
 
+    public LevelEasyConfig GetLevelEasyConfig(int _id)
+    {
+        return m_LevelEasyConfigs[_id];
+    }
+
     public Dictionary<int, BonusRewardConfig> GetBonusRewardConfig()
     {
         return m_BonusRewardConfigs;
@@ -223,5 +252,6 @@ public class GameData : Singleton<GameData>
         DATA_CHAR = 0,
         LEVEL_CONfIG = 1,
         BONUS_REWARD = 2,
+        LEVEL_EASY_CONFIG = 3,
     }
 }

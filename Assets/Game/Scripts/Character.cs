@@ -49,7 +49,6 @@ public class Character : InGameObject
     public void DestroyChar()
     {
         Destroy(gameObject);
-        Helper.DebugLog("Destroy Char");
     }
 
     public void DestroyChar(CharacterType _characterType)
@@ -58,7 +57,6 @@ public class Character : InGameObject
         {
             Destroy(gameObject);
         }
-        Helper.DebugLog("Destroy Char");
     }
 
     public void RemovePipe(int _value)
