@@ -19,9 +19,27 @@ public class CameraController : Singleton<CameraController>
     float endValue = 0f;
     float valueToLerp;
 
+    [Header("Last Action")]
+    float timeElapsedLastActionX;
+    float lerpDurationLastActionX = 3;
+
+    float startValueLastActionX = 0f;
+    float endValueLastActionX = 3.1f;
+
+    float startValueLastActionY = 5.8f;
+    float endValueLastActionY = 1.4f;
+
+    float startValueLastActionZ = -26.4f;
+    float endValueLastActionZ = -8.8f;
+
+    float valueToLerpLastActionX;
+    float valueToLerpLastActionY;
+    float valueToLerpLastActionZ;
+
     public override void OnEnable()
     {
         timeElapsed = 4f;
+        timeElapsedLastActionX = 4f;
     }
 
     private void Update()
@@ -32,6 +50,12 @@ public class CameraController : Singleton<CameraController>
         //     m_CMOffset.m_Offset.y = valueToLerp;
         //     timeElapsed += Time.deltaTime;
         // }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            DoLastAction();
+            // DoActionByPath();
+        }
     }
 
     public void DoActionByPath()
@@ -41,11 +65,35 @@ public class CameraController : Singleton<CameraController>
         StartCoroutine(ChangeCMOffset(true));
     }
 
+    public void DoLastAction()
+    {
+        tf_Owner.DORotate(new Vector3(0f, -90f, 0f), 1.5f, RotateMode.Fast);
+        timeElapsedLastActionX = 0f;
+        StartCoroutine(ChangeCMOffsetLastAction());
+    }
+
     public void UndoActionByPath()
     {
         tf_Owner.DORotate(new Vector3(19f, 0f, 0f), 1.5f, RotateMode.Fast);
         timeElapsed = 0f;
         StartCoroutine(ChangeCMOffset(false));
+    }
+
+    IEnumerator ChangeCMOffsetLastAction()
+    {
+        while (timeElapsedLastActionX < lerpDurationLastActionX)
+        {
+            valueToLerpLastActionX = Mathf.Lerp(startValueLastActionX, endValueLastActionX, timeElapsedLastActionX / lerpDurationLastActionX);
+            valueToLerpLastActionY = Mathf.Lerp(startValueLastActionY, endValueLastActionY, timeElapsedLastActionX / lerpDurationLastActionX);
+            valueToLerpLastActionZ = Mathf.Lerp(startValueLastActionZ, endValueLastActionZ, timeElapsedLastActionX / lerpDurationLastActionX);
+
+            m_CMOffset.m_Offset.x = valueToLerpLastActionX;
+            m_CMOffset.m_Offset.y = valueToLerpLastActionY;
+            m_CMOffset.m_Offset.z = valueToLerpLastActionZ;
+
+            timeElapsedLastActionX += Time.deltaTime;
+        }
+        yield return new WaitUntil(() => timeElapsedLastActionX >= lerpDurationLastActionX);
     }
 
     IEnumerator ChangeCMOffset(bool _hanging)

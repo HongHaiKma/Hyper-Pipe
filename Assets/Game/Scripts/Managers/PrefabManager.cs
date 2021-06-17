@@ -28,6 +28,7 @@ public class PrefabManager : Singleton<PrefabManager>
     public GameObject g_PathCell_0;
 
     public GameObject[] g_Houses;
+    public GameObject g_PlaneHouse;
 
     private void Awake()
     {
@@ -243,9 +244,14 @@ public class PrefabManager : Singleton<PrefabManager>
         return Instantiate(g_PathCell_0, new Vector3(0f, 0f, _zPos), Quaternion.identity);
     }
 
-    public GameObject SpawnHouse(float _zPos)
+    public GameObject SpawnHouse(Vector3 _pos)
     {
-        return Instantiate(g_Houses[0], new Vector3(0f, g_Houses[0].transform.position.y, _zPos), Quaternion.identity);
+        return Instantiate(g_Houses[0], new Vector3(_pos.x - 21.3f, g_Houses[0].transform.position.y, _pos.z), Quaternion.identity);
+    }
+
+    public GameObject SpawnPlaneHouse(Vector3 _pos)
+    {
+        return Instantiate(g_PlaneHouse, new Vector3(_pos.x, 0f, _pos.z), Quaternion.identity);
     }
 
     // public GameObject ScoreLine(float _zPos)

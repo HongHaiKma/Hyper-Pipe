@@ -37,7 +37,9 @@ public class Score : InGameObject
         {
             if (m_ScoreLine == _result)
             {
-                InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(tf_Owner.position.z + 25f).GetComponent<House>();
+                InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(tf_Owner.position).GetComponent<House>();
+                Vector3 planeHouse = InGameObjectsManager.Instance.m_House.transform.position;
+                PrefabManager.Instance.SpawnPlaneHouse(planeHouse);
                 charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete
                 (
                     () =>
@@ -46,6 +48,7 @@ public class Score : InGameObject
                         charrr.m_LastAction = true;
                         EventManager1<bool>.CallEvent(GameEvent.WATER, true);
                         InGameObjectsManager.Instance.m_House.m_Start = true;
+                        CameraController.Instance.DoLastAction();
                     }
                 );
 
@@ -56,7 +59,9 @@ public class Score : InGameObject
         {
             if (m_ScoreLine == 7)
             {
-                InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(tf_Owner.position.z + 25f).GetComponent<House>();
+                InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(tf_Owner.position).GetComponent<House>();
+                Vector3 planeHouse = InGameObjectsManager.Instance.m_House.transform.position;
+                PrefabManager.Instance.SpawnPlaneHouse(planeHouse);
                 charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete
                 (
                     () =>
@@ -65,6 +70,7 @@ public class Score : InGameObject
                         charrr.m_LastAction = true;
                         EventManager1<bool>.CallEvent(GameEvent.WATER, true);
                         InGameObjectsManager.Instance.m_House.m_Start = true;
+                        CameraController.Instance.DoLastAction();
                     }
                 );
 

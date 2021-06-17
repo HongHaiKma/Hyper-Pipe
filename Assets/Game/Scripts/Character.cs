@@ -97,8 +97,10 @@ public class Character : InGameObject
             PlaySceneManager.Instance.g_JoystickTrackPad.SetActive(true);
             PlaySceneManager.Instance.g_Hand.SetActive(true);
 
-            float angle = CF2Input.GetAxis("Joystick Move X") * 45f;
-            angle = Mathf.Clamp(angle, -45f, 45f);
+            float angle = (CF2Input.GetAxis("Joystick Move X") * 45f) - 90f;
+            // angle = Mathf.Clamp(angle, -45f, 45f);
+            angle = Mathf.Clamp(angle, -135f, -45f);
+            // angle = Mathf.Clamp(angle, -45f, -135f);
             tf_Owner.DORotate(new Vector3(0f, angle, 0f), 1.5f, RotateMode.Fast);
 
             if (PlaySceneManager.Instance.m_JoystickTrackPad.Pressed())
