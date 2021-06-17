@@ -231,7 +231,7 @@ public class PrefabManager : Singleton<PrefabManager>
 
     public GameObject SpawnTruck(int _index)
     {
-        return Instantiate(m_TruckPrefabs[_index], new Vector3(-0f, 0f, -77.97f), Quaternion.identity);
+        return Instantiate(m_TruckPrefabs[_index], new Vector3(25f, 0f, -54.2f), Quaternion.identity);
     }
 
     public GameObject SpawnEnding(float _zPos)

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using DG.Tweening;
@@ -36,10 +35,28 @@ public class CameraController : Singleton<CameraController>
     float valueToLerpLastActionY;
     float valueToLerpLastActionZ;
 
+    [Header("Last Action")]
+    float timeElapsed1stActionX;
+    float lerpDuration1stActionX = 3;
+
+    float startValue1stActionX = -4.16f;
+    float endValue1stActionX = 0f;
+
+    float startValue1stActionY = -0.04f;
+    float endValue1stActionY = 2.8f;
+
+    float startValue1stActionZ = -28.47f;
+    float endValue1stActionZ = -15.6f;
+
+    float valueToLerp1stActionX;
+    float valueToLerp1stActionY;
+    float valueToLerp1stActionZ;
+
     public override void OnEnable()
     {
         timeElapsed = 4f;
         timeElapsedLastActionX = 4f;
+        timeElapsed1stActionX = 4f;
     }
 
     private void Update()
@@ -79,6 +96,32 @@ public class CameraController : Singleton<CameraController>
         StartCoroutine(ChangeCMOffset(false));
     }
 
+    public void Do1stAction()
+    {
+        tf_Owner.DORotate(new Vector3(23.6f, 0f, 0f), 1.5f, RotateMode.Fast);
+        timeElapsed1stActionX = 0f;
+        StartCoroutine(ChangeCMOffset1stAction());
+    }
+
+    IEnumerator ChangeCMOffset1stAction()
+    {
+        CameraController.Instance.m_CMFreeLook.Follow = InGameObjectsManager.Instance.m_Char.transform;
+        while (timeElapsed1stActionX < lerpDuration1stActionX)
+        {
+            valueToLerp1stActionX = Mathf.Lerp(startValue1stActionX, endValue1stActionX, timeElapsed1stActionX / lerpDuration1stActionX);
+            valueToLerp1stActionY = Mathf.Lerp(startValue1stActionY, endValue1stActionY, timeElapsed1stActionX / lerpDuration1stActionX);
+            valueToLerp1stActionZ = Mathf.Lerp(startValue1stActionZ, endValue1stActionZ, timeElapsed1stActionX / lerpDuration1stActionX);
+
+            m_CMOffset.m_Offset.x = valueToLerp1stActionX;
+            m_CMOffset.m_Offset.y = valueToLerp1stActionY;
+            m_CMOffset.m_Offset.z = valueToLerp1stActionZ;
+
+            timeElapsed1stActionX += Time.deltaTime;
+        }
+        yield return new WaitUntil(() => timeElapsed1stActionX >= lerpDuration1stActionX);
+        // CameraController.Instance.m_CMFreeLook.Follow = InGameObjectsManager.Instance.m_Char.transform;
+    }
+
     IEnumerator ChangeCMOffsetLastAction()
     {
         while (timeElapsedLastActionX < lerpDurationLastActionX)
@@ -94,6 +137,7 @@ public class CameraController : Singleton<CameraController>
             timeElapsedLastActionX += Time.deltaTime;
         }
         yield return new WaitUntil(() => timeElapsedLastActionX >= lerpDurationLastActionX);
+        g_Wind.SetActive(false);
     }
 
     IEnumerator ChangeCMOffset(bool _hanging)

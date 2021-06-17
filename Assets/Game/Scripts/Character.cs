@@ -70,7 +70,7 @@ public class Character : InGameObject
         m_RotatePipe = false;
         m_StateMachine = new StateMachine<Character>(this);
         m_StateMachine.Init(IdleState.Instance);
-        CameraController.Instance.m_CMFreeLook.Follow = tf_Owner;
+        // CameraController.Instance.m_CMFreeLook.Follow = tf_Owner;
         m_ActiveJoystick = true;
         m_ReachEnding = false;
         m_OnAir = false;
@@ -165,7 +165,8 @@ public class Character : InGameObject
                 if (pipeCount == 1)
                 {
                     pipe.tf_Owner.parent = tf_PipeHolder;
-                    pipe.tf_Owner.transform.localScale = new Vector3(0.0025f, 0.0025f, 0.0025f);
+                    // pipe.tf_Owner.transform.localScale = new Vector3(0.0025f, 0.0025f, 0.0025f);
+                    pipe.tf_Owner.transform.localScale = new Vector3(0.0025f * 100f, 0.0025f * 127.5f, 0.0025f * 100f);
                     if (m_EState != EState.HANGING && m_EState != EState.JUMP_DOWN && m_EState != EState.JUMP_UP)
                     {
                         pipe.tf_Owner.localPosition = new Vector3(0f, tf_TargetPipe.position.y + 1.1f, 0f);
@@ -246,6 +247,7 @@ public class Character : InGameObject
         m_EState = EState.RUN;
         anim_Owner.SetTrigger(ConfigKeys.m_Run);
         // EventManager1<bool>.CallEvent(GameEvent.GAME_START, false);
+        CameraController.Instance.g_Wind.SetActive(true);
         PlaySceneManager.Instance.btn_Outfit.gameObject.SetActive(false);
         PlaySceneManager.Instance.g_LevelString.gameObject.SetActive(false);
         PlaySceneManager.Instance.btn_StartLonger.gameObject.SetActive(false);
@@ -280,7 +282,7 @@ public class Character : InGameObject
 
     public void OnRunExit()
     {
-
+        CameraController.Instance.g_Wind.SetActive(false);
     }
 
     public void OnIdleEnter()

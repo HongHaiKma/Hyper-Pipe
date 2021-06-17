@@ -241,19 +241,26 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
         GameObject truck = PrefabManager.Instance.SpawnTruck(0);
 
         CameraController.Instance.m_CMFreeLook.Follow = truck.transform;
-        truck.transform.DOMove(new Vector3(0f, 0f, -52.16f), 2.5f).OnComplete
+        truck.transform.DOMove(new Vector3(0f, 0f, -54.2f), 2.5f).OnComplete
         (
             () =>
             {
                 // EventManager1<bool>.CallEvent(GameEvent.GAME_START, true);
-                PlaySceneManager.Instance.btn_Outfit.gameObject.SetActive(true);
-                PlaySceneManager.Instance.g_LevelString.gameObject.SetActive(true);
-                PlaySceneManager.Instance.btn_StartLonger.gameObject.SetActive(true);
+
                 int index = ProfileManager.GetSelectedChar();
                 GameObject charrr = PrefabManager.Instance.SpawnChar(index - 1);
                 m_Char = charrr.GetComponent<Character>();
-                CameraController.Instance.m_CMFreeLook.Follow = charrr.transform;
-                truck.transform.DOMove(new Vector3(0f, 0f, -77.97f), 1.5f);
+                CameraController.Instance.m_CMFreeLook.Follow = null;
+
+                truck.transform.DOMove(new Vector3(-25f, 0f, -54.2f), 0.5f).OnComplete(
+                    () =>
+                    {
+                        CameraController.Instance.Do1stAction();
+                        PlaySceneManager.Instance.btn_Outfit.gameObject.SetActive(true);
+                        PlaySceneManager.Instance.g_LevelString.gameObject.SetActive(true);
+                        PlaySceneManager.Instance.btn_StartLonger.gameObject.SetActive(true);
+                    }
+                );
             }
         );
     }
