@@ -2917,7 +2917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d111fe6aa15b5a145a3f13bfc766f388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ScoreFactor: 1
+  m_ScoreFactor: 3
   m_ScoreLineColor:
   - {r: 1, g: 0, b: 0, a: 0}
   - {r: 0.7718405, g: 1, b: 0.30566037, a: 0}
