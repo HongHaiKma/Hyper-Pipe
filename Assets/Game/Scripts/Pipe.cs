@@ -91,7 +91,7 @@ public class Pipe : InGameObject
     {
         if (other.tag.Equals("Cutter"))
         {
-            if (!m_Collided && m_PipeNo != 0)
+            if (!m_Collided && m_PipeNo > 2)
             {
                 m_Collided = true;
                 if (GetComponent<Rigidbody>() == null)

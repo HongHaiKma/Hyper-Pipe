@@ -119,7 +119,7 @@ public class CameraController : Singleton<CameraController>
             timeElapsed1stActionX += Time.deltaTime;
         }
         yield return new WaitUntil(() => timeElapsed1stActionX >= lerpDuration1stActionX);
-        // CameraController.Instance.m_CMFreeLook.Follow = InGameObjectsManager.Instance.m_Char.transform;
+        CameraController.Instance.m_CMFreeLook.LookAt = InGameObjectsManager.Instance.m_Char.transform;
     }
 
     IEnumerator ChangeCMOffsetLastAction()

@@ -38,13 +38,10 @@ public class PathAction : PathCell
         tf_PivotPoint.DOLocalMove(tf_EndPoint.localPosition, 6f).SetEase(Ease.Linear).OnComplete(
             () =>
             {
-                // GameManager.Instance.m_TouchTrackPad.gameObject.SetActive(true);
                 PlaySceneManager.Instance.g_JoystickTrackPad.SetActive(false);
                 m_StartAction = false;
                 InGameObjectsManager.Instance.m_Char.ChangeState(JumpDownState.Instance);
                 CameraController.Instance.UndoActionByPath();
-                // InGameObjectsManager.Instance.m_Char.ChangeState(RunState.Instance);
-                // InGameObjectsManager.Instance.m_Char.ChangeState(IdleState.Instance);
             }
         );
     }
