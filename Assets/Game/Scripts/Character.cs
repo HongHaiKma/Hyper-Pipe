@@ -276,7 +276,7 @@ public class Character : InGameObject
         float gravity = 0f;
 
         gravity -= 9.81f * Time.deltaTime;
-        cc_Owner.Move(new Vector3(moveInput.x, gravity, moveInput.z * 2f));
+        cc_Owner.Move(new Vector3(moveInput.x, gravity, moveInput.z * 1.5f));
         if (cc_Owner.isGrounded) gravity = 0;
     }
 

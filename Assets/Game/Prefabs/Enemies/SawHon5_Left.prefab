@@ -100,11 +100,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveUpSpd
-      value: 1.6
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveDownSpd
-      value: 1.6
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_ActionWaiting
@@ -202,11 +202,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveUpSpd
-      value: 1.6
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveDownSpd
-      value: 1.6
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_ActionWaiting
@@ -214,7 +214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_StartDelayTimeMax
-      value: 1.2
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384932711846, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_LocalPosition.x
@@ -304,11 +304,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveUpSpd
-      value: 1.6
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveDownSpd
-      value: 1.6
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_ActionWaiting
@@ -316,7 +316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_StartDelayTimeMax
-      value: 0.8
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384932711846, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_LocalPosition.x
@@ -406,11 +406,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveUpSpd
-      value: 1.6
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveDownSpd
-      value: 1.6
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_ActionWaiting
@@ -418,7 +418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_StartDelayTimeMax
-      value: 0.4
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384932711846, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_LocalPosition.x
@@ -508,11 +508,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveUpSpd
-      value: 1.6
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveDownSpd
-      value: 1.6
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_ActionWaiting
@@ -520,7 +520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_StartDelayTimeMax
-      value: 1.6
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384932711846, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_LocalPosition.x

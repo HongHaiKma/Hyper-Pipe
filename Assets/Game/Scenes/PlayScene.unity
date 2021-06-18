@@ -5185,10 +5185,10 @@ MonoBehaviour:
   m_MapLength: 0
   g_Map: {fileID: 1126036294}
   m_House: {fileID: 0}
-  m_MapMinConfig: 1
-  m_MapMaxConfig: 1
-  m_MapPrefabMinConfig: 18
-  m_MapPrefabMaxConfig: 18
+  m_MapMinConfig: 4
+  m_MapMaxConfig: 6
+  m_MapPrefabMinConfig: 1
+  m_MapPrefabMaxConfig: 22
   m_LevelConfigs:
   - m_MapMin: 4
     m_MapMax: 4
