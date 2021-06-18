@@ -66,17 +66,17 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            // if (ProfileManager.GetKeys() < 3)
-            // {
-            //     // ProfileManager.AddKeys(1);
-            //     // Event_ADD_KEY();
+        // if (Input.GetKeyDown(KeyCode.Z))
+        // {
+        //     // if (ProfileManager.GetKeys() < 3)
+        //     // {
+        //     //     // ProfileManager.AddKeys(1);
+        //     //     // Event_ADD_KEY();
 
-            // }
-            PopupCaller.OpenBonusRewardPopup();
-            // PopupCaller.OpenOutfitPopup();
-        }
+        //     // }
+        //     PopupCaller.OpenBonusRewardPopup();
+        //     // PopupCaller.OpenOutfitPopup();
+        // }
 
         if (Input.GetKeyDown(KeyCode.X))
         {

@@ -46,7 +46,7 @@ public class CameraController : Singleton<CameraController>
     float endValue1stActionY = 2.8f;
 
     float startValue1stActionZ = -28.47f;
-    float endValue1stActionZ = -15.6f;
+    float endValue1stActionZ = -3.47f;
 
     float valueToLerp1stActionX;
     float valueToLerp1stActionY;
@@ -98,7 +98,7 @@ public class CameraController : Singleton<CameraController>
 
     public void Do1stAction()
     {
-        tf_Owner.DORotate(new Vector3(23.6f, 0f, 0f), 1.5f, RotateMode.Fast);
+        tf_Owner.DORotate(new Vector3(40f, 0f, 0f), 1.5f, RotateMode.Fast);
         timeElapsed1stActionX = 0f;
         StartCoroutine(ChangeCMOffset1stAction());
     }
