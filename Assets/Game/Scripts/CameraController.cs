@@ -124,6 +124,7 @@ public class CameraController : Singleton<CameraController>
 
     IEnumerator ChangeCMOffsetLastAction()
     {
+        CameraController.Instance.m_CMFreeLook.m_Lens.FieldOfView = 40f;
         while (timeElapsedLastActionX < lerpDurationLastActionX)
         {
             valueToLerpLastActionX = Mathf.Lerp(startValueLastActionX, endValueLastActionX, timeElapsedLastActionX / lerpDurationLastActionX);
