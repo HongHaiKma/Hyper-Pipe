@@ -53,15 +53,15 @@ public class PopupBonusReward : UICanvas
         // EventManager.AddListener(GameEvent.POPUP_BONUS_REWARD_UPDATE, UpdateKeys);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            // ProfileManager.UnlockNewCharacter(CharacterType.WORKER);
-            // SetupRandom();
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.C))
+    //     {
+    //         // ProfileManager.UnlockNewCharacter(CharacterType.WORKER);
+    //         // SetupRandom();
 
-        }
-    }
+    //     }
+    // }
 
     public void ResetPopup()
     {

@@ -12,6 +12,9 @@ public class PopupWin : UICanvas
     public TextMeshProUGUI txt_GoldWin;
     public TextMeshProUGUI txt_AdsGold;
 
+    public Image img_GiftFill;
+    public TextMeshProUGUI txt_Percent;
+
     [Header("Random Epic Char")]
     public static int m_RandomEpicChar;
     public Image img_Char;
@@ -30,8 +33,22 @@ public class PopupWin : UICanvas
 
     public override void OnEnable()
     {
-        btn_AdsGold.interactable = true;
-        btn_NextLevel.interactable = true;
+        txt_Percent.text = "0%";
+        img_GiftFill.fillAmount = 0f;
+        float aaa = ((ProfileManager.GetLevel() - 1) % 5f) / 5f;
+        img_GiftFill.DOFillAmount(aaa, aaa * 1.5f).OnStart(
+            () =>
+            {
+                btn_AdsGold.interactable = false;
+                txt_Percent.text = aaa * 100f + "%";
+            }
+        ).OnComplete(
+            () =>
+            {
+                btn_AdsGold.interactable = true;
+                btn_NextLevel.interactable = true;
+            }
+        );
 
         btn_NextLevel.gameObject.SetActive(false);
         StartCoroutine(IENextLevelAppear());

@@ -11,7 +11,6 @@ public class PopupOutfit : UICanvas
 
     public TextMeshProUGUI txt_TotalGold;
     public TextMeshProUGUI txt_CharName;
-    public Image img_Char;
     public Button btn_Equip;
     public Button btn_Equipped;
     public Button btn_BuyByGold;
@@ -22,6 +21,11 @@ public class PopupOutfit : UICanvas
     public TextMeshProUGUI txt_AdsNumber;
 
     public GameObject g_Warning;
+
+    public Image img_BG;
+    public Color[] m_BGColor;
+
+    public RawImage raw_Char;
 
     // [Header("Rarity buttons")]
     // public Button btn_Rare;
@@ -55,6 +59,13 @@ public class PopupOutfit : UICanvas
         base.OnEnable();
         // g_Warning.SetActive(false);
         m_SelectedCharacter = ProfileManager.GetSelectedCharacter();
+
+        MiniCharacter.Instance.SpawnMiniCharacter(m_SelectedCharacter - 1);
+        CharacterDataConfig config = GameData.Instance.GetCharacterDataConfig(m_SelectedCharacter);
+        // StartCoroutine(AppearChar());
+        // AppearChar();
+        // img_BG.color = m_BGColor[(int)(config.GetRatity() - 1)];
+
         txt_TotalGold.text = ProfileManager.GetGold();
 
         SetChar(m_SelectedCharacter);
@@ -93,12 +104,37 @@ public class PopupOutfit : UICanvas
         EventManager.RemoveListener(GameEvent.ADS_GOLD_1_ANIM, OnAdsGoldAnim);
     }
 
+    // IEnumerator AppearChar()
+    // {
+    //     raw_Char.uvRect = new Rect(1f, 0f, 1f, 1f);
+    //     float time = 0f;
+    //     float timeMax = 10f;
+
+    //     // while (time < timeMax)
+    //     if (time < timeMax)
+    //     {
+    //         Rect rect = new Rect(Mathf.Lerp(1f, 0f, time / timeMax), 0f, 1f, 1f);
+    //         raw_Char.uvRect = rect;
+
+    //         time += Time.deltaTime;
+    //         Helper.DebugLog("Time: " + time);
+    //         // yield return Yielders.Get(time);
+
+    //     }
+    //     yield return new WaitUntil(() => time >= timeMax);
+    //     raw_Char.DOVi
+    // }
+
     public void Event_LOAD_CHAR_OUTFIT(int _id)
     {
         CharacterDataConfig config = GameData.Instance.GetCharacterDataConfig(_id);
         txt_CharName.text = config.m_Name;
         m_SelectedCharacter = _id;
-        img_Char.sprite = SpriteManager.Instance.m_CharCards[_id - 1];
+        // img_Char.sprite = SpriteManager.Instance.m_CharCards[_id - 1];
+        MiniCharacter.Instance.SpawnMiniCharacter(_id - 1);
+        // StartCoroutine(AppearChar());
+        // AppearChar();
+        // img_BG.color = m_BGColor[(int)(config.GetRatity() - 1)];
 
         SetClaimBtnLogic(_id);
     }
@@ -117,7 +153,11 @@ public class PopupOutfit : UICanvas
         txt_CharName.text = config.m_Name;
         m_SelectedCharacter = _id;
 
-        img_Char.sprite = SpriteManager.Instance.m_CharCards[_id - 1];
+        // img_Char.sprite = SpriteManager.Instance.m_CharCards[_id - 1];
+        MiniCharacter.Instance.SpawnMiniCharacter(_id - 1);
+        // StartCoroutine(AppearChar());
+        // AppearChar();
+        // img_BG.color = m_BGColor[(int)(config.GetRatity() - 1)];
 
         SetClaimBtnLogic(_id);
 

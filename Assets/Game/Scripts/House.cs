@@ -51,6 +51,7 @@ public class House : MonoBehaviour
 
         if (!aaa)
         {
+            SoundManager.Instance.OnSoundWin();
             if (ProfileManager.GetKeys() < 3)
             {
                 if (((ProfileManager.GetLevel() - 1) % 5 == 0) && (GameData.Instance.GetEpicCharacterDataConfig().Count > 0))
@@ -77,7 +78,7 @@ public class House : MonoBehaviour
             if (g_Waters[i].activeInHierarchy)
             {
                 g_Waters[i].SetActive(false);
-                GameManager.Instance.Vibrate();
+                GameManager.Instance.Vibrate(0);
                 break;
             }
         }

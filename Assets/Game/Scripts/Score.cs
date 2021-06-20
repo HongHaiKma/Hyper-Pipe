@@ -37,7 +37,16 @@ public class Score : InGameObject
         {
             if (m_ScoreLine == _result)
             {
-                InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(tf_Owner.position).GetComponent<House>();
+                if (m_ScoreLine < 3)
+                {
+                    InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(0, tf_Owner.position).GetComponent<House>();
+                    Helper.DebugLog("m_ScoreLine = " + m_ScoreLine);
+                }
+                else if (m_ScoreLine <= 6)
+                {
+                    InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(1, tf_Owner.position).GetComponent<House>();
+                    Helper.DebugLog("m_ScoreLine = " + m_ScoreLine);
+                }
                 Vector3 planeHouse = InGameObjectsManager.Instance.m_House.transform.position;
                 PrefabManager.Instance.SpawnPlaneHouse(planeHouse);
                 charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete
@@ -59,7 +68,8 @@ public class Score : InGameObject
         {
             if (m_ScoreLine == 7)
             {
-                InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(tf_Owner.position).GetComponent<House>();
+                Helper.DebugLog("m_ScoreLine = " + m_ScoreLine);
+                InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(2, tf_Owner.position).GetComponent<House>();
                 Vector3 planeHouse = InGameObjectsManager.Instance.m_House.transform.position;
                 PrefabManager.Instance.SpawnPlaneHouse(planeHouse);
                 charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete

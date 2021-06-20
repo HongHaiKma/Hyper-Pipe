@@ -132,10 +132,10 @@ public class Character : InGameObject
         //     Helper.DebugLog("Char is not grounded");
         // }
 
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            AddPipe();
-        }
+        // if (Input.GetKeyDown(KeyCode.C))
+        // {
+        //     AddPipe();
+        // }
 
         // if (Input.GetKeyDown(KeyCode.B))
         // {
@@ -248,6 +248,8 @@ public class Character : InGameObject
         anim_Owner.SetTrigger(ConfigKeys.m_Run);
         // EventManager1<bool>.CallEvent(GameEvent.GAME_START, false);
         CameraController.Instance.g_Wind.SetActive(true);
+        PlaySceneManager.Instance.btn_Setting.gameObject.SetActive(false);
+        PlaySceneManager.Instance.g_Setting.SetActive(false);
         PlaySceneManager.Instance.btn_Outfit.gameObject.SetActive(false);
         PlaySceneManager.Instance.g_LevelString.gameObject.SetActive(false);
         PlaySceneManager.Instance.btn_StartLonger.gameObject.SetActive(false);
@@ -389,7 +391,7 @@ public class Character : InGameObject
         {
             other.GetComponent<PipeCollect>().SetupCollected();
             AddPipe();
-            GameManager.Instance.Vibrate();
+            GameManager.Instance.Vibrate(0);
             // Helper.DebugLog("Char trigger pipecollect");
         }
         else if (other.tag.Equals(ConfigKeys.m_PathAction))

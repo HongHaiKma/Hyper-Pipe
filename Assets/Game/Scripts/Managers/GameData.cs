@@ -21,21 +21,21 @@ public class GameData : Singleton<GameData>
         LoadLevelEasyConfig();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            // for (int i = 0; i < GetBonusRewardConfig().Count; i++)
-            // {
-            //     Helper.DebugLog(GetBonusRewardConfig()[i].m_Slot);
-            //     Helper.DebugLog(GetBonusRewardConfig()[i].m_Gold.ToString());
-            // }
-            // for (int i = 0; i < GetEpicCharacterDataConfig().Count; i++)
-            // {
-            //     Helper.DebugLog(GetEpicCharacterDataConfig()[i].m_Name);
-            // }
-        }
-    }
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.V))
+    //     {
+    //         // for (int i = 0; i < GetBonusRewardConfig().Count; i++)
+    //         // {
+    //         //     Helper.DebugLog(GetBonusRewardConfig()[i].m_Slot);
+    //         //     Helper.DebugLog(GetBonusRewardConfig()[i].m_Gold.ToString());
+    //         // }
+    //         // for (int i = 0; i < GetEpicCharacterDataConfig().Count; i++)
+    //         // {
+    //         //     Helper.DebugLog(GetEpicCharacterDataConfig()[i].m_Name);
+    //         // }
+    //     }
+    // }
 
     public void LoadCharacterConfig()
     {

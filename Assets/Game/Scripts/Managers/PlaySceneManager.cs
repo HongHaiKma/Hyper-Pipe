@@ -29,6 +29,14 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
 
     public Button btn_StartLonger;
 
+    [Header("Setting")]
+    public Button btn_Setting;
+    public GameObject g_Setting;
+    public Button btn_Sound;
+    public Button btn_Music;
+    public Image img_Sound;
+    public Image img_Music;
+
 
     [Header("Level String")]
     public GameObject g_LevelString;
@@ -51,6 +59,10 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
         GUIManager.Instance.AddClickEvent(btn_AddKey, AddKey);
         GUIManager.Instance.AddClickEvent(btn_JumpLevel, JumpLevel);
         GUIManager.Instance.AddClickEvent(btn_StartLonger, OnStartLonger);
+
+        GUIManager.Instance.AddClickEvent(btn_Setting, OnOpenSetting);
+        GUIManager.Instance.AddClickEvent(btn_Sound, OnSetSound);
+        GUIManager.Instance.AddClickEvent(btn_Music, OnSetMusic);
         // GUIManager.Instance.AddClickEvent(btn_TestAds, TestAds);
     }
 
@@ -85,7 +97,8 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-            Event_ADD_KEY();
+            // Event_ADD_KEY();
+            PopupCaller.OpenWinPopup();
         }
     }
 
@@ -103,6 +116,69 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
         EventManager.RemoveListener(GameEvent.END_GAME, Event_END_GAME);
         EventManager.RemoveListener(GameEvent.UPDATE_GOLD, Event_UPDATE_GOLD);
         EventManager1<bool>.AddListener(GameEvent.GAME_START, Event_GAME_START);
+    }
+
+    public void OnOpenSetting()
+    {
+        g_Setting.SetActive(!g_Setting.activeInHierarchy);
+        SetSoundImage();
+        SetMusicImage();
+    }
+
+    public void OnSetSound()
+    {
+        int soundOn = SoundManager.Instance.GetSoundState();
+        if (soundOn == 1)
+        {
+            img_Sound.sprite = SpriteManager.Instance.m_Settings[0];
+            SoundManager.Instance.SetSoundState(0);
+        }
+        else
+        {
+            img_Sound.sprite = SpriteManager.Instance.m_Settings[1];
+            SoundManager.Instance.SetSoundState(1);
+        }
+    }
+
+    public void SetSoundImage()
+    {
+        int soundOn = SoundManager.Instance.GetSoundState();
+        if (soundOn == 1)
+        {
+            img_Sound.sprite = SpriteManager.Instance.m_Settings[1];
+        }
+        else
+        {
+            img_Sound.sprite = SpriteManager.Instance.m_Settings[0];
+        }
+    }
+
+    public void OnSetMusic()
+    {
+        int musicOn = SoundManager.Instance.GetMusicState();
+        if (musicOn == 1)
+        {
+            img_Music.sprite = SpriteManager.Instance.m_Settings[2];
+            SoundManager.Instance.SetMusicState(0);
+        }
+        else
+        {
+            img_Music.sprite = SpriteManager.Instance.m_Settings[3];
+            SoundManager.Instance.SetMusicState(1);
+        }
+    }
+
+    public void SetMusicImage()
+    {
+        int musicOn = SoundManager.Instance.GetMusicState();
+        if (musicOn == 1)
+        {
+            img_Music.sprite = SpriteManager.Instance.m_Settings[3];
+        }
+        else
+        {
+            img_Music.sprite = SpriteManager.Instance.m_Settings[2];
+        }
     }
 
     public void SetupLevelString()

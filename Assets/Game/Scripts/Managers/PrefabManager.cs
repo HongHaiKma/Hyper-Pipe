@@ -20,6 +20,7 @@ public class PrefabManager : Singleton<PrefabManager>
     public GameObject[] m_PathCellPrefabs;
 
     public GameObject[] m_CharPrefabs;
+    public GameObject[] m_MiniCharPrefabs;
 
     public GameObject[] m_TruckPrefabs;
 
@@ -244,14 +245,19 @@ public class PrefabManager : Singleton<PrefabManager>
         return Instantiate(g_PathCell_0, new Vector3(0f, 0f, _zPos), Quaternion.identity);
     }
 
-    public GameObject SpawnHouse(Vector3 _pos)
+    public GameObject SpawnHouse(int _index, Vector3 _pos)
     {
-        return Instantiate(g_Houses[0], new Vector3(_pos.x - 25.3f, g_Houses[0].transform.position.y, _pos.z), Quaternion.identity);
+        return Instantiate(g_Houses[_index], new Vector3(_pos.x - 25.3f, g_Houses[0].transform.position.y, _pos.z), Quaternion.identity);
     }
 
     public GameObject SpawnPlaneHouse(Vector3 _pos)
     {
         return Instantiate(g_PlaneHouse, new Vector3(_pos.x + 4, 0f, _pos.z), Quaternion.identity);
+    }
+
+    public GameObject SpawnMiniCharacter(int _index)
+    {
+        return Instantiate(m_MiniCharPrefabs[_index], new Vector3(0f, -1.28f, 12.32f), Quaternion.identity);
     }
 
     // public GameObject ScoreLine(float _zPos)

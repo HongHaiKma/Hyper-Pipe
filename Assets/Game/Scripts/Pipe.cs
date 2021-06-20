@@ -102,7 +102,7 @@ public class Pipe : InGameObject
                 m_Col.isTrigger = false;
                 EventManager1<int>.CallEvent(GameEvent.CUT_PIPE, m_PipeNo);
 
-                GameManager.Instance.Vibrate();
+                GameManager.Instance.Vibrate(1);
 
                 IEnemyBlockable iEB = other.gameObject.GetComponent<IEnemyBlockable>();
 

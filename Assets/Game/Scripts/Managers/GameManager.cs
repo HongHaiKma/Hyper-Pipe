@@ -18,12 +18,19 @@ public class GameManager : Singleton<GameManager>
         Application.targetFrameRate = 60;
     }
 
-    public void Vibrate()
+    public void Vibrate(int _type)
     {
-        MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+        if (_type == 0)
+        {
+            MMVibrationManager.Haptic(HapticTypes.RigidImpact);
+        }
+        if (_type == 1)
+        {
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+        }
     }
 
-    public void StopAllVibratesq()
+    public void StopAllVibrates()
     {
         MMVibrationManager.StopAllHaptics(true);
     }
