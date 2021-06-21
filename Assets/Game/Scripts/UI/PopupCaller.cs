@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PopupCaller
 {
-    public static void OpenOutfitPopup()
+    public static void OpenOutfitPopup(bool _isClose = false)
     {
         PopupOutfit popup = GUIManager.Instance.GetUICanvasByID(UIID.POPUP_OUTFIT) as PopupOutfit;
 
-        GUIManager.Instance.ShowUIPopup(popup);
+        GUIManager.Instance.ShowUIPopup(popup, _isClose);
     }
 
     public static void OpenWinPopup()

@@ -36,6 +36,10 @@ public class PopupWin : UICanvas
         txt_Percent.text = "0%";
         img_GiftFill.fillAmount = 0f;
         float aaa = ((ProfileManager.GetLevel() - 1) % 5f) / 5f;
+        if (aaa == 0f)
+        {
+            aaa = 1;
+        }
         img_GiftFill.DOFillAmount(aaa, aaa * 1.5f).OnStart(
             () =>
             {

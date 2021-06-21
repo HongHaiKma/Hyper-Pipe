@@ -74,6 +74,8 @@ public class PopupOutfit : UICanvas
         // CheckTutorial();
 
         Event_LOAD_CHAR_OUTFIT(m_SelectedCharacter);
+
+        Helper.DebugLog("Outfit Enalbeeeeeeeeeeeeeeeee");
     }
 
     private void Update()

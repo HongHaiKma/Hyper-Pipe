@@ -259,6 +259,7 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
                         PlaySceneManager.Instance.btn_Outfit.gameObject.SetActive(true);
                         PlaySceneManager.Instance.g_LevelString.gameObject.SetActive(true);
                         PlaySceneManager.Instance.btn_StartLonger.gameObject.SetActive(true);
+                        PlaySceneManager.Instance.m_TouchTrackPad.gameObject.SetActive(true);
                     }
                 );
             }

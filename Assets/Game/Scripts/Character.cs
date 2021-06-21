@@ -255,6 +255,8 @@ public class Character : InGameObject
         PlaySceneManager.Instance.g_LevelString.gameObject.SetActive(false);
         PlaySceneManager.Instance.btn_StartLonger.gameObject.SetActive(false);
         // PlaySceneManager.Instance.txt_Level.gameObject.SetActive(false);
+
+        Helper.DebugLog("OnRunEnterOnRunEnterOnRunEnterOnRunEnter");
     }
 
     public void OnRunExecute()

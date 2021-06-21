@@ -107,6 +107,12 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
             // Event_ADD_KEY();
             PopupCaller.OpenWinPopup();
         }
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            // Event_ADD_KEY();
+            PopupCaller.OpenOutfitPopup(false);
+        }
     }
 
     public override void StartListenToEvents()
@@ -213,7 +219,7 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
 
     public void Event_LOAD_MAP()
     {
-        m_TouchTrackPad.gameObject.SetActive(true);
+        // m_TouchTrackPad.gameObject.SetActive(true);
         btn_Outfit.gameObject.SetActive(false);
     }
 
@@ -262,7 +268,7 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
 
     public void OpenOutfitPopup()
     {
-        PopupCaller.OpenOutfitPopup();
+        PopupCaller.OpenOutfitPopup(true);
     }
 
     public void OpenBonusRewardPopup()
