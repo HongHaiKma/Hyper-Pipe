@@ -154,29 +154,27 @@ public class AdsManager : Singleton<AdsManager>
         // #if UNITY_ANDROID
         // #elif UNITY_IPHONE
         // #endif
-        // if (!Helper.NoAds())
-        // {
+        if (ProfileManager.CheckAds())
+        {
+            // Initialize an InterstitialAd.
+            this.interstitial = new InterstitialAd(m_InterId);
 
-        // Initialize an InterstitialAd.
-        this.interstitial = new InterstitialAd(m_InterId);
+            // Called when an ad request has successfully loaded.
+            this.interstitial.OnAdLoaded += HandleOnAdLoaded;
+            // Called when an ad request failed to load.
+            this.interstitial.OnAdFailedToLoad += HandleOnAdFailedToLoad;
+            // Called when an ad is shown.
+            this.interstitial.OnAdOpening += HandleOnAdOpened;
+            // Called when the ad is closed.
+            this.interstitial.OnAdClosed += HandleOnAdClosed;
+            // Called when the ad click caused the user to leave the application.
+            this.interstitial.OnAdLeavingApplication += HandleOnAdLeavingApplication;
 
-        // Called when an ad request has successfully loaded.
-        this.interstitial.OnAdLoaded += HandleOnAdLoaded;
-        // Called when an ad request failed to load.
-        this.interstitial.OnAdFailedToLoad += HandleOnAdFailedToLoad;
-        // Called when an ad is shown.
-        this.interstitial.OnAdOpening += HandleOnAdOpened;
-        // Called when the ad is closed.
-        this.interstitial.OnAdClosed += HandleOnAdClosed;
-        // Called when the ad click caused the user to leave the application.
-        this.interstitial.OnAdLeavingApplication += HandleOnAdLeavingApplication;
-
-        // Create an empty ad request.
-        AdRequest request = new AdRequest.Builder().Build();
-        // Load the interstitial with the request.
-        this.interstitial.LoadAd(request);
-
-        // }
+            // Create an empty ad request.
+            AdRequest request = new AdRequest.Builder().Build();
+            // Load the interstitial with the request.
+            this.interstitial.LoadAd(request);
+        }
     }
 
     public void RequestRewardVideo()
@@ -217,12 +215,12 @@ public class AdsManager : Singleton<AdsManager>
 
     public void LoadInter()
     {
-        // if (!Helper.NoAds())
-        // {
-        // this.interstitial.Destroy();
-        AdRequest request = new AdRequest.Builder().Build();
-        this.interstitial.LoadAd(request);
-        // }
+        if (ProfileManager.CheckAds())
+        {
+            // this.interstitial.Destroy();
+            AdRequest request = new AdRequest.Builder().Build();
+            this.interstitial.LoadAd(request);
+        }
     }
 
     public void LoadRewardVideo()
@@ -240,23 +238,19 @@ public class AdsManager : Singleton<AdsManager>
 
     public void WatchInterstitial()
     {
-        // if (m_WatchInter && !Helper.NoAds())
-        // {
-        if (interstitial == null)
+        if (m_WatchInter && ProfileManager.CheckAds())
         {
-            Helper.DebugLog("WatchInterstitialWatchInterstitialWatchInterstitialWatchInterstitialWatchInterstitialWatchInterstitial");
+            if (interstitial.IsLoaded())
+            {
+                interstitial.Show();
+                // AnalysticsManager.LogInterAdsShow();
+            }
+            else
+            {
+                // RequestInter();
+                LoadInter();
+            }
         }
-        if (interstitial.IsLoaded())
-        {
-            interstitial.Show();
-            // AnalysticsManager.LogInterAdsShow();
-        }
-        else
-        {
-            // RequestInter();
-            LoadInter();
-        }
-        // }
     }
 
     public void HandleOnAdLoaded(object sender, EventArgs args)

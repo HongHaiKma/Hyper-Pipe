@@ -54,7 +54,8 @@ public class PopupOutfitReward : UICanvas
         Helper.DebugLog("Random Char: " + randomEpicChar[m_RandomEpicChar].m_Name.ToString());
 
         int charId = randomEpicChar[m_RandomEpicChar].m_Id;
-        img_Char.sprite = SpriteManager.Instance.m_CharCards[charId - 1];
+        // img_Char.sprite = SpriteManager.Instance.m_CharCards[charId - 1];
+        MiniCharacter.Instance.SpawnMiniCharacter(charId - 1);
         ProfileManager.UnlockEpicNewCharacter(charId);
         ProfileManager.SetSelectedCharacter(charId);
     }

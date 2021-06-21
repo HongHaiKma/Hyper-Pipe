@@ -143,7 +143,7 @@ public class PopupWin : UICanvas
     IEnumerator IELoadScene()
     {
         yield return Yielders.Get(2.5f);
-        GUIManager.Instance.LoadPlayScene();
+        GUIManager.Instance.LoadPlayScene(true);
     }
 
     IEnumerator IENextLevelAppear()

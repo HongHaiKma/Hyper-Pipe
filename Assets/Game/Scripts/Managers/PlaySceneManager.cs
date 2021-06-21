@@ -34,6 +34,7 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
     public GameObject g_Setting;
     public Button btn_Sound;
     public Button btn_Music;
+    public Button btn_Replay;
     public Image img_Sound;
     public Image img_Music;
 
@@ -51,9 +52,12 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
     public Button btn_OpenBonusReward;
     public Button btn_AddKey;
     public Button btn_JumpLevel;
+    public Button btn_Inter;
 
     private void Awake()
     {
+        AdsManager.Instance.m_WatchInter = true;
+
         GUIManager.Instance.AddClickEvent(btn_Outfit, OpenOutfitPopup);
         GUIManager.Instance.AddClickEvent(btn_OpenBonusReward, OpenBonusRewardPopup);
         GUIManager.Instance.AddClickEvent(btn_AddKey, AddKey);
@@ -63,6 +67,9 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
         GUIManager.Instance.AddClickEvent(btn_Setting, OnOpenSetting);
         GUIManager.Instance.AddClickEvent(btn_Sound, OnSetSound);
         GUIManager.Instance.AddClickEvent(btn_Music, OnSetMusic);
+        GUIManager.Instance.AddClickEvent(btn_Replay, Replay);
+
+        GUIManager.Instance.AddClickEvent(btn_Inter, TestAds);
         // GUIManager.Instance.AddClickEvent(btn_TestAds, TestAds);
     }
 
@@ -271,6 +278,16 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
     public void JumpLevel()
     {
         ProfileManager.Instance.PassOnlyLevel();
+        GUIManager.Instance.LoadPlayScene();
+    }
+
+    public void TestAds()
+    {
+        AdsManager.Instance.WatchInterstitial();
+    }
+
+    public void Replay()
+    {
         GUIManager.Instance.LoadPlayScene();
     }
 }

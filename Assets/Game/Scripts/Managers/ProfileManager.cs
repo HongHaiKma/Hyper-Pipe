@@ -325,6 +325,16 @@ public class ProfileManager : MonoBehaviour
         return MyProfile.CheckSelectedChar(_id);
     }
 
+    public static bool CheckAds()
+    {
+        return MyProfile.CheckAds();
+    }
+
+    public static void SetAds(int _value)
+    {
+        MyProfile.SetAds(_value);
+    }
+
     public void OnApplicationPause(bool pause)
     {
         if (pause)

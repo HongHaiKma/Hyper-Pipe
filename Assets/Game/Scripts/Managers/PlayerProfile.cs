@@ -13,6 +13,7 @@ public class PlayerProfile
     public string ic_Keys = "0";
 
     public int m_Level;
+    public int m_Ads;
 
     public int m_SelectedCharacter = 0;
     public List<CharacterProfileData> m_CharacterData = new List<CharacterProfileData>();
@@ -44,6 +45,7 @@ public class PlayerProfile
         m_Keys = new BigNumber(ic_Keys);
 
         m_Level = 1;
+        m_Ads = 1;
 
         UnlockCharacter(CharacterType.FIREFIGHTER);
         SetSelectedCharacter(CharacterType.FIREFIGHTER);
@@ -127,6 +129,22 @@ public class PlayerProfile
     }
 
     #endregion
+
+    public bool CheckAds()
+    {
+        if (m_Ads == 1)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void SetAds(int _value)
+    {
+        m_Ads = _value;
+        SaveDataToLocal();
+    }
 
     #region LEVEL
 

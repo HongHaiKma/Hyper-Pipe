@@ -18,6 +18,18 @@
             "deviceId": "08211FDD400529",
             "name": "com.Phoenix.FireFighter3D",
             "processId": 12723,
+            "exited": true
+        },
+        {
+            "deviceId": "08211FDD400529",
+            "name": "com.Phoenix.FireFighter3D",
+            "processId": 31332,
+            "exited": false
+        },
+        {
+            "deviceId": "988678514c3231504f",
+            "name": "com.google.android.packageinstaller",
+            "processId": 17334,
             "exited": false
         }
     ],

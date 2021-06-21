@@ -116,12 +116,12 @@ public class GUIManager : MonoBehaviour
         m_CurrentOpenedPopup.Clear();
     }
 
-    public void LoadPlayScene()
+    public void LoadPlayScene(bool _continue = false)
     {
-        StartCoroutine(LoadScreen());
+        StartCoroutine(LoadScreen(_continue));
     }
 
-    IEnumerator LoadScreen()
+    IEnumerator LoadScreen(bool _continue)
     {
         InGameObjectsManager.Instance.DespawnAllPools();
         Debug.Log("Start Load");
@@ -160,6 +160,17 @@ public class GUIManager : MonoBehaviour
         InGameObjectsManager.Instance.LoadMap();
 
         FindMainCanvas();
+
+        yield return Yielders.Get(0.1f);
+
+        if (_continue)
+        {
+            // // if (ProfileManager.GetLevel() - 1 >= 3)
+            // // {
+            AdsManager.Instance.WatchInterstitial();
+            // // }
+        }
+
     }
 
     public void FindPanelLoadingAds()

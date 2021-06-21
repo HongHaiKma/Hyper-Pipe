@@ -59,12 +59,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GroundCells:
-  - {fileID: 2888997393999488958}
   - {fileID: 1100416833904609905}
   - {fileID: 5356527966567180100}
   - {fileID: 718733780325317728}
   - {fileID: 1767987394400152975}
   - {fileID: 1427801032627590341}
+  - {fileID: 2888997393999488958}
 --- !u!1001 &1559183622702386716
 PrefabInstance:
   m_ObjectHideFlags: 0

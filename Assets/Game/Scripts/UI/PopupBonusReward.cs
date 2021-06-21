@@ -181,7 +181,8 @@ public class PopupBonusReward : UICanvas
         {
             int random = Random.Range(0, count - 1);
             charId = GameData.Instance.GetCharacterDataConfig(config[random].m_Id).m_Id - 1;
-            img_Char.sprite = SpriteManager.Instance.m_CharCards[charId];
+            MiniCharacter.Instance.SpawnMiniCharacter(charId);
+            // img_Char.sprite = SpriteManager.Instance.m_CharCards[charId];
             m_Char = charId + 1;
             Helper.DebugLog("m_Char = " + m_Char);
         }
