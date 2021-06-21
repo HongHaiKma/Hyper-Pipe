@@ -165,10 +165,11 @@ public class GUIManager : MonoBehaviour
 
         if (_continue)
         {
-            // // if (ProfileManager.GetLevel() - 1 >= 3)
-            // // {
-            AdsManager.Instance.WatchInterstitial();
-            // // }
+            int level = ProfileManager.GetLevel() - 1;
+            if ((level >= 3) && (level % 2 == 1))
+            {
+                AdsManager.Instance.WatchInterstitial();
+            }
         }
 
     }
