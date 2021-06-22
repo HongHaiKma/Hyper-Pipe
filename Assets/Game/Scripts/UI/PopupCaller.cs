@@ -11,11 +11,11 @@ public class PopupCaller
         GUIManager.Instance.ShowUIPopup(popup, _isClose);
     }
 
-    public static void OpenWinPopup()
+    public static void OpenWinPopup(bool _isClose = false, bool _isSetup = true)
     {
         PopupWin popup = GUIManager.Instance.GetUICanvasByID(UIID.POPUP_WIN) as PopupWin;
 
-        GUIManager.Instance.ShowUIPopup(popup);
+        GUIManager.Instance.ShowUIPopup(popup, _isClose, _isSetup);
     }
 
     public static void OpenBonusRewardPopup(bool _isClose = false)
@@ -32,7 +32,7 @@ public class PopupCaller
         return popup;
     }
 
-    public static void OpenOutfitProgressPopup()
+    public static void OpenOutfitRewardPopup()
     {
         PopupOutfitReward popup = GUIManager.Instance.GetUICanvasByID(UIID.POPUP_OUTFIT_REWARD) as PopupOutfitReward;
 

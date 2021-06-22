@@ -183,14 +183,13 @@ public class PopupOutfit : UICanvas
         EventManager1<int>.CallEvent(GameEvent.LOAD_CHAR_OUTFIT, m_SelectedCharacter);
         EventManager.CallEvent(GameEvent.UPDATE_OUTFIT);
 
-        GameObject go = PrefabManager.Instance.SpawnChar(m_SelectedCharacter - 1);
-        Character charr = InGameObjectsManager.Instance.m_Char;
-        CharacterType type = charr.m_CharacterType;
-        InGameObjectsManager.Instance.m_Char = go.GetComponent<Character>();
-        CameraController.Instance.m_CMFreeLook.Follow = InGameObjectsManager.Instance.m_Char.tf_Owner;
-        // EventManager.CallEvent(GameEvent.LOAD_CHAR);
-        // // StartCoroutine(RemoveChar(charr));
-        EventManager1<CharacterType>.CallEvent(GameEvent.CHAR_DESTROY, type);
+        // GameObject go = PrefabManager.Instance.SpawnChar(m_SelectedCharacter - 1);
+        // Character charr = InGameObjectsManager.Instance.m_Char;
+        // CharacterType type = charr.m_CharacterType;
+        // InGameObjectsManager.Instance.m_Char = go.GetComponent<Character>();
+
+        // CameraController.Instance.m_CMFreeLook.Follow = InGameObjectsManager.Instance.m_Char.tf_Owner;
+        // EventManager1<CharacterType>.CallEvent(GameEvent.CHAR_DESTROY, type);
     }
 
     public void OnBuyByGold() //Remember to Update UICharacterCard when buy succeed

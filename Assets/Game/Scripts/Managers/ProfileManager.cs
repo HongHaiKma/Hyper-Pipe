@@ -164,19 +164,26 @@ public class ProfileManager : MonoBehaviour
         Dictionary<int, LevelConfig> configs = GameData.Instance.GetLevelConfig();
         int pipeCount = InGameObjectsManager.Instance.m_Char.m_SpringManager.springBones.Count - 1;
 
+        if (pipeCount == 0)
+        {
+            pipeCount = 1;
+        }
+
         for (int i = 1; i <= configs.Count; i++)
         {
             if (configs[i].CheckInRange(level))
             {
-                if (pipeCount == 0)
-                {
-                    pipeCount = 1;
-                }
                 BigNumber totalGold = (configs[i].m_MinGold + (1 + (level - 1) * 0.5f) * 10) * pipeCount;
                 Helper.DebugLog("Total gold:" + totalGold);
                 GameManager.Instance.m_GoldWin = totalGold;
                 AddGold(totalGold);
                 break;
+            }
+            else
+            {
+                BigNumber totalGold = (configs[i].m_MinGold + (1 + (level - 1) * 0.5f) * 10) * pipeCount;
+                Helper.DebugLog("Total gold:" + totalGold);
+                GameManager.Instance.m_GoldWin = totalGold;
             }
         }
 

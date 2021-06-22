@@ -319,9 +319,9 @@ public class GUIManager : MonoBehaviour
         }
     }
 
-    public void ShowUIPopup(UICanvas popup, bool isClosePrevious = true)
+    public void ShowUIPopup(UICanvas popup, bool isClosePrevious = true, bool isSetup = true)
     {
-        ShowUIPopup(popup, GetCenterPosition(), isClosePrevious);
+        ShowUIPopup(popup, GetCenterPosition(), isClosePrevious, isSetup);
     }
 
     // IEnumerator IEShowUIPopup(UICanvas popup, bool isClosePrevious = true)
@@ -329,7 +329,7 @@ public class GUIManager : MonoBehaviour
     //     // Yielders.Get();
     // }
 
-    public void ShowUIPopup(UICanvas popup, Vector3 position, bool isClosePreviousPopup = true)
+    public void ShowUIPopup(UICanvas popup, Vector3 position, bool isClosePreviousPopup = true, bool isSetup = true)
     {
         if (popup == null) return;
         if (m_CurrentOpenedPopup.Count > 0)
@@ -340,7 +340,7 @@ public class GUIManager : MonoBehaviour
                 HideUIPopup(m_PreviousPopup, m_PreviousPopup.IsAutoRemove, false);
             }
         }
-        popup.ShowPopup();
+        popup.ShowPopup(isSetup);
         popup.SetLocalPosition(position);
         if (!m_CurrentOpenedPopup.Contains(popup))
         {

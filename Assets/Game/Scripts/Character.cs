@@ -176,10 +176,10 @@ public class Character : InGameObject
                         pipe.tf_Owner.localPosition = new Vector3(0f, 0.8899996f, 0f);
                     }
 
-                    GameObject go = PrefabManager.Instance.SpawnScoreLine(ConfigKeys.m_ScoreLine, new Vector3(0f, 0f, InGameObjectsManager.Instance.g_Ending.transform.position.z + Score.m_Score * 2 * 7 + 9f));
-                    go.GetComponent<Score>().SetScore(GameManager.Instance.m_ScoreLineColor[Score.m_Score % 7]);
+                    // GameObject go = PrefabManager.Instance.SpawnScoreLine(ConfigKeys.m_ScoreLine, new Vector3(0f, 0f, InGameObjectsManager.Instance.g_Ending.transform.position.z + Score.m_Score * 2 * 7 + 9f));
+                    // go.GetComponent<Score>().SetScore(GameManager.Instance.m_ScoreLineColor[Score.m_Score % 7]);
 
-                    InGameObjectsManager.Instance.g_ScoreLines.Add(go);
+                    // InGameObjectsManager.Instance.g_ScoreLines.Add(go);
                 }
                 else
                 {
@@ -194,10 +194,10 @@ public class Character : InGameObject
                         pipe.tf_Owner.localPosition = new Vector3(0f, 0.8899996f, 0f);
                     }
 
-                    GameObject go = PrefabManager.Instance.SpawnScoreLine(ConfigKeys.m_ScoreLine, new Vector3(0f, 0f, InGameObjectsManager.Instance.g_Ending.transform.position.z + Score.m_Score * 2 * 7 + 9f));
-                    go.GetComponent<Score>().SetScore(GameManager.Instance.m_ScoreLineColor[Score.m_Score % 7]);
+                    // GameObject go = PrefabManager.Instance.SpawnScoreLine(ConfigKeys.m_ScoreLine, new Vector3(0f, 0f, InGameObjectsManager.Instance.g_Ending.transform.position.z + Score.m_Score * 2 * 7 + 9f));
+                    // go.GetComponent<Score>().SetScore(GameManager.Instance.m_ScoreLineColor[Score.m_Score % 7]);
 
-                    InGameObjectsManager.Instance.g_ScoreLines.Add(go);
+                    // InGameObjectsManager.Instance.g_ScoreLines.Add(go);
                 }
                 pipe.tf_Owner.localEulerAngles = new Vector3(0f, 0f, 90f);
 
@@ -342,7 +342,7 @@ public class Character : InGameObject
         anim_Owner.SetTrigger(ConfigKeys.m_JumpDown);
         tf_Owner.DORotate(new Vector3(0f, 0f, 0f), 0f);
         tf_Owner.parent = null;
-        tf_Owner.DOMoveY(0f, 1f).OnStart(
+        tf_Owner.DOMoveY(0f, 0.5f).OnStart(
             () =>
             {
                 // PlaySceneManager.Instance.m_TouchTrackPad.gameObject.SetActive(false);

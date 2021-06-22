@@ -112,10 +112,15 @@ public class UICanvas : MonoBehaviour
     }
 
 
-    public void ShowPopup()
+    public void ShowPopup(bool isSetup = true)
     {
-        gameObject.SetActive(false);
+        // gameObject.SetActive(false);
         gameObject.SetActive(true);
+        if (isSetup)
+        {
+            Setup();
+            Helper.DebugLog("Setupppppppppppppppppppp");
+        }
         OnStartOpen();
         //if (m_CanvasGroup != null)
         //    m_CanvasGroup.alpha = 0;

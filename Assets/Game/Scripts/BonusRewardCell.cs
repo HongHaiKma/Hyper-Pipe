@@ -30,6 +30,7 @@ public class BonusRewardCell : MonoBehaviour
         g_Chest.SetActive(true);
         g_Char.SetActive(false);
         g_Gold.SetActive(false);
+        btn_Claim.interactable = true;
     }
 
     public void Claim()
@@ -54,6 +55,7 @@ public class BonusRewardCell : MonoBehaviour
 
             g_Chest.SetActive(false);
             ProfileManager.AddKeys(-1);
+            btn_Claim.interactable = false;
             PopupCaller.GetBonusRewardPopup().UpdateKeys();
         }
     }

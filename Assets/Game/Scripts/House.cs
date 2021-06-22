@@ -54,15 +54,15 @@ public class House : MonoBehaviour
             SoundManager.Instance.OnSoundWin();
             if (ProfileManager.GetKeys() < 3)
             {
-                if (((ProfileManager.GetLevel() - 1) % 5 == 0) && (GameData.Instance.GetEpicCharacterDataConfig().Count > 0))
-                {
-                    PopupCaller.OpenOutfitProgressPopup();
-                }
-                else
-                {
-                    PopupCaller.OpenWinPopup();
-                }
-
+                // if (((ProfileManager.GetLevel() - 1) % 5 == 0) && (GameData.Instance.GetEpicCharacterDataConfig().Count > 0))
+                // {
+                //     PopupCaller.OpenOutfitProgressPopup();
+                // }
+                // else
+                // {
+                //     PopupCaller.OpenWinPopup(false, true);
+                // }
+                PopupCaller.OpenWinPopup();
             }
             else
             {

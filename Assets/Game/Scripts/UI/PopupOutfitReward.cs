@@ -69,6 +69,7 @@ public class PopupOutfitReward : UICanvas
     public override void OnClose()
     {
         base.OnClose();
-        PopupCaller.OpenWinPopup();
+        PopupCaller.OpenWinPopup(false, false);
+        EventManager.CallEvent(GameEvent.POPUP_WIN_BUTTON_APPEAR);
     }
 }

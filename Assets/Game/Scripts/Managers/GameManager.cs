@@ -13,6 +13,14 @@ public class GameManager : Singleton<GameManager>
     public int m_KeyInGameStep;
     public BigNumber m_GoldWin;
 
+    bool IsVibrateOn
+    {
+        get
+        {
+            return GetVibrateState() == 1;
+        }
+    }
+
     private void Awake()
     {
         Application.targetFrameRate = 60;
@@ -20,14 +28,27 @@ public class GameManager : Singleton<GameManager>
 
     public void Vibrate(int _type)
     {
-        if (_type == 0)
+        if (IsVibrateOn)
         {
-            MMVibrationManager.Haptic(HapticTypes.RigidImpact);
+            if (_type == 0)
+            {
+                MMVibrationManager.Haptic(HapticTypes.RigidImpact);
+            }
+            if (_type == 1)
+            {
+                MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
+            }
         }
-        if (_type == 1)
-        {
-            MMVibrationManager.Haptic(HapticTypes.HeavyImpact);
-        }
+    }
+
+    public int GetVibrateState()
+    {
+        return PlayerPrefs.GetInt("Vibrate", 1);
+    }
+
+    public void SetVibrateState(int value)
+    {
+        PlayerPrefs.SetInt("Vibrate", value);
     }
 
     public void StopAllVibrates()

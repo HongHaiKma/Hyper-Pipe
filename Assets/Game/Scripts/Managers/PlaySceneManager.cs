@@ -18,6 +18,8 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
 
     public Button btn_TestAds;
 
+    public Button btn_MoveTruck;
+
     public TextMeshProUGUI txt_TotalGold;
     public TextMeshProUGUI txt_Level;
     public TextMeshProUGUI txt_Pipe;
@@ -34,9 +36,11 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
     public GameObject g_Setting;
     public Button btn_Sound;
     public Button btn_Music;
+    public Button btn_Vibrate;
     public Button btn_Replay;
     public Image img_Sound;
     public Image img_Music;
+    public Image img_Vibrate;
 
 
     [Header("Level String")]
@@ -64,9 +68,12 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
         GUIManager.Instance.AddClickEvent(btn_JumpLevel, JumpLevel);
         GUIManager.Instance.AddClickEvent(btn_StartLonger, OnStartLonger);
 
+        GUIManager.Instance.AddClickEvent(btn_MoveTruck, InGameObjectsManager.Instance.StartMoveTruck);
+
         GUIManager.Instance.AddClickEvent(btn_Setting, OnOpenSetting);
         GUIManager.Instance.AddClickEvent(btn_Sound, OnSetSound);
         GUIManager.Instance.AddClickEvent(btn_Music, OnSetMusic);
+        GUIManager.Instance.AddClickEvent(btn_Vibrate, OnSetVibrate);
         GUIManager.Instance.AddClickEvent(btn_Replay, Replay);
 
         GUIManager.Instance.AddClickEvent(btn_Inter, TestAds);
@@ -78,7 +85,7 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
         txt_TotalGold.text = ProfileManager.GetGold();
         txt_Level.text = "Level " + ProfileManager.GetLevel().ToString();
         txt_Pipe.text = 0.ToString() + "m";
-        btn_StartLonger.gameObject.SetActive(false);
+        // btn_StartLonger.gameObject.SetActive(false);
         SetupLevelString();
         base.OnEnable();
     }
@@ -111,7 +118,8 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
         if (Input.GetKeyDown(KeyCode.V))
         {
             // Event_ADD_KEY();
-            PopupCaller.OpenOutfitPopup(false);
+            // PopupCaller.OpenOutfitPopup(false);
+            PopupCaller.OpenOutfitRewardPopup();
         }
     }
 
@@ -120,7 +128,7 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
         EventManager.AddListener(GameEvent.LOAD_MAP, Event_LOAD_MAP);
         EventManager.AddListener(GameEvent.END_GAME, Event_END_GAME);
         EventManager.AddListener(GameEvent.UPDATE_GOLD, Event_UPDATE_GOLD);
-        EventManager1<bool>.AddListener(GameEvent.GAME_START, Event_GAME_START);
+        // EventManager1<bool>.AddListener(GameEvent.GAME_START, Event_GAME_START);
     }
 
     public override void StopListenToEvents()
@@ -128,7 +136,7 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
         EventManager.RemoveListener(GameEvent.LOAD_MAP, Event_LOAD_MAP);
         EventManager.RemoveListener(GameEvent.END_GAME, Event_END_GAME);
         EventManager.RemoveListener(GameEvent.UPDATE_GOLD, Event_UPDATE_GOLD);
-        EventManager1<bool>.AddListener(GameEvent.GAME_START, Event_GAME_START);
+        // EventManager1<bool>.AddListener(GameEvent.GAME_START, Event_GAME_START);
     }
 
     public void OnOpenSetting()
@@ -136,6 +144,35 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
         g_Setting.SetActive(!g_Setting.activeInHierarchy);
         SetSoundImage();
         SetMusicImage();
+        SetVibrateImage();
+    }
+
+    public void OnSetVibrate()
+    {
+        int vibrateOn = GameManager.Instance.GetVibrateState();
+        if (vibrateOn == 1)
+        {
+            img_Vibrate.sprite = SpriteManager.Instance.m_Settings[4];
+            GameManager.Instance.SetVibrateState(0);
+        }
+        else
+        {
+            img_Vibrate.sprite = SpriteManager.Instance.m_Settings[5];
+            GameManager.Instance.SetVibrateState(1);
+        }
+    }
+
+    public void SetVibrateImage()
+    {
+        int vibrateOn = GameManager.Instance.GetVibrateState();
+        if (vibrateOn == 1)
+        {
+            img_Vibrate.sprite = SpriteManager.Instance.m_Settings[5];
+        }
+        else
+        {
+            img_Vibrate.sprite = SpriteManager.Instance.m_Settings[4];
+        }
     }
 
     public void OnSetSound()
@@ -220,7 +257,7 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
     public void Event_LOAD_MAP()
     {
         // m_TouchTrackPad.gameObject.SetActive(true);
-        btn_Outfit.gameObject.SetActive(false);
+        // btn_Outfit.gameObject.SetActive(false);
     }
 
     public void Event_END_GAME()
@@ -268,7 +305,7 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
 
     public void OpenOutfitPopup()
     {
-        PopupCaller.OpenOutfitPopup(true);
+        PopupCaller.OpenOutfitPopup();
     }
 
     public void OpenBonusRewardPopup()

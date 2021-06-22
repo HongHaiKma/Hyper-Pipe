@@ -222,18 +222,19 @@ public class PopupBonusReward : UICanvas
     public void Watch3Keys()
     {
         AdsManager.Instance.WatchRewardVideo(RewardType.KEYS3_1);
+        // PopupCaller.OpenBonusRewardPopup();
     }
 
     public override void OnClose()
     {
         base.OnClose();
-        if (((ProfileManager.GetLevel() - 1) % 5 == 0) && (GameData.Instance.GetEpicCharacterDataConfig().Count > 0))
-        {
-            PopupCaller.OpenOutfitProgressPopup();
-        }
-        else
-        {
-            PopupCaller.OpenWinPopup();
-        }
+        // if (((ProfileManager.GetLevel() - 1) % 5 == 0) && (GameData.Instance.GetEpicCharacterDataConfig().Count > 0))
+        // {
+        //     PopupCaller.OpenOutfitRewardPopup();
+        // }
+        // else
+        // {
+        PopupCaller.OpenWinPopup();
+        // }
     }
 }

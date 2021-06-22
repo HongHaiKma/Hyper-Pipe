@@ -12,8 +12,13 @@ public class PopupWin : UICanvas
     public TextMeshProUGUI txt_GoldWin;
     public TextMeshProUGUI txt_AdsGold;
 
+    public TextMeshProUGUI txt_TotalGold;
+    public GameObject g_TotalGold;
+
     public Image img_GiftFill;
     public TextMeshProUGUI txt_Percent;
+
+    public GameObject g_Effect;
 
     [Header("Random Epic Char")]
     public static int m_RandomEpicChar;
@@ -33,60 +38,66 @@ public class PopupWin : UICanvas
 
     public override void OnEnable()
     {
-        txt_Percent.text = "0%";
-        img_GiftFill.fillAmount = 0f;
-        float aaa = ((ProfileManager.GetLevel() - 1) % 5f) / 5f;
-        if (aaa == 0f)
-        {
-            aaa = 1;
-        }
-        img_GiftFill.DOFillAmount(aaa, aaa * 1.5f).OnStart(
-            () =>
-            {
-                btn_AdsGold.interactable = false;
-                txt_Percent.text = aaa * 100f + "%";
-            }
-        ).OnComplete(
-            () =>
-            {
-                btn_AdsGold.interactable = true;
-                btn_NextLevel.interactable = true;
-            }
-        );
-
-        btn_NextLevel.gameObject.SetActive(false);
-        StartCoroutine(IENextLevelAppear());
-
-        txt_GoldWin.text = GameManager.Instance.m_GoldWin.ToString();
-        txt_AdsGold.text = (GameManager.Instance.m_GoldWin * 3).ToString();
-
-        // RandomEpicCharacter();
-
         base.OnEnable();
+        Helper.DebugLog("PopupWin OnEnable()");
     }
 
     public override void StartListenToEvents()
     {
         base.StartListenToEvents();
         EventManager.AddListener(GameEvent.ADS_GOLD_2_ANIM, SpawnGoldEffectFromAds);
+        EventManager.AddListener(GameEvent.POPUP_WIN_BUTTON_APPEAR, DelayForButtonAppear);
     }
 
     public override void StopListenToEvents()
     {
         base.StopListenToEvents();
         EventManager.RemoveListener(GameEvent.ADS_GOLD_2_ANIM, SpawnGoldEffectFromAds);
+        EventManager.RemoveListener(GameEvent.POPUP_WIN_BUTTON_APPEAR, DelayForButtonAppear);
+    }
+
+    public override void Setup()
+    {
+        base.Setup();
+        txt_Percent.text = "0%";
+        img_GiftFill.fillAmount = 0f;
+        btn_AdsGold.interactable = false;
+        float aaa = ((ProfileManager.GetLevel() - 1) % 5f) / 5f;
+        if (aaa == 0f)
+        {
+            aaa = 1;
+        }
+        else
+        {
+            g_Effect.SetActive(false);
+        }
+        img_GiftFill.DOFillAmount(aaa, aaa * 1.5f).OnStart(
+            () =>
+            {
+                txt_Percent.text = aaa * 100f + "%";
+            }
+        ).OnComplete(
+            () =>
+            {
+                if (aaa == 1)
+                {
+                    g_Effect.SetActive(true);
+                }
+            }
+        );
+
+        btn_NextLevel.gameObject.SetActive(false);
+        StartCoroutine(IEDelayForOutfitRewardPopup());
+
+        txt_GoldWin.text = GameManager.Instance.m_GoldWin.ToString();
+        txt_AdsGold.text = (GameManager.Instance.m_GoldWin * 3).ToString();
+        txt_TotalGold.text = ProfileManager.GetGold();
     }
 
     public void RandomEpicCharacter()
     {
         List<CharacterDataConfig> randomEpicChar = GameData.Instance.GetEpicCharacterDataConfig();
-        for (int i = 0; i < randomEpicChar.Count; i++)
-        {
-            Helper.DebugLog("Char choose: " + randomEpicChar[i].m_Name);
-        }
         m_RandomEpicChar = Random.Range(0, randomEpicChar.Count);
-        Helper.DebugLog("Random Index List: " + m_RandomEpicChar);
-        Helper.DebugLog("Random Char: " + randomEpicChar[m_RandomEpicChar].m_Name.ToString());
 
         int charId = randomEpicChar[m_RandomEpicChar].m_Id;
         img_Char.sprite = SpriteManager.Instance.m_CharCards[charId - 1];
@@ -133,7 +144,7 @@ public class PopupWin : UICanvas
 
             g_EffectGold.transform.DOKill();
 
-            g_EffectGold.transform.DOMove(PlaySceneManager.Instance.txt_TotalGold.gameObject.transform.position, 0.7f).SetDelay(0.1f + i * 0.1f).OnComplete(
+            g_EffectGold.transform.DOMove(g_TotalGold.transform.position, 0.7f).SetDelay(0.1f + i * 0.1f).OnComplete(
                 () =>
                 {
                     PrefabManager.Instance.DespawnPool(g_EffectGold);
@@ -150,9 +161,36 @@ public class PopupWin : UICanvas
         GUIManager.Instance.LoadPlayScene(true);
     }
 
-    IEnumerator IENextLevelAppear()
+    IEnumerator IEDelayForOutfitRewardPopup()
     {
         yield return Yielders.Get(2f);
+
+        float aaa = ((ProfileManager.GetLevel() - 1) % 5f) / 5f;
+        if (aaa == 0f)
+        {
+            PopupCaller.OpenOutfitRewardPopup();
+        }
+        else
+        {
+            ButtonAppear();
+        }
+    }
+
+    public void DelayForButtonAppear()
+    {
+        StartCoroutine(IEDelayForButtonAppear());
+    }
+
+    IEnumerator IEDelayForButtonAppear()
+    {
+        yield return Yielders.Get(2f);
+        ButtonAppear();
+    }
+
+    public void ButtonAppear()
+    {
         btn_NextLevel.gameObject.SetActive(true);
+        btn_NextLevel.interactable = true;
+        btn_AdsGold.interactable = true;
     }
 }

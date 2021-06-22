@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class InGameObjectsManager : Singleton<InGameObjectsManager>
 {
     public Character m_Char;
+    public GameObject g_Truck;
     public float m_MapLength;
 
     public GameObject g_Map;
@@ -211,14 +212,18 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
             }
         }
 
-        if ((level % GameManager.Instance.m_KeyInGameStep) == 1)
+        for (int i = 0; i < keysInGame.Count; i++)
         {
-            Helper.DebugLog("Enable key in game");
-            keysInGame[Random.Range(0, keysInGame.Count)].SetActive(true);
+            keysInGame[i].SetActive(false);
         }
 
         if (level == 1)
         {
+            keysInGame[Random.Range(0, keysInGame.Count)].SetActive(true);
+        }
+        else if ((level % GameManager.Instance.m_KeyInGameStep) == 1)
+        {
+            Helper.DebugLog("Enable key in game");
             keysInGame[Random.Range(0, keysInGame.Count)].SetActive(true);
         }
 
@@ -230,6 +235,12 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
         GameObject score = PrefabManager.Instance.SpawnScoreLine(ConfigKeys.m_ScoreLine, new Vector3(0f, 0f, ending.transform.position.z + 4f + 5f));
         score.GetComponent<Score>().SetScore(GameManager.Instance.m_ScoreLineColor[0]);
 
+        for (int i = 0; i < 7; i++)
+        {
+            GameObject go = PrefabManager.Instance.SpawnScoreLine(ConfigKeys.m_ScoreLine, new Vector3(0f, 0f, InGameObjectsManager.Instance.g_Ending.transform.position.z + Score.m_Score * 2 * 7 + 9f));
+            go.GetComponent<Score>().SetScore(GameManager.Instance.m_ScoreLineColor[Score.m_Score % 7]);
+        }
+
         for (int i = 0; i < 10; i++)
         {
             GameObject go = PrefabManager.Instance.SpawnPathCell0(m_MapLength - 5f);
@@ -239,9 +250,17 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
         }
 
         GameObject truck = PrefabManager.Instance.SpawnTruck(0);
+        g_Truck = truck;
 
         CameraController.Instance.m_CMFreeLook.Follow = truck.transform;
-        truck.transform.DOMove(new Vector3(0f, 0f, -54.2f), 2.5f).OnComplete
+
+    }
+
+    public void StartMoveTruck()
+    {
+        PlaySceneManager.Instance.btn_MoveTruck.gameObject.SetActive(false);
+        PlaySceneManager.Instance.btn_Outfit.gameObject.SetActive(false);
+        g_Truck.transform.DOMove(new Vector3(0f, 0f, -54.2f), 2.5f).OnComplete
         (
             () =>
             {
@@ -252,14 +271,15 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
                 m_Char = charrr.GetComponent<Character>();
                 CameraController.Instance.m_CMFreeLook.Follow = null;
 
-                truck.transform.DOMove(new Vector3(-25f, 0f, -54.2f), 0.5f).OnComplete(
+                g_Truck.transform.DOMove(new Vector3(-25f, 0f, -54.2f), 0.5f).OnComplete(
                     () =>
                     {
                         CameraController.Instance.Do1stAction();
-                        PlaySceneManager.Instance.btn_Outfit.gameObject.SetActive(true);
+                        // PlaySceneManager.Instance.btn_Outfit.gameObject.SetActive(true);
                         PlaySceneManager.Instance.g_LevelString.gameObject.SetActive(true);
                         PlaySceneManager.Instance.btn_StartLonger.gameObject.SetActive(true);
                         PlaySceneManager.Instance.m_TouchTrackPad.gameObject.SetActive(true);
+                        PlaySceneManager.Instance.btn_StartLonger.gameObject.SetActive(true);
                     }
                 );
             }

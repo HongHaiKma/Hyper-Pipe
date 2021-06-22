@@ -135,6 +135,8 @@ namespace UnityChan
                 springBones.RemoveAt(i);
             }
 
+            PlaySceneManager.Instance.Event_ADD_PIPE(springBones.Count - 1);
+
             // for (int i = _value; i < springBones.Count; i++)
             // {
             //     springBones.RemoveAt(i);
