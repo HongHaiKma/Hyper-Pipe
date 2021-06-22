@@ -172,15 +172,23 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
         }
 
         List<int> listMap = new List<int>();
+
         listMap.Add(lv.m_PathCell1);
         listMap.Add(lv.m_PathCell2);
         listMap.Add(lv.m_PathCell3);
         listMap.Add(lv.m_PathCell4);
 
+        for (int i = 0; i < listMap.Count; i++)
+        {
+            if (listMap[i] < 0)
+            {
+                listMap.Remove(listMap[i]);
+            }
+        }
+
         if (level <= 10)
         {
-            Helper.DebugLog("Level <= 10");
-            mapLengthRandom = 4;
+            mapLengthRandom = listMap.Count;
             for (int i = 0; i < mapLengthRandom; i++)
             {
                 int mapCellRandom = listMap[i];
@@ -190,7 +198,6 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
                 if (cell.g_KeyInGame != null)
                 {
                     keysInGame.Add(cell.g_KeyInGame);
-                    Helper.DebugLog("Add key in Game");
                 }
                 m_MapLength += cell.CalculateTotalLength();
             }
@@ -206,7 +213,6 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
                 if (cell.g_KeyInGame != null)
                 {
                     keysInGame.Add(cell.g_KeyInGame);
-                    Helper.DebugLog("Add key in Game");
                 }
                 m_MapLength += cell.CalculateTotalLength();
             }
@@ -223,7 +229,6 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
         }
         else if ((level % GameManager.Instance.m_KeyInGameStep) == 1)
         {
-            Helper.DebugLog("Enable key in game");
             keysInGame[Random.Range(0, keysInGame.Count)].SetActive(true);
         }
 

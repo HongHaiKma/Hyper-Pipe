@@ -169,22 +169,28 @@ public class ProfileManager : MonoBehaviour
             pipeCount = 1;
         }
 
+        bool claimGold = false;
+
         for (int i = 1; i <= configs.Count; i++)
         {
             if (configs[i].CheckInRange(level))
             {
                 BigNumber totalGold = (configs[i].m_MinGold + (1 + (level - 1) * 0.5f) * 10) * pipeCount;
-                Helper.DebugLog("Total gold:" + totalGold);
                 GameManager.Instance.m_GoldWin = totalGold;
-                AddGold(totalGold);
+                AddGold(totalGold / 2);
+                claimGold = true;
                 break;
             }
             else
             {
                 BigNumber totalGold = (configs[i].m_MinGold + (1 + (level - 1) * 0.5f) * 10) * pipeCount;
-                Helper.DebugLog("Total gold:" + totalGold);
                 GameManager.Instance.m_GoldWin = totalGold;
             }
+        }
+
+        if (!claimGold)
+        {
+            AddGold(GameManager.Instance.m_GoldWin / 2);
         }
 
         MyProfile.PassLevel();

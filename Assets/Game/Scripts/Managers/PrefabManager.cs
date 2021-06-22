@@ -85,10 +85,10 @@ public class PrefabManager : Singleton<PrefabManager>
 
     public void InitIngamePrefab()
     {
-        string pipe1 = ConfigKeys.m_Pipe1.ToString();
-        CreatePool(pipe1, GetPipePrefabByName(pipe1), 10);
-        string pipe0 = ConfigKeys.m_Pipe0.ToString();
-        CreatePool(pipe0, GetPipePrefabByName(pipe0), 2);
+        // string pipe1 = ConfigKeys.m_Pipe1.ToString();
+        // CreatePool(pipe1, GetPipePrefabByName(pipe1), 10);
+        // string pipe0 = ConfigKeys.m_Pipe0.ToString();
+        // CreatePool(pipe0, GetPipePrefabByName(pipe0), 2);
 
         string scoreLine = ConfigKeys.m_ScoreLine.ToString();
         CreatePool(scoreLine, GetScoreLinePrefabByName(scoreLine), 10);

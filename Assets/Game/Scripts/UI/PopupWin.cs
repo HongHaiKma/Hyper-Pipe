@@ -89,8 +89,8 @@ public class PopupWin : UICanvas
         btn_NextLevel.gameObject.SetActive(false);
         StartCoroutine(IEDelayForOutfitRewardPopup());
 
-        txt_GoldWin.text = GameManager.Instance.m_GoldWin.ToString();
-        txt_AdsGold.text = (GameManager.Instance.m_GoldWin * 3).ToString();
+        txt_GoldWin.text = (GameManager.Instance.m_GoldWin / 2).ToString();
+        txt_AdsGold.text = (GameManager.Instance.m_GoldWin * 3 * 2).ToString();
         txt_TotalGold.text = ProfileManager.GetGold();
     }
 
