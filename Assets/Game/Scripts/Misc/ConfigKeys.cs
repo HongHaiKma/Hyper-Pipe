@@ -18,4 +18,6 @@ public class ConfigKeys
     public static string m_PathAction = "PathAction";
     public static string m_Ending = "Ending";
     public static string m_KeyInGame = "KeyInGame";
+
+    public static string rateUs = "rateUs";
 }

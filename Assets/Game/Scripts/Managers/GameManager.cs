@@ -13,6 +13,8 @@ public class GameManager : Singleton<GameManager>
     public int m_KeyInGameStep;
     public BigNumber m_GoldWin;
 
+    public Material[] mat_Pipes;
+
     bool IsVibrateOn
     {
         get

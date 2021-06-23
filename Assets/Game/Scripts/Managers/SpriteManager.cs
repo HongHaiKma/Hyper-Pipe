@@ -6,6 +6,7 @@ public class SpriteManager : Singleton<SpriteManager>
     public Sprite[] m_UICardBG;
     public Sprite[] m_LevelStringBG;
     public Sprite[] m_Settings;
+    public Sprite[] m_RateStar;
 }
 
 public enum MiscSpriteKeys

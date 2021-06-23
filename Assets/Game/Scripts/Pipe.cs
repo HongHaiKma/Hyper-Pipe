@@ -9,11 +9,13 @@ public class Pipe : InGameObject
     private Collider m_Col;
     private bool m_Collided = false;
     public SpringBone m_SpringBone;
+    public MeshRenderer mesh_Owner;
 
     private void Awake()
     {
         m_Col = GetComponent<Collider>();
         tf_Owner = GetComponent<Transform>();
+        mesh_Owner = GetComponent<MeshRenderer>();
     }
 
     public override void OnEnable()
@@ -52,12 +54,22 @@ public class Pipe : InGameObject
     {
         // EventManager.AddListener(GameEvent.SET_PIPE_BONE_CHILD, SetPipeBoneChild);
         EventManager.AddListener(GameEvent.TEST_POS, TestPos);
+        EventManager1<int>.AddListener(GameEvent.CHANGE_PIPE_COLOR, Event_CHANGE_PIPE_COLOR);
     }
 
     public override void StopListenToEvents()
     {
         // EventManager.RemoveListener(GameEvent.SET_PIPE_BONE_CHILD, SetPipeBoneChild);
         EventManager.RemoveListener(GameEvent.TEST_POS, TestPos);
+        EventManager1<int>.RemoveListener(GameEvent.CHANGE_PIPE_COLOR, Event_CHANGE_PIPE_COLOR);
+    }
+
+    public void Event_CHANGE_PIPE_COLOR(int _index)
+    {
+        if (m_PipeNo > 0)
+        {
+            mesh_Owner.material = GameManager.Instance.mat_Pipes[_index];
+        }
     }
 
     // public void SetPipeBoneChild()

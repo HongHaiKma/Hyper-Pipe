@@ -137,6 +137,11 @@ public class Character : InGameObject
             AddPipe();
         }
 
+        // if (Input.GetKeyDown(KeyCode.Z))
+        // {
+        //     EventManager.CallEvent(GameEvent.CHANGE_PIPE_COLOR);
+        // }
+
         // if (Input.GetKeyDown(KeyCode.B))
         // {
         //     EventManager.CallEvent(GameEvent.TEST_POS);
@@ -392,10 +397,11 @@ public class Character : InGameObject
     {
         if (other.tag.Equals(ConfigKeys.m_PipeCollect))
         {
-            other.GetComponent<PipeCollect>().SetupCollected();
+            PipeCollect pipeCollect = other.GetComponent<PipeCollect>();
+            pipeCollect.SetupCollected();
             AddPipe();
+            EventManager1<int>.CallEvent(GameEvent.CHANGE_PIPE_COLOR, pipeCollect.m_MatNo);
             GameManager.Instance.Vibrate(0);
-            // Helper.DebugLog("Char trigger pipecollect");
         }
         else if (other.tag.Equals(ConfigKeys.m_PathAction))
         {
@@ -417,12 +423,10 @@ public class Character : InGameObject
             if (result <= 0)
             {
                 EventManager1<int>.CallEvent(GameEvent.DESTROY_SCORE_LINE, 1);
-                Helper.DebugLog("result < 0");
                 return;
             }
 
             EventManager1<int>.CallEvent(GameEvent.DESTROY_SCORE_LINE, result);
-            // Helper.DebugLog("Ending calledddddddddddddddddddd");
         }
         else if (other.tag.Equals(ConfigKeys.m_KeyInGame))
         {
@@ -436,7 +440,6 @@ public class Character : InGameObject
         }
         else if (other.tag.Equals("DeadPlane"))
         {
-            // Helper.DebugLog();
             GUIManager.Instance.LoadPlayScene(true);
         }
     }

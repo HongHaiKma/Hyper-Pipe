@@ -104,23 +104,23 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
         //     // PopupCaller.OpenOutfitPopup();
         // }
 
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            ProfileManager.AddKeys(1);
-        }
+        // if (Input.GetKeyDown(KeyCode.X))
+        // {
+        //     ProfileManager.AddKeys(1);
+        // }
 
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            // Event_ADD_KEY();
-            PopupCaller.OpenWinPopup();
-        }
+        // if (Input.GetKeyDown(KeyCode.B))
+        // {
+        //     // Event_ADD_KEY();
+        //     PopupCaller.OpenWinPopup();
+        // }
 
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            // Event_ADD_KEY();
-            // PopupCaller.OpenOutfitPopup(false);
-            PopupCaller.OpenOutfitRewardPopup();
-        }
+        // if (Input.GetKeyDown(KeyCode.V))
+        // {
+        //     // Event_ADD_KEY();
+        //     // PopupCaller.OpenOutfitPopup(false);
+        //     PopupCaller.OpenOutfitRewardPopup();
+        // }
     }
 
     public override void StartListenToEvents()

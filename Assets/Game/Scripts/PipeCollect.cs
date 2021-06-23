@@ -5,6 +5,7 @@ using UnityEngine;
 public class PipeCollect : InGameObject
 {
     public Collider col_Owner;
+    public int m_MatNo;
 
     private void Update()
     {

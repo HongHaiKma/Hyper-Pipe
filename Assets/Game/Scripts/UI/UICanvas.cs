@@ -119,7 +119,6 @@ public class UICanvas : MonoBehaviour
         if (isSetup)
         {
             Setup();
-            Helper.DebugLog("Setupppppppppppppppppppp");
         }
         OnStartOpen();
         //if (m_CanvasGroup != null)

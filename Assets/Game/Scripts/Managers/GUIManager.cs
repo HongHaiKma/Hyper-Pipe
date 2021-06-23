@@ -170,8 +170,13 @@ public class GUIManager : MonoBehaviour
             {
                 AdsManager.Instance.WatchInterstitial();
             }
-        }
+            else if ((level >= 3 && level <= 24) && (level % 4 == 0))
+            {
 
+                PopupCaller.OpenRate();
+
+            }
+        }
     }
 
     public void FindPanelLoadingAds()
@@ -423,6 +428,9 @@ public class GUIManager : MonoBehaviour
             case UIID.POPUP_OUTFIT_REWARD:
                 prefabName = "PopupOutfitReward";
                 break;
+            case UIID.POPUP_RATE:
+                prefabName = "PopupRate";
+                break;
         }
         prefab = GetPopupPrefabByName(prefabName);
         return prefab;
@@ -473,4 +481,5 @@ public enum UIID
     POPUP_WIN = 2,
     POPUP_BONUS_REWARD = 3,
     POPUP_OUTFIT_REWARD = 4,
+    POPUP_RATE = 5,
 }

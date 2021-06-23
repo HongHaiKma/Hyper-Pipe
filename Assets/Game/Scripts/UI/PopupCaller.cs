@@ -38,4 +38,11 @@ public class PopupCaller
 
         GUIManager.Instance.ShowUIPopup(popup);
     }
+
+    public static void OpenRate()
+    {
+        PopupRate popup = GUIManager.Instance.GetUICanvasByID(UIID.POPUP_RATE) as PopupRate;
+
+        GUIManager.Instance.ShowUIPopup(popup);
+    }
 }
