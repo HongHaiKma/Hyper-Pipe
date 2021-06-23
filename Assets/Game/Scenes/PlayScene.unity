@@ -6245,7 +6245,7 @@ MonoBehaviour:
   m_MapMinConfig: 5
   m_MapMaxConfig: 7
   m_MapPrefabMinConfig: 1
-  m_MapPrefabMaxConfig: 1
+  m_MapPrefabMaxConfig: 28
   m_LevelConfigs:
   - m_MapMin: 4
     m_MapMax: 4
