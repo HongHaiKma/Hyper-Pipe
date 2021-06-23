@@ -8,7 +8,7 @@ public class Test : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            PopupCaller.OpenRate();
+            // PopupCaller.OpenRate();
         }
     }
 }

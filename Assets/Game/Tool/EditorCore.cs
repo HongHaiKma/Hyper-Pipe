@@ -6,6 +6,7 @@ public class EditorCore : MonoBehaviour
 {
     public List<GameObject> m_PipeCollect;
     public List<GameObject> m_Pipes;
+    public Transform tf_Parent;
 
     public void ChangePipe()
     {
@@ -23,6 +24,7 @@ public class EditorCore : MonoBehaviour
         {
             GameObject pipeCollect = Instantiate(m_PipeCollect[Random.Range(0, m_PipeCollect.Count)]);
             pipeCollect.transform.position = pos[i];
+            pipeCollect.transform.parent = tf_Parent;
             m_Pipes.Add(pipeCollect);
         }
     }

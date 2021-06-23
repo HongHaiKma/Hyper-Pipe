@@ -972,7 +972,7 @@ MonoBehaviour:
   m_ScoreLinePrefabs:
   - {fileID: 4224897860252746235, guid: a590c00610255e34a806e63f901c0a64, type: 3}
   m_PathCellPrefabs:
-  - {fileID: 1438964791470050401, guid: d025ff7e79050fe41ba83b4923e3d0d6, type: 3}
+  - {fileID: 6718604302623106415, guid: d025ff7e79050fe41ba83b4923e3d0d6, type: 3}
   - {fileID: 3094457101586675549, guid: 2c278463c7a7ae54d91c12669651ce26, type: 3}
   - {fileID: 3809369938707025640, guid: 355179bd8dd168247a2e73224840dde8, type: 3}
   - {fileID: 6105972091225938416, guid: 9e922480d462ebc419d77d2de99effb7, type: 3}
@@ -5275,7 +5275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977780174}
   m_LocalRotation: {x: 0.20449609, y: 0, z: 0, w: 0.97886735}
-  m_LocalPosition: {x: -0.19447628, y: 1.1922398, z: -23.61266}
+  m_LocalPosition: {x: -0.2109839, y: 1.5517628, z: -21.513126}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1852854003}
@@ -5813,7 +5813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d70cc20219cd84593f67d248eafe36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Offset: {x: 0, y: -0.04, z: -8.29}
+  m_Offset: {x: -0.016507626, y: 1.13, z: -6.51}
   m_ApplyAfter: 1
   m_PreserveComposition: 0
 --- !u!114 &1099104547
