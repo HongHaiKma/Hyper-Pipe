@@ -12,6 +12,7 @@ public class GameManager : Singleton<GameManager>
     public List<Color> m_ScoreLineColor;
     public int m_KeyInGameStep;
     public BigNumber m_GoldWin;
+    public BigNumber m_GoldBeforeWin;
 
     public Material[] mat_Pipes;
 

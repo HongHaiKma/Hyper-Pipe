@@ -3868,6 +3868,9 @@ MonoBehaviour:
   m_GoldWin:
     v: 0
     m: 0
+  m_GoldBeforeWin:
+    v: 0
+    m: 0
   mat_Pipes:
   - {fileID: 2100000, guid: dd2a9baa10eba304e873f39dc1649a2a, type: 2}
   - {fileID: 2100000, guid: f266fed4fac7a5842b17ab90f4307fe2, type: 2}
@@ -12383,8 +12386,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 1409286143
-  m_fontColor: {r: 1, g: 1, b: 1, a: 0.3254902}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

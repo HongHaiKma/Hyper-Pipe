@@ -193,6 +193,8 @@ public class ProfileManager : MonoBehaviour
             AddGold(GameManager.Instance.m_GoldWin / 2);
         }
 
+        Helper.DebugLog("Gold winnnnnn: " + GameManager.Instance.m_GoldWin);
+
         MyProfile.PassLevel();
     }
 
@@ -229,6 +231,7 @@ public class ProfileManager : MonoBehaviour
 
     public static void AddGold(BigNumber _gold)
     {
+        GameManager.Instance.m_GoldBeforeWin = GetGold2();
         MyProfile.AddGold(_gold);
     }
 
