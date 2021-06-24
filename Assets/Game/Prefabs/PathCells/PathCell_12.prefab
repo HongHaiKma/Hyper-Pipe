@@ -142,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tf_Owner: {fileID: 9126861084242478431}
   col_Owner: {fileID: 3181918702332685332}
-  m_MatNo: 4
+  m_MatNo: 0
 --- !u!65 &3181918702332685332
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -722,7 +722,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tf_Owner: {fileID: 5246427626489536050}
   col_Owner: {fileID: 8924073974260251000}
-  m_MatNo: 3
+  m_MatNo: 1
 --- !u!65 &8924073974260251000
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1108,7 +1108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tf_Owner: {fileID: 730150256985410626}
   col_Owner: {fileID: 2043031872548038140}
-  m_MatNo: 3
+  m_MatNo: 1
 --- !u!65 &2043031872548038140
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1979,7 +1979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tf_Owner: {fileID: 7750191582651888990}
   col_Owner: {fileID: 2444149101572462350}
-  m_MatNo: 4
+  m_MatNo: 0
 --- !u!65 &2444149101572462350
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2478,7 +2478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tf_Owner: {fileID: 4746350991314245298}
   col_Owner: {fileID: 926356351229853022}
-  m_MatNo: 3
+  m_MatNo: 1
 --- !u!65 &926356351229853022
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2621,7 +2621,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tf_Owner: {fileID: 6263960413598190779}
   col_Owner: {fileID: 8576802686880571925}
-  m_MatNo: 1
+  m_MatNo: 5
 --- !u!65 &8576802686880571925
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2683,7 +2683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tf_Owner: {fileID: 2078927253772024271}
   col_Owner: {fileID: 6383977987646460730}
-  m_MatNo: 4
+  m_MatNo: 1
 --- !u!65 &6383977987646460730
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3020,7 +3020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tf_Owner: {fileID: 4476231988457884670}
   col_Owner: {fileID: 7727856810502058097}
-  m_MatNo: 1
+  m_MatNo: 0
 --- !u!65 &7727856810502058097
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3082,7 +3082,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tf_Owner: {fileID: 627617563241554851}
   col_Owner: {fileID: 8301563296858367019}
-  m_MatNo: 2
+  m_MatNo: 0
 --- !u!65 &8301563296858367019
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3338,7 +3338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tf_Owner: {fileID: 1521106105618799597}
   col_Owner: {fileID: 106697555712260717}
-  m_MatNo: 0
+  m_MatNo: 1
 --- !u!65 &106697555712260717
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3918,7 +3918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tf_Owner: {fileID: 4030804635050052976}
   col_Owner: {fileID: 7271520999826613170}
-  m_MatNo: 2
+  m_MatNo: 1
 --- !u!65 &7271520999826613170
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3980,7 +3980,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tf_Owner: {fileID: 886429141871706329}
   col_Owner: {fileID: 7027782546662224284}
-  m_MatNo: 0
+  m_MatNo: 5
 --- !u!65 &7027782546662224284
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4345,7 +4345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tf_Owner: {fileID: 6923691679637673821}
   col_Owner: {fileID: 5910375721173856517}
-  m_MatNo: 1
+  m_MatNo: 0
 --- !u!65 &5910375721173856517
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5537,7 +5537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tf_Owner: {fileID: 5416992335914063161}
   col_Owner: {fileID: 7765303742490109120}
-  m_MatNo: 3
+  m_MatNo: 1
 --- !u!65 &7765303742490109120
 BoxCollider:
   m_ObjectHideFlags: 0

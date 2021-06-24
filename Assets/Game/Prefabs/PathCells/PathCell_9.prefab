@@ -488,7 +488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tf_Owner: {fileID: 5736954210127393910}
   col_Owner: {fileID: 1284980877656808836}
-  m_MatNo: 4
+  m_MatNo: 2
 --- !u!65 &1284980877656808836
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2769,7 +2769,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tf_Owner: {fileID: 5692375367052189467}
   col_Owner: {fileID: 9171568069718884580}
-  m_MatNo: 0
+  m_MatNo: 3
 --- !u!65 &9171568069718884580
 BoxCollider:
   m_ObjectHideFlags: 0
