@@ -405,7 +405,7 @@ public class AdsManager : Singleton<AdsManager>
                 break;
             case RewardType.GOLD_2:
                 m_WatchInter = false;
-                ProfileManager.AddGold(GameManager.Instance.m_GoldWin * 2);
+                ProfileManager.AddGold(GameManager.Instance.m_GoldWin * 3);
                 break;
             case RewardType.KEYS3_1:
                 EventManager.CallEvent(GameEvent.ADS_3KEYS_1_LOGIC);

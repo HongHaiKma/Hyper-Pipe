@@ -175,7 +175,7 @@ public class ProfileManager : MonoBehaviour
         {
             if (configs[i].CheckInRange(level))
             {
-                BigNumber totalGold = (configs[i].m_MinGold + (1 + (level - 1) * 0.5f) * 10) * pipeCount;
+                BigNumber totalGold = (configs[i].m_MinGold + (1 + (level - 1) * 0.5f) * 1f) * pipeCount;
                 GameManager.Instance.m_GoldWin = totalGold;
                 AddGold(totalGold / 2);
                 claimGold = true;
@@ -183,7 +183,7 @@ public class ProfileManager : MonoBehaviour
             }
             else
             {
-                BigNumber totalGold = (configs[i].m_MinGold + (1 + (level - 1) * 0.5f) * 10) * pipeCount;
+                BigNumber totalGold = (configs[i].m_MinGold + (1 + (level - 1) * 0.5f) * 1f) * pipeCount;
                 GameManager.Instance.m_GoldWin = totalGold;
             }
         }
@@ -229,6 +229,7 @@ public class ProfileManager : MonoBehaviour
 
     public static void AddGold(BigNumber _gold)
     {
+        GameManager.Instance.m_GoldBeforeWin = GetGold2();
         MyProfile.AddGold(_gold);
     }
 

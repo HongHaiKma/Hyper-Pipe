@@ -8,7 +8,8 @@ public class Test : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            // PopupCaller.OpenRate();
+            Helper.DebugLog("Gold: " + (GameManager.Instance.m_GoldWin * 3));
+            Helper.DebugLog("Gold Profile: " + ProfileManager.GetGold().ToString());
         }
     }
 }
