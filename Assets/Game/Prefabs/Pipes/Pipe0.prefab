@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6292476079243920138}
   - component: {fileID: 9037723345169688852}
   - component: {fileID: 4923031245499375761}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Pipe0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,6 +192,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180.196
       objectReference: {fileID: 0}
+    - target: {fileID: 4037906048583778232, guid: b9dc5cc108356fd4d9e5a205de18bc94, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5133677740727623632, guid: b9dc5cc108356fd4d9e5a205de18bc94, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309557117151534572, guid: b9dc5cc108356fd4d9e5a205de18bc94, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 6909004168835733906, guid: b9dc5cc108356fd4d9e5a205de18bc94, type: 3}
       propertyPath: startDelay.scalar
       value: 1
@@ -245,8 +257,16 @@ PrefabInstance:
       value: Waterspray
       objectReference: {fileID: 0}
     - target: {fileID: 7338783517569786842, guid: b9dc5cc108356fd4d9e5a205de18bc94, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7338783517569786842, guid: b9dc5cc108356fd4d9e5a205de18bc94, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7338803858088437444, guid: b9dc5cc108356fd4d9e5a205de18bc94, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 9150559434063494272, guid: b9dc5cc108356fd4d9e5a205de18bc94, type: 3}
       propertyPath: m_Enabled
