@@ -239,9 +239,9 @@ MonoBehaviour:
   tf_Saw: {fileID: 2750509383138379792}
   tf_Start: {fileID: 2750509383148649491}
   tf_End: {fileID: 2750509384932711846}
-  m_MoveDownSpd: 2
-  m_MoveUpSpd: 2
-  m_ActionWaiting: 2
+  m_MoveDownSpd: 1.5
+  m_MoveUpSpd: 1.5
+  m_ActionWaiting: 1
   m_StartDelayTimeMax: 0.5
   start: 0
 --- !u!1 &2750509384932711845

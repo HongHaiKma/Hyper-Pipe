@@ -104,15 +104,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveUpSpd
-      value: 2.4
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveDownSpd
-      value: 2.4
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_ActionWaiting
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_StartDelayTimeMax
@@ -210,15 +210,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveUpSpd
-      value: 2.4
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveDownSpd
-      value: 2.4
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_ActionWaiting
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_StartDelayTimeMax
@@ -316,15 +316,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveUpSpd
-      value: 2.4
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveDownSpd
-      value: 2.4
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_ActionWaiting
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_StartDelayTimeMax
@@ -422,15 +422,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveUpSpd
-      value: 2.4
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveDownSpd
-      value: 2.4
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_ActionWaiting
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_StartDelayTimeMax
@@ -524,15 +524,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveUpSpd
-      value: 2.4
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveDownSpd
-      value: 2.4
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_ActionWaiting
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_StartDelayTimeMax

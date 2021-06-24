@@ -165,7 +165,7 @@ MonoBehaviour:
   tf_End: {fileID: 9062931942264535007}
   m_MoveDownSpd: 1
   m_MoveUpSpd: 1
-  m_ActionWaiting: 1.5
+  m_ActionWaiting: 1
   m_StartDelayTimeMax: 0.5
   start: 0
 --- !u!1 &9062931943877951329

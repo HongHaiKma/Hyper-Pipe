@@ -98,15 +98,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveUpSpd
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveDownSpd
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_ActionWaiting
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_StartDelayTimeMax
@@ -196,15 +196,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveUpSpd
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveDownSpd
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_ActionWaiting
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_StartDelayTimeMax
@@ -298,15 +298,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveUpSpd
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_MoveDownSpd
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_ActionWaiting
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750509384633317255, guid: 7a7dbac484d502b439c32a09a7c80d77, type: 3}
       propertyPath: m_StartDelayTimeMax
