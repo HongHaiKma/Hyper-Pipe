@@ -35,7 +35,7 @@ public class Character : InGameObject
         EventManager1<int>.AddListener(GameEvent.CUT_PIPE, RemovePipe);
         EventManager1<CharacterType>.AddListener(GameEvent.CHAR_DESTROY, DestroyChar);
         EventManager.AddListener(GameEvent.LOAD_MAP, DestroyChar);
-        EventManager.AddListener(GameEvent.ADS_START_LONGER, Event_START_LONGER);
+        // EventManager.AddListener(GameEvent.ADS_START_LONGER, Event_START_LONGER);
     }
 
     public override void StopListenToEvents()
@@ -43,7 +43,7 @@ public class Character : InGameObject
         EventManager1<int>.RemoveListener(GameEvent.CUT_PIPE, RemovePipe);
         EventManager1<CharacterType>.RemoveListener(GameEvent.CHAR_DESTROY, DestroyChar);
         EventManager.RemoveListener(GameEvent.LOAD_MAP, DestroyChar);
-        EventManager.RemoveListener(GameEvent.ADS_START_LONGER, Event_START_LONGER);
+        // EventManager.RemoveListener(GameEvent.ADS_START_LONGER, Event_START_LONGER);
     }
 
     public void DestroyChar()
@@ -152,6 +152,10 @@ public class Character : InGameObject
     {
         yield return new WaitUntil(() => m_SpringManager != null);
         AddPipe();
+        if (GameManager.Instance.m_StartLonger)
+        {
+            Event_START_LONGER();
+        }
     }
 
     public void AddPipe()
@@ -304,6 +308,12 @@ public class Character : InGameObject
 
     public void OnIdleExecute()
     {
+        float gravity = 0f;
+
+        gravity -= 9.81f * Time.deltaTime;
+        cc_Owner.Move(new Vector3(0f, gravity, 0f));
+        if (cc_Owner.isGrounded) gravity = 0;
+
         if (PlaySceneManager.Instance.m_TouchTrackPad.Pressed() && !m_OnAir)
         {
             ChangeState(RunState.Instance);

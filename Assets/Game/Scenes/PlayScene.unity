@@ -972,21 +972,21 @@ MonoBehaviour:
   m_ScoreLinePrefabs:
   - {fileID: 4224897860252746235, guid: a590c00610255e34a806e63f901c0a64, type: 3}
   m_PathCellPrefabs:
-  - {fileID: 6718604302623106415, guid: d025ff7e79050fe41ba83b4923e3d0d6, type: 3}
-  - {fileID: 3094457101586675549, guid: 2c278463c7a7ae54d91c12669651ce26, type: 3}
-  - {fileID: 3809369938707025640, guid: 355179bd8dd168247a2e73224840dde8, type: 3}
-  - {fileID: 6105972091225938416, guid: 9e922480d462ebc419d77d2de99effb7, type: 3}
-  - {fileID: 4799062310920986817, guid: 677a8630c9a14f048bcf73412330d6d0, type: 3}
-  - {fileID: 3937623427762137682, guid: 4e558e423a263914c9fe14f00b1cedfc, type: 3}
-  - {fileID: 5983078397350655600, guid: c40260c3901567340a171dfd9a37b0f4, type: 3}
-  - {fileID: 5085655506546432978, guid: e6746c832f82e4143b4c1484cfe74334, type: 3}
-  - {fileID: 1704729325277091492, guid: 6f38dbb9db7973c44a90752157da129c, type: 3}
-  - {fileID: 6403412751578714757, guid: 4a57b9aae79a4ac4d85cb010d7ef4639, type: 3}
-  - {fileID: 6791731945556264721, guid: 40c18d3df45f7bc42bf82a3ec4fc6b88, type: 3}
-  - {fileID: 823899646044069886, guid: 64baf46490ef33e4bbc166d4fae925cd, type: 3}
-  - {fileID: 8501353857094912191, guid: d7b76ffc79b1cf94193b7a4c3feda2dd, type: 3}
-  - {fileID: 1920281036937421531, guid: 1b29a7f33eb6fb64699d17af271ceb21, type: 3}
-  - {fileID: 51058470930061317, guid: 10c2da660264f3940921a320eb43db4c, type: 3}
+  - {fileID: 581083788058769145, guid: d025ff7e79050fe41ba83b4923e3d0d6, type: 3}
+  - {fileID: 8168304392458321777, guid: 2c278463c7a7ae54d91c12669651ce26, type: 3}
+  - {fileID: 6476112670077194191, guid: 355179bd8dd168247a2e73224840dde8, type: 3}
+  - {fileID: 2121057049155939310, guid: 9e922480d462ebc419d77d2de99effb7, type: 3}
+  - {fileID: 6948522961005190579, guid: 677a8630c9a14f048bcf73412330d6d0, type: 3}
+  - {fileID: 1130906978488787670, guid: 4e558e423a263914c9fe14f00b1cedfc, type: 3}
+  - {fileID: 3390677626623331921, guid: c40260c3901567340a171dfd9a37b0f4, type: 3}
+  - {fileID: 7997235938586798012, guid: 40c18d3df45f7bc42bf82a3ec4fc6b88, type: 3}
+  - {fileID: 6277222904756956302, guid: 64baf46490ef33e4bbc166d4fae925cd, type: 3}
+  - {fileID: 3665281865612906141, guid: e6746c832f82e4143b4c1484cfe74334, type: 3}
+  - {fileID: 6609822309471985893, guid: 6f38dbb9db7973c44a90752157da129c, type: 3}
+  - {fileID: 2001348383017110499, guid: 4a57b9aae79a4ac4d85cb010d7ef4639, type: 3}
+  - {fileID: 8462103070949418466, guid: d7b76ffc79b1cf94193b7a4c3feda2dd, type: 3}
+  - {fileID: 5476182041539114116, guid: 1b29a7f33eb6fb64699d17af271ceb21, type: 3}
+  - {fileID: 6566390027888819460, guid: 92917f4cccea2d440949682e5a26379b, type: 3}
   - {fileID: 6222285712960576735, guid: 96c1588da0060684f82ea184b55096b4, type: 3}
   - {fileID: 5078428508544336826, guid: 837a6e0b985f04d499e53f57566e751b, type: 3}
   - {fileID: 6390475664792887602, guid: 78024bc70e018d1409153ba3fac1d5ee, type: 3}
@@ -3879,6 +3879,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 7b7510a8401c1764dacc35cc75973a90, type: 2}
   - {fileID: 2100000, guid: 25fc0f722ecd1234b9d5f93a2dcda520, type: 2}
   - {fileID: 2100000, guid: aa3c6eb5b02e95640a71aa1274d6cd64, type: 2}
+  m_StartLonger: 0
 --- !u!1 &842355248
 GameObject:
   m_ObjectHideFlags: 0
@@ -4050,7 +4051,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &865611478
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6246,10 +6247,10 @@ MonoBehaviour:
   m_MapLength: 0
   g_Map: {fileID: 1126036294}
   m_House: {fileID: 0}
-  m_MapMinConfig: 5
-  m_MapMaxConfig: 7
-  m_MapPrefabMinConfig: 1
-  m_MapPrefabMaxConfig: 28
+  m_MapMinConfig: 1
+  m_MapMaxConfig: 1
+  m_MapPrefabMinConfig: 19
+  m_MapPrefabMaxConfig: 19
   m_LevelConfigs:
   - m_MapMin: 4
     m_MapMax: 4

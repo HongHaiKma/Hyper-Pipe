@@ -16,6 +16,8 @@ public class GameManager : Singleton<GameManager>
 
     public Material[] mat_Pipes;
 
+    public bool m_StartLonger = false;
+
     bool IsVibrateOn
     {
         get
@@ -27,6 +29,24 @@ public class GameManager : Singleton<GameManager>
     private void Awake()
     {
         Application.targetFrameRate = 60;
+    }
+
+    public override void StartListenToEvents()
+    {
+        base.StartListenToEvents();
+        EventManager.AddListener(GameEvent.ADS_START_LONGER, Event_START_LONGER);
+    }
+
+    public override void StopListenToEvents()
+    {
+        base.StopListenToEvents();
+        EventManager.RemoveListener(GameEvent.ADS_START_LONGER, Event_START_LONGER);
+    }
+
+    public void Event_START_LONGER()
+    {
+        m_StartLonger = true;
+        Helper.DebugLog("Start longer = " + m_StartLonger);
     }
 
     public void Vibrate(int _type)

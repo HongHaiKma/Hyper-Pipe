@@ -263,8 +263,10 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
 
     public void StartMoveTruck()
     {
+        PlaySceneManager.Instance.btn_Setting.gameObject.SetActive(false);
         PlaySceneManager.Instance.btn_MoveTruck.gameObject.SetActive(false);
         PlaySceneManager.Instance.btn_Outfit.gameObject.SetActive(false);
+        PlaySceneManager.Instance.btn_StartLonger.gameObject.SetActive(false);
         g_Truck.transform.DOMove(new Vector3(0f, 0f, -54.2f), 2.5f).OnComplete
         (
             () =>
@@ -282,9 +284,9 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
                         CameraController.Instance.Do1stAction();
                         // PlaySceneManager.Instance.btn_Outfit.gameObject.SetActive(true);
                         PlaySceneManager.Instance.g_LevelString.gameObject.SetActive(true);
-                        PlaySceneManager.Instance.btn_StartLonger.gameObject.SetActive(true);
+                        // PlaySceneManager.Instance.btn_StartLonger.gameObject.SetActive(true);
                         PlaySceneManager.Instance.m_TouchTrackPad.gameObject.SetActive(true);
-                        PlaySceneManager.Instance.btn_StartLonger.gameObject.SetActive(true);
+                        // PlaySceneManager.Instance.btn_StartLonger.gameObject.SetActive(true);
                     }
                 );
             }
