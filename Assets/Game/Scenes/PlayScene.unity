@@ -3873,7 +3873,7 @@ MonoBehaviour:
     v: 0
     m: 0
   mat_Pipes:
-  - {fileID: 2100000, guid: dd2a9baa10eba304e873f39dc1649a2a, type: 2}
+  - {fileID: 2100000, guid: d33cbe5f5cdf6624296dbac08f3ecd30, type: 2}
   - {fileID: 2100000, guid: f266fed4fac7a5842b17ab90f4307fe2, type: 2}
   - {fileID: 2100000, guid: 1aa5bbd67976bff45a90f84880c5fab2, type: 2}
   - {fileID: 2100000, guid: 7b7510a8401c1764dacc35cc75973a90, type: 2}
