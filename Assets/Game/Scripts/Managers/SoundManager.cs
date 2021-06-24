@@ -16,6 +16,8 @@ public class SoundManager : Singleton<SoundManager>
     public AudioClip m_SoundLose;
     public AudioClip m_ClipBGMInGame;
 
+    public AudioClip m_SoundBigPrize;
+
     bool IsSoundOn
     {
         get
@@ -110,7 +112,7 @@ public class SoundManager : Singleton<SoundManager>
         }
     }
 
-    public void PlaySoundGetGold(Vector3 pos)
+    public void PlaySoundGetGold()
     {
         // if (IsSoundOn && !IsLockSound)
         if (IsSoundOn)
@@ -168,6 +170,16 @@ public class SoundManager : Singleton<SoundManager>
             m_IngameShootingFx.PlayOneShot(m_SoundLose, 5);
         }
     }
+
+    public void PlaySoundBigPrize()
+    {
+        // if (IsSoundOn && !IsLockSound)
+        if (IsSoundOn)
+        {
+            m_IngameShootingFx.PlayOneShot(m_SoundBigPrize, 5);
+        }
+    }
+
 
 
     public void OnSoundWin()

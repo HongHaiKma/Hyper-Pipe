@@ -39,6 +39,7 @@ public class BonusRewardCell : MonoBehaviour
         {
             if (m_IsChar)
             {
+                SoundManager.Instance.PlaySoundBigPrize();
                 g_Char.SetActive(true);
                 g_Gold.SetActive(false);
                 ProfileManager.UnlockNewCharacter(PopupBonusReward.m_Char);
@@ -46,6 +47,7 @@ public class BonusRewardCell : MonoBehaviour
             }
             else
             {
+                SoundManager.Instance.PlaySoundGetGold();
                 g_Char.SetActive(false);
                 g_Gold.SetActive(true);
                 ProfileManager.AddGold(m_Gold);

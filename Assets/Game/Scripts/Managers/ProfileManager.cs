@@ -219,12 +219,12 @@ public class ProfileManager : MonoBehaviour
     #region GENERAL
     public static string GetGold()
     {
-        return MyProfile.GetGold().ToString();
+        return GetGold2().ToString3();
     }
 
     public static BigNumber GetGold2()
     {
-        return MyProfile.GetGold();
+        return MyProfile.GetGold().RoundToInt();
     }
 
     public static void AddGold(BigNumber _gold)

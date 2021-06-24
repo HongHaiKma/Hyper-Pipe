@@ -397,6 +397,7 @@ public class Character : InGameObject
     {
         if (other.tag.Equals(ConfigKeys.m_PipeCollect))
         {
+            SoundManager.Instance.PlaySoundGetGold();
             PipeCollect pipeCollect = other.GetComponent<PipeCollect>();
             pipeCollect.SetupCollected();
             AddPipe();
@@ -430,6 +431,7 @@ public class Character : InGameObject
         }
         else if (other.tag.Equals(ConfigKeys.m_KeyInGame))
         {
+            SoundManager.Instance.PlaySoundGetGold();
             other.enabled = false;
             if (ProfileManager.GetKeys() < 3)
             {

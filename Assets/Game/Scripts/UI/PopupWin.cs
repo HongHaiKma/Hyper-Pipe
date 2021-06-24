@@ -25,6 +25,10 @@ public class PopupWin : UICanvas
     public static int m_RandomEpicChar;
     public Image img_Char;
 
+    public Transform tf_EndGold;
+    public Transform tf_StartGoldClaim;
+    public Transform tf_StartGoldAds;
+
     private void Awake()
     {
         m_ID = UIID.POPUP_WIN;
@@ -89,8 +93,8 @@ public class PopupWin : UICanvas
         btn_NextLevel.gameObject.SetActive(false);
         StartCoroutine(IEDelayForOutfitRewardPopup());
 
-        txt_GoldWin.text = ((GameManager.Instance.m_GoldWin / 2).RoundToInt()).ToString();
-        txt_AdsGold.text = (GameManager.Instance.m_GoldWin * 3 + ProfileManager.GetGold2()).ToString();
+        txt_GoldWin.text = (GameManager.Instance.m_GoldWin / 2).ToCharacterFormat();
+        txt_AdsGold.text = (GameManager.Instance.m_GoldWin * 3 + (GameManager.Instance.m_GoldWin / 2)).ToCharacterFormat();
         txt_TotalGold.text = GameManager.Instance.m_GoldBeforeWin.ToString();
     }
 
@@ -120,14 +124,14 @@ public class PopupWin : UICanvas
     {
         btn_AdsGold.interactable = false;
         btn_NextLevel.interactable = false;
-        SpawnGoldEffect(btn_AdsGold.gameObject.transform.position, (GameManager.Instance.m_GoldWin * 3) / 15);
+        SpawnGoldEffect(tf_StartGoldAds.position, (GameManager.Instance.m_GoldWin * 3) / 15);
     }
 
     public void SpawnGoldEffectFromClaim()
     {
         btn_AdsGold.interactable = false;
         btn_NextLevel.interactable = false;
-        SpawnGoldEffect(btn_NextLevel.gameObject.transform.localPosition, (GameManager.Instance.m_GoldWin / 2) / 15);
+        SpawnGoldEffect(tf_StartGoldClaim.position, (GameManager.Instance.m_GoldWin / 2) / 15);
     }
 
     public void SpawnGoldEffect(Vector3 _pos, BigNumber _goldAdd)
@@ -141,13 +145,14 @@ public class PopupWin : UICanvas
             GameObject g_EffectGold = PrefabManager.Instance.SpawnGoldEffect(ConfigKeys.m_GoldEffect1, _pos);
             g_EffectGold.transform.SetParent(tf_EffectParent);
             g_EffectGold.transform.localScale = new Vector3(1, 1, 1);
-            g_EffectGold.transform.position = transform.position;
 
             InGameObjectsManager.Instance.g_GoldEffects.Add(g_EffectGold);
 
             g_EffectGold.transform.DOKill();
 
-            g_EffectGold.transform.DOMove(g_TotalGold.transform.position, 0.7f).SetDelay(0.1f + i * 0.1f).OnComplete(
+            g_EffectGold.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+            g_EffectGold.transform.DOScale(1f, 0.7f).SetDelay(0.1f + i * 0.1f);
+            g_EffectGold.transform.DOMove(tf_EndGold.position, 0.7f).SetDelay(0.1f + i * 0.1f).OnComplete(
                 () =>
                 {
                     PrefabManager.Instance.DespawnPool(g_EffectGold);
@@ -155,10 +160,14 @@ public class PopupWin : UICanvas
                         () =>
                         {
                             BigNumber goldAdd1 = (GameManager.Instance.m_GoldBeforeWin += _goldAdd).RoundToInt();
-                            txt_TotalGold.text = goldAdd1.ToString();
+                            txt_TotalGold.text = goldAdd1.ToCharacterFormat();
                         }
                     ).OnComplete(
-                        () => txt_TotalGold.transform.DOScale(1f, 0.1f)
+                        () =>
+                        {
+                            txt_TotalGold.transform.DOScale(1f, 0.1f);
+                            SoundManager.Instance.PlaySoundGetGold();
+                        }
                     );
                 }
             );
