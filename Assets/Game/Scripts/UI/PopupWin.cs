@@ -90,7 +90,7 @@ public class PopupWin : UICanvas
         StartCoroutine(IEDelayForOutfitRewardPopup());
 
         txt_GoldWin.text = ((GameManager.Instance.m_GoldWin / 2).RoundToInt()).ToString();
-        txt_AdsGold.text = (GameManager.Instance.m_GoldWin * 3).ToString();
+        txt_AdsGold.text = (GameManager.Instance.m_GoldWin * 3 + ProfileManager.GetGold2()).ToString();
         txt_TotalGold.text = GameManager.Instance.m_GoldBeforeWin.ToString();
     }
 
@@ -111,9 +111,9 @@ public class PopupWin : UICanvas
 
     public void WatchAdsGold()
     {
-        // AdsManager.Instance.WatchRewardVideo(RewardType.GOLD_2);
-        ProfileManager.AddGold(GameManager.Instance.m_GoldWin * 3);
-        SpawnGoldEffectFromAds();
+        AdsManager.Instance.WatchRewardVideo(RewardType.GOLD_2);
+        // ProfileManager.AddGold(GameManager.Instance.m_GoldWin * 3);
+        // SpawnGoldEffectFromAds();
     }
 
     public void SpawnGoldEffectFromAds()
@@ -133,7 +133,7 @@ public class PopupWin : UICanvas
     public void SpawnGoldEffect(Vector3 _pos, BigNumber _goldAdd)
     {
         InGameObjectsManager.Instance.DespawnGoldEffectPool();
-        txt_AdsGold.text = ProfileManager.GetGold().ToString();
+        // txt_AdsGold.text = ProfileManager.GetGold().ToString();
         // BigNumber _goldAdd = (GameManager.Instance.m_GoldWin / 2) / 15;
 
         for (int i = 0; i < 15; i++)
