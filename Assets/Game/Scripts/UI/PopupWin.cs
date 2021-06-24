@@ -90,7 +90,7 @@ public class PopupWin : UICanvas
         StartCoroutine(IEDelayForOutfitRewardPopup());
 
         txt_GoldWin.text = ((GameManager.Instance.m_GoldWin / 2).RoundToInt()).ToString();
-        txt_AdsGold.text = (GameManager.Instance.m_GoldWin * 3 + 0).ToString();
+        txt_AdsGold.text = (GameManager.Instance.m_GoldWin * 3).ToString();
         txt_TotalGold.text = GameManager.Instance.m_GoldBeforeWin.ToString();
     }
 
@@ -155,14 +155,7 @@ public class PopupWin : UICanvas
                         () =>
                         {
                             BigNumber goldAdd1 = (GameManager.Instance.m_GoldBeforeWin += _goldAdd).RoundToInt();
-                            // BigNumber goldAdd1 = (GameManager.Instance.m_GoldBeforeWin += _goldAdd);
                             txt_TotalGold.text = goldAdd1.ToString();
-                            // if (i >= 13)
-                            // {
-
-                            //     txt_TotalGold.text = ProfileManager.GetGold().ToString();
-                            //     Helper.DebugLog("GetGold" + ProfileManager.GetGold().ToString());
-                            // }
                         }
                     ).OnComplete(
                         () => txt_TotalGold.transform.DOScale(1f, 0.1f)
