@@ -33,49 +33,207 @@ public class Score : InGameObject
     public void Event_SCORE_LINE_PICK(int _result)
     {
         Character charrr = InGameObjectsManager.Instance.m_Char;
-        if (_result < 7)
+        if (_result <= 80)
         {
-            if (m_ScoreLine == _result)
+            if (_result <= 14)
             {
-                if (m_ScoreLine < 3)
+                Helper.DebugLog("_result <= 14");
+                if (m_ScoreLine == 1)
                 {
-                    InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(0, tf_Owner.position).GetComponent<House>();
-                    Helper.DebugLog("m_ScoreLine = " + m_ScoreLine);
-                }
-                else if (m_ScoreLine <= 6)
-                {
-                    InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(1, tf_Owner.position).GetComponent<House>();
-                    Helper.DebugLog("m_ScoreLine = " + m_ScoreLine);
-                }
-                Vector3 planeHouse = InGameObjectsManager.Instance.m_House.transform.position;
-                PrefabManager.Instance.SpawnPlaneHouse(planeHouse);
-                charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete
-                (
-                    () =>
+                    Helper.DebugLog("m_ScoreLine == 1");
+                    if (m_ScoreLine < 3)
                     {
-                        charrr.ChangeState(IdleState.Instance);
-                        charrr.m_LastAction = true;
-                        EventManager1<bool>.CallEvent(GameEvent.WATER, true);
-                        InGameObjectsManager.Instance.m_House.m_Start = true;
-                        CameraController.Instance.DoLastAction();
+                        InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(0, tf_Owner.position).GetComponent<House>();
                     }
-                );
+                    else if (m_ScoreLine <= 6)
+                    {
+                        InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(1, tf_Owner.position).GetComponent<House>();
+                    }
+                    Vector3 planeHouse = InGameObjectsManager.Instance.m_House.transform.position;
+                    PrefabManager.Instance.SpawnPlaneHouse(planeHouse);
+                    charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete
+                    (
+                        () =>
+                        {
+                            SoundManager.Instance.PlayWaterSpray();
+                            charrr.ChangeState(IdleState.Instance);
+                            charrr.m_LastAction = true;
+                            EventManager1<bool>.CallEvent(GameEvent.WATER, true);
+                            InGameObjectsManager.Instance.m_House.m_Start = true;
+                            CameraController.Instance.DoLastAction();
+                        }
+                    );
 
-                InGameObjectsManager.Instance.DespawnRedundantScoreLines(m_ScoreLine);
+                    InGameObjectsManager.Instance.DespawnRedundantScoreLines(m_ScoreLine);
+                }
+                return;
+            }
+            if (_result <= 25)
+            {
+                if (m_ScoreLine == 2)
+                {
+                    if (m_ScoreLine < 3)
+                    {
+                        InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(0, tf_Owner.position).GetComponent<House>();
+                    }
+                    else if (m_ScoreLine <= 6)
+                    {
+                        InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(1, tf_Owner.position).GetComponent<House>();
+                    }
+                    Vector3 planeHouse = InGameObjectsManager.Instance.m_House.transform.position;
+                    PrefabManager.Instance.SpawnPlaneHouse(planeHouse);
+                    charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete
+                    (
+                        () =>
+                        {
+                            SoundManager.Instance.PlayWaterSpray();
+                            charrr.ChangeState(IdleState.Instance);
+                            charrr.m_LastAction = true;
+                            EventManager1<bool>.CallEvent(GameEvent.WATER, true);
+                            InGameObjectsManager.Instance.m_House.m_Start = true;
+                            CameraController.Instance.DoLastAction();
+                        }
+                    );
+
+                    InGameObjectsManager.Instance.DespawnRedundantScoreLines(m_ScoreLine);
+                }
+                return;
+            }
+            if (_result <= 40)
+            {
+                if (m_ScoreLine == 3)
+                {
+                    if (m_ScoreLine < 3)
+                    {
+                        InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(0, tf_Owner.position).GetComponent<House>();
+                    }
+                    else if (m_ScoreLine <= 6)
+                    {
+                        InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(1, tf_Owner.position).GetComponent<House>();
+                    }
+                    Vector3 planeHouse = InGameObjectsManager.Instance.m_House.transform.position;
+                    PrefabManager.Instance.SpawnPlaneHouse(planeHouse);
+                    charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete
+                    (
+                        () =>
+                        {
+                            SoundManager.Instance.PlayWaterSpray();
+                            charrr.ChangeState(IdleState.Instance);
+                            charrr.m_LastAction = true;
+                            EventManager1<bool>.CallEvent(GameEvent.WATER, true);
+                            InGameObjectsManager.Instance.m_House.m_Start = true;
+                            CameraController.Instance.DoLastAction();
+                        }
+                    );
+
+                    InGameObjectsManager.Instance.DespawnRedundantScoreLines(m_ScoreLine);
+                }
+                return;
+            }
+            if (_result <= 50)
+            {
+                if (m_ScoreLine == 4)
+                {
+                    if (m_ScoreLine < 3)
+                    {
+                        InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(0, tf_Owner.position).GetComponent<House>();
+                    }
+                    else if (m_ScoreLine <= 6)
+                    {
+                        InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(1, tf_Owner.position).GetComponent<House>();
+                    }
+                    Vector3 planeHouse = InGameObjectsManager.Instance.m_House.transform.position;
+                    PrefabManager.Instance.SpawnPlaneHouse(planeHouse);
+                    charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete
+                    (
+                        () =>
+                        {
+                            SoundManager.Instance.PlayWaterSpray();
+                            charrr.ChangeState(IdleState.Instance);
+                            charrr.m_LastAction = true;
+                            EventManager1<bool>.CallEvent(GameEvent.WATER, true);
+                            InGameObjectsManager.Instance.m_House.m_Start = true;
+                            CameraController.Instance.DoLastAction();
+                        }
+                    );
+
+                    InGameObjectsManager.Instance.DespawnRedundantScoreLines(m_ScoreLine);
+                }
+                return;
+            }
+            if (_result <= 60)
+            {
+                if (m_ScoreLine == 5)
+                {
+                    if (m_ScoreLine < 3)
+                    {
+                        InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(0, tf_Owner.position).GetComponent<House>();
+                    }
+                    else if (m_ScoreLine <= 6)
+                    {
+                        InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(1, tf_Owner.position).GetComponent<House>();
+                    }
+                    Vector3 planeHouse = InGameObjectsManager.Instance.m_House.transform.position;
+                    PrefabManager.Instance.SpawnPlaneHouse(planeHouse);
+                    charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete
+                    (
+                        () =>
+                        {
+                            SoundManager.Instance.PlayWaterSpray();
+                            charrr.ChangeState(IdleState.Instance);
+                            charrr.m_LastAction = true;
+                            EventManager1<bool>.CallEvent(GameEvent.WATER, true);
+                            InGameObjectsManager.Instance.m_House.m_Start = true;
+                            CameraController.Instance.DoLastAction();
+                        }
+                    );
+
+                    InGameObjectsManager.Instance.DespawnRedundantScoreLines(m_ScoreLine);
+                }
+                return;
+            }
+            if (_result <= 80)
+            {
+                if (m_ScoreLine == 6)
+                {
+                    Helper.DebugLog("m_ScoreLine == 6");
+                    if (m_ScoreLine < 3)
+                    {
+                        InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(0, tf_Owner.position).GetComponent<House>();
+                    }
+                    else if (m_ScoreLine <= 6)
+                    {
+                        InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(1, tf_Owner.position).GetComponent<House>();
+                    }
+                    Vector3 planeHouse = InGameObjectsManager.Instance.m_House.transform.position;
+                    PrefabManager.Instance.SpawnPlaneHouse(planeHouse);
+                    charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete
+                    (
+                        () =>
+                        {
+                            SoundManager.Instance.PlayWaterSpray();
+                            charrr.ChangeState(IdleState.Instance);
+                            charrr.m_LastAction = true;
+                            EventManager1<bool>.CallEvent(GameEvent.WATER, true);
+                            InGameObjectsManager.Instance.m_House.m_Start = true;
+                            CameraController.Instance.DoLastAction();
+                        }
+                    );
+
+                    InGameObjectsManager.Instance.DespawnRedundantScoreLines(m_ScoreLine);
+                }
+                return;
             }
         }
         else
         {
             if (m_ScoreLine == 7)
             {
-                Helper.DebugLog("m_ScoreLine = " + m_ScoreLine);
-                // InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(2, tf_Owner.position).GetComponent<House>();
-                // Vector3 planeHouse = InGameObjectsManager.Instance.m_House.transform.position;
-                // PrefabManager.Instance.SpawnPlaneHouse(planeHouse);
                 charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete
                 (
                     () =>
                     {
+                        SoundManager.Instance.PlayWaterSpray();
                         InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(2, tf_Owner.position).GetComponent<House>();
                         Vector3 planeHouse = InGameObjectsManager.Instance.m_House.transform.position;
                         PrefabManager.Instance.SpawnPlaneHouse(planeHouse);
@@ -85,14 +243,11 @@ public class Score : InGameObject
                         EventManager1<bool>.CallEvent(GameEvent.WATER, true);
                         InGameObjectsManager.Instance.m_House.m_Start = true;
                         CameraController.Instance.DoLastAction();
-
-                        // InGameObjectsManager.Instance.m_House = PrefabManager.Instance.SpawnHouse(2, tf_Owner.position).GetComponent<House>();
-                        // Vector3 planeHouse = InGameObjectsManager.Instance.m_House.transform.position;
-                        // PrefabManager.Instance.SpawnPlaneHouse(planeHouse);
                     }
                 );
 
                 InGameObjectsManager.Instance.DespawnRedundantScoreLines(m_ScoreLine);
+                return;
             }
         }
     }

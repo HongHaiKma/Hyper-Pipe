@@ -84,13 +84,13 @@ public class ProfileManager : MonoBehaviour
 
     public void StartListenToEvent()
     {
-        EventManager.AddListener(GameEvent.END_GAME, PassLevel);
+        // EventManager.AddListener(GameEvent.END_GAME, PassLevel);
         // EventManagerWithParam<int>.AddListener(GameEvent.EQUIP_CHAR, EquipChar);
     }
 
     public void StopListenToEvent()
     {
-        EventManager.RemoveListener(GameEvent.END_GAME, PassLevel);
+        // EventManager.RemoveListener(GameEvent.END_GAME, PassLevel);
         // EventManagerWithParam<int>.RemoveListener(GameEvent.EQUIP_CHAR, EquipChar);
     }
 
@@ -160,38 +160,38 @@ public class ProfileManager : MonoBehaviour
 
     public void PassLevel()
     {
-        int level = GetLevel();
-        Dictionary<int, LevelConfig> configs = GameData.Instance.GetLevelConfig();
-        int pipeCount = InGameObjectsManager.Instance.m_Char.m_SpringManager.springBones.Count - 1;
+        // int level = GetLevel();
+        // Dictionary<int, LevelConfig> configs = GameData.Instance.GetLevelConfig();
+        // int pipeCount = InGameObjectsManager.Instance.m_Char.m_SpringManager.springBones.Count - 1;
 
-        if (pipeCount == 0)
-        {
-            pipeCount = 1;
-        }
+        // if (pipeCount == 0)
+        // {
+        //     pipeCount = 1;
+        // }
 
-        bool claimGold = false;
+        // bool claimGold = false;
 
-        for (int i = 1; i <= configs.Count; i++)
-        {
-            if (configs[i].CheckInRange(level))
-            {
-                BigNumber totalGold = (configs[i].m_MinGold + (1 + (level - 1) * 0.5f) * 1f) * pipeCount;
-                GameManager.Instance.m_GoldWin = totalGold;
-                AddGold(totalGold / 2);
-                claimGold = true;
-                break;
-            }
-            else
-            {
-                BigNumber totalGold = (configs[i].m_MinGold + (1 + (level - 1) * 0.5f) * 1f) * pipeCount;
-                GameManager.Instance.m_GoldWin = totalGold;
-            }
-        }
+        // for (int i = 1; i <= configs.Count; i++)
+        // {
+        //     if (configs[i].CheckInRange(level))
+        //     {
+        //         BigNumber totalGold = (configs[i].m_MinGold + (1 + (level - 1) * 0.5f) * 1f) * pipeCount;
+        //         GameManager.Instance.m_GoldWin = totalGold;
+        //         AddGold(totalGold / 2);
+        //         claimGold = true;
+        //         break;
+        //     }
+        //     else
+        //     {
+        //         BigNumber totalGold = (configs[i].m_MinGold + (1 + (level - 1) * 0.5f) * 1f) * pipeCount;
+        //         GameManager.Instance.m_GoldWin = totalGold;
+        //     }
+        // }
 
-        if (!claimGold)
-        {
-            AddGold(GameManager.Instance.m_GoldWin / 2);
-        }
+        // if (!claimGold)
+        // {
+        //     AddGold(GameManager.Instance.m_GoldWin / 2);
+        // }
 
         MyProfile.PassLevel();
     }
@@ -219,7 +219,7 @@ public class ProfileManager : MonoBehaviour
     #region GENERAL
     public static string GetGold()
     {
-        return GetGold2().ToString3();
+        return GetGold2().ToString2();
     }
 
     public static BigNumber GetGold2()

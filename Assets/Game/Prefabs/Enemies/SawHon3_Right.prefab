@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6927625495769581914}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SawHon3_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}

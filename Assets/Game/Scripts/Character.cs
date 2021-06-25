@@ -264,8 +264,6 @@ public class Character : InGameObject
         PlaySceneManager.Instance.g_LevelString.gameObject.SetActive(false);
         PlaySceneManager.Instance.btn_StartLonger.gameObject.SetActive(false);
         // PlaySceneManager.Instance.txt_Level.gameObject.SetActive(false);
-
-        Helper.DebugLog("OnRunEnterOnRunEnterOnRunEnterOnRunEnter");
     }
 
     public void OnRunExecute()
@@ -330,7 +328,7 @@ public class Character : InGameObject
         m_EState = EState.JUMP_UP;
         anim_Owner.SetTrigger(ConfigKeys.m_Hang);
         m_OnAir = true;
-        tf_Owner.DOMove(m_PathAction.tf_HangingPoint.position, 1f).OnComplete(
+        tf_Owner.DOMove(m_PathAction.tf_HangingPoint.position, 0.5f).OnComplete(
             () =>
             {
                 CameraController.Instance.DoActionByPath();
@@ -403,6 +401,47 @@ public class Character : InGameObject
         m_StateMachine.ChangeState(_state);
     }
 
+    public void SetGameManagerGoldWin()
+    {
+        int level = ProfileManager.GetLevel();
+        Dictionary<int, LevelConfig> configs = GameData.Instance.GetLevelConfig();
+        int pipeCount = InGameObjectsManager.Instance.m_Char.m_SpringManager.springBones.Count - 1;
+
+        if (pipeCount == 0)
+        {
+            pipeCount = 1;
+        }
+
+        bool claimGold = false;
+        BigNumber totalGold = new BigNumber();
+
+        for (int i = 1; i <= configs.Count; i++)
+        {
+            if (configs[i].CheckInRange(level))
+            {
+                totalGold = (configs[i].m_MinGold + (1 + (level - 1) * 0.5f) * 1f) * pipeCount;
+                GameManager.Instance.m_GoldWin = totalGold;
+                // ProfileManager.AddGold(totalGold / 2);
+                claimGold = true;
+                break;
+            }
+            else
+            {
+                totalGold = (configs[i].m_MinGold + (1 + (level - 1) * 0.5f) * 1f) * pipeCount;
+                GameManager.Instance.m_GoldWin = totalGold;
+            }
+        }
+
+        // if (!claimGold)
+        // {
+        // ProfileManager.AddGold(GameManager.Instance.m_GoldWin / 2);
+        // }
+        // else
+        // {
+        // ProfileManager.AddGold(totalGold / 2);
+        // }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag.Equals(ConfigKeys.m_PipeCollect))
@@ -422,6 +461,7 @@ public class Character : InGameObject
         }
         else if (other.tag.Equals(ConfigKeys.m_Ending))
         {
+            SetGameManagerGoldWin();
             CameraController.Instance.g_Wind.SetActive(true);
             m_ReachEnding = true;
             other.enabled = false;
@@ -429,7 +469,8 @@ public class Character : InGameObject
             EventManager.CallEvent(GameEvent.END_GAME);
 
             int value = m_SpringManager.springBones.Count - 1;
-            int result = value / GameManager.Instance.m_ScoreFactor;
+            // int result = value / GameManager.Instance.m_ScoreFactor;
+            int result = value;
 
             if (result <= 0)
             {

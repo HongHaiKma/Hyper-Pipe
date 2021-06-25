@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2750509383138379792}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Saw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2750509383148649491}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Start
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 2750509383319262493}
   - component: {fileID: 7718478742333287854}
   - component: {fileID: 1054953668840375683}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SawModel
   m_TagString: Cutter
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2750509384633317254}
   - component: {fileID: 2750509384633317255}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: SawHon_Left
   m_TagString: Cutter
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2750509384932711846}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: End
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 7369787608938664687}
   - component: {fileID: 1710044875891789243}
   - component: {fileID: 8278328313241860388}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

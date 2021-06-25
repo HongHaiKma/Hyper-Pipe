@@ -63,13 +63,13 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
     public override void StartListenToEvents()
     {
         base.StartListenToEvents();
-        EventManager.AddListener(GameEvent.END_GAME, Event_END_GAME);
+        // EventManager.AddListener(GameEvent.END_GAME, Event_END_GAME);
     }
 
     public override void StopListenToEvents()
     {
         base.StopListenToEvents();
-        EventManager.RemoveListener(GameEvent.END_GAME, Event_END_GAME);
+        // EventManager.RemoveListener(GameEvent.END_GAME, Event_END_GAME);
     }
 
     public void Event_END_GAME()
@@ -246,7 +246,7 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
             go.GetComponent<Score>().SetScore(GameManager.Instance.m_ScoreLineColor[Score.m_Score % 7]);
         }
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 3; i++)
         {
             GameObject go = PrefabManager.Instance.SpawnPathCell0(m_MapLength - 5f);
             go.transform.parent = PlaySceneManager.Instance.g_Map.transform;
@@ -267,6 +267,7 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
         PlaySceneManager.Instance.btn_MoveTruck.gameObject.SetActive(false);
         PlaySceneManager.Instance.btn_Outfit.gameObject.SetActive(false);
         PlaySceneManager.Instance.btn_StartLonger.gameObject.SetActive(false);
+        PlaySceneManager.Instance.g_LevelString.gameObject.SetActive(false);
         g_Truck.transform.DOMove(new Vector3(0f, 0f, -54.2f), 2.5f).OnComplete
         (
             () =>
@@ -283,7 +284,7 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
                     {
                         CameraController.Instance.Do1stAction();
                         // PlaySceneManager.Instance.btn_Outfit.gameObject.SetActive(true);
-                        PlaySceneManager.Instance.g_LevelString.gameObject.SetActive(true);
+                        // PlaySceneManager.Instance.g_LevelString.gameObject.SetActive(true);
                         // PlaySceneManager.Instance.btn_StartLonger.gameObject.SetActive(true);
                         PlaySceneManager.Instance.m_TouchTrackPad.gameObject.SetActive(true);
                         // PlaySceneManager.Instance.btn_StartLonger.gameObject.SetActive(true);

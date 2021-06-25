@@ -16,6 +16,10 @@ public class SoundManager : Singleton<SoundManager>
     public AudioClip m_SoundLose;
     public AudioClip m_ClipBGMInGame;
 
+
+    public AudioClip m_WaterSpray;
+    public AudioClip m_BGMTheme;
+
     public AudioClip m_SoundBigPrize;
 
     bool IsSoundOn
@@ -49,7 +53,7 @@ public class SoundManager : Singleton<SoundManager>
         base.OnEnable();
         OnSoundChange();
         OnMusicChange();
-        PlayBGM();
+        // PlayBGM();
 
 
         StartListenToEvent();
@@ -98,9 +102,14 @@ public class SoundManager : Singleton<SoundManager>
 
     public void PlayBGM()
     {
-        // m_BGM.clip = m_ClipBGMInGame;
+        m_BGM.clip = m_BGMTheme;
         m_BGM.Play();
-        Helper.DebugLog("PlayBGM");
+    }
+
+    public void PlayWaterSpray()
+    {
+        m_BGM.clip = m_WaterSpray;
+        m_BGM.Play();
     }
 
     public void PlayButtonClick()

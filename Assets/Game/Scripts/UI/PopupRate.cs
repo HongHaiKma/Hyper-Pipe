@@ -42,6 +42,7 @@ public class PopupRate : UICanvas
 
     public override void OnEnable()
     {
+        PlaySceneManager.Instance.btn_MoveTruck.gameObject.SetActive(false);
         star = 0;
         img_Star1.sprite = SpriteManager.Instance.m_RateStar[(int)1];
         img_Star2.sprite = SpriteManager.Instance.m_RateStar[(int)3];
@@ -77,6 +78,12 @@ public class PopupRate : UICanvas
     public void NotNow()
     {
         OnClose();
+    }
+
+    public override void OnClose()
+    {
+        base.OnClose();
+        PlaySceneManager.Instance.btn_MoveTruck.gameObject.SetActive(true);
     }
 
     public void ClickStar1()

@@ -66,7 +66,7 @@ public class PopupWin : UICanvas
         txt_Percent.text = "0%";
         img_GiftFill.fillAmount = 0f;
         btn_AdsGold.interactable = false;
-        float aaa = ((ProfileManager.GetLevel() - 1) % 5f) / 5f;
+        float aaa = ((ProfileManager.GetLevel()) % 5f) / 5f;
         if (aaa == 0f)
         {
             aaa = 1;
@@ -93,9 +93,14 @@ public class PopupWin : UICanvas
         btn_NextLevel.gameObject.SetActive(false);
         StartCoroutine(IEDelayForOutfitRewardPopup());
 
-        txt_GoldWin.text = (GameManager.Instance.m_GoldWin / 2).ToCharacterFormat();
-        txt_AdsGold.text = (GameManager.Instance.m_GoldWin * 3 + (GameManager.Instance.m_GoldWin / 2)).ToCharacterFormat();
-        txt_TotalGold.text = GameManager.Instance.m_GoldBeforeWin.ToString();
+        // txt_GoldWin.text = (GameManager.Instance.m_GoldWin / 2).ToCharacterFormat();
+        // txt_AdsGold.text = (GameManager.Instance.m_GoldWin * 3 + (GameManager.Instance.m_GoldWin / 2)).ToCharacterFormat();
+        // txt_TotalGold.text = GameManager.Instance.m_GoldBeforeWin.ToString();
+
+        txt_GoldWin.text = (GameManager.Instance.m_GoldWin / 2).ToString2();
+        txt_AdsGold.text = ((GameManager.Instance.m_GoldWin / 2) * 3).ToString2();
+        // txt_TotalGold.text = GameManager.Instance.m_GoldBeforeWin.ToString2();
+        txt_TotalGold.text = ProfileManager.GetGold();
     }
 
     public void RandomEpicCharacter()
@@ -110,13 +115,16 @@ public class PopupWin : UICanvas
 
     public void OnNextLevel()
     {
+        ProfileManager.AddGold(GameManager.Instance.m_GoldWin / 2);
+        ProfileManager.Instance.PassLevel();
         SpawnGoldEffectFromClaim();
     }
 
     public void WatchAdsGold()
     {
         AdsManager.Instance.WatchRewardVideo(RewardType.GOLD_2);
-        // ProfileManager.AddGold(GameManager.Instance.m_GoldWin * 3);
+        // ProfileManager.AddGold((GameManager.Instance.m_GoldWin / 2) * 3);
+        // ProfileManager.Instance.PassLevel();
         // SpawnGoldEffectFromAds();
     }
 
@@ -124,7 +132,7 @@ public class PopupWin : UICanvas
     {
         btn_AdsGold.interactable = false;
         btn_NextLevel.interactable = false;
-        SpawnGoldEffect(tf_StartGoldAds.position, (GameManager.Instance.m_GoldWin * 3) / 15);
+        SpawnGoldEffect(tf_StartGoldAds.position, ((GameManager.Instance.m_GoldWin / 2) * 3) / 15);
     }
 
     public void SpawnGoldEffectFromClaim()
@@ -156,17 +164,17 @@ public class PopupWin : UICanvas
                 () =>
                 {
                     PrefabManager.Instance.DespawnPool(g_EffectGold);
+                    SoundManager.Instance.PlaySoundGetGold();
                     txt_TotalGold.transform.DOScale(1.3f, 0.3f).OnStart(
                         () =>
                         {
                             BigNumber goldAdd1 = (GameManager.Instance.m_GoldBeforeWin += _goldAdd).RoundToInt();
-                            txt_TotalGold.text = goldAdd1.ToCharacterFormat();
+                            txt_TotalGold.text = goldAdd1.ToString2();
                         }
                     ).OnComplete(
                         () =>
                         {
                             txt_TotalGold.transform.DOScale(1f, 0.1f);
-                            SoundManager.Instance.PlaySoundGetGold();
                         }
                     );
                 }
@@ -186,7 +194,7 @@ public class PopupWin : UICanvas
     {
         yield return Yielders.Get(2f);
 
-        float aaa = ((ProfileManager.GetLevel() - 1) % 5f) / 5f;
+        float aaa = ((ProfileManager.GetLevel()) % 5f) / 5f;
         if (aaa == 0f)
         {
             PopupCaller.OpenOutfitRewardPopup();

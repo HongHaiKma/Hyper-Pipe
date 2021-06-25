@@ -9599,6 +9599,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: impact
       objectReference: {fileID: 0}
+    - target: {fileID: 5897272738622875843, guid: 08db1d565a31e8c4693f13a6b0eb1ff1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460105960781868221, guid: 08db1d565a31e8c4693f13a6b0eb1ff1, type: 3}
+      propertyPath: VelocityModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460105960781868221, guid: 08db1d565a31e8c4693f13a6b0eb1ff1, type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460105960781868221, guid: 08db1d565a31e8c4693f13a6b0eb1ff1, type: 3}
+      propertyPath: VelocityModule.x.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460105960781868221, guid: 08db1d565a31e8c4693f13a6b0eb1ff1, type: 3}
+      propertyPath: VelocityModule.y.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460105960781868221, guid: 08db1d565a31e8c4693f13a6b0eb1ff1, type: 3}
+      propertyPath: VelocityModule.z.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460105960781868221, guid: 08db1d565a31e8c4693f13a6b0eb1ff1, type: 3}
+      propertyPath: VelocityModule.inWorldSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460105960781868221, guid: 08db1d565a31e8c4693f13a6b0eb1ff1, type: 3}
+      propertyPath: VelocityModule.x.minMaxState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460105960781868221, guid: 08db1d565a31e8c4693f13a6b0eb1ff1, type: 3}
+      propertyPath: VelocityModule.y.minMaxState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460105960781868221, guid: 08db1d565a31e8c4693f13a6b0eb1ff1, type: 3}
+      propertyPath: VelocityModule.z.minMaxState
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08db1d565a31e8c4693f13a6b0eb1ff1, type: 3}
 --- !u!4 &1519780740821853654 stripped

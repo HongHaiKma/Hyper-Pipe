@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3185466681686706999}
   - component: {fileID: 4923031245499375761}
   - component: {fileID: 4910347855586469304}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Pipe1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,6 +131,7 @@ MonoBehaviour:
   tf_Owner: {fileID: 4645310846890409102}
   m_PipeNo: 0
   m_SpringBone: {fileID: 6292476079243920138}
+  mesh_Owner: {fileID: 0}
 --- !u!114 &4923031245499375761
 MonoBehaviour:
   m_ObjectHideFlags: 0

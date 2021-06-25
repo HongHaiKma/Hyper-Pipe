@@ -163,18 +163,20 @@ public class GUIManager : MonoBehaviour
 
         yield return Yielders.Get(0.1f);
 
+        SoundManager.Instance.PlayBGM();
+
+        yield return Yielders.Get(0.2f);
+
         if (_continue)
         {
-            int level = ProfileManager.GetLevel() - 1;
+            int level = ProfileManager.GetLevel();
             if ((level >= 3) && (level % 2 == 1))
             {
                 AdsManager.Instance.WatchInterstitial();
             }
             else if ((level >= 3 && level <= 24) && (level % 4 == 0))
             {
-
                 PopupCaller.OpenRate();
-
             }
         }
     }

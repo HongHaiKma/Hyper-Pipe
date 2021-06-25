@@ -38,6 +38,50 @@ public class House : MonoBehaviour
 
     public void Offffff()
     {
+        if (!CheckNotHaveWater())
+        {
+            SoundManager.Instance.OnSoundWin();
+            if (ProfileManager.GetKeys() < 3)
+            {
+                PopupCaller.OpenWinPopup();
+            }
+            else
+            {
+                PopupCaller.OpenBonusRewardPopup();
+            }
+
+            this.enabled = false;
+        }
+
+        for (int i = 0; i < g_Waters.Length; i++)
+        {
+            if (g_Waters[i].activeInHierarchy)
+            {
+                g_Waters[i].SetActive(false);
+                GameManager.Instance.Vibrate(0);
+                if (!CheckNotHaveWater())
+                {
+                    SoundManager.Instance.OnSoundWin();
+                    if (ProfileManager.GetKeys() < 3)
+                    {
+                        PopupCaller.OpenWinPopup();
+                    }
+                    else
+                    {
+                        PopupCaller.OpenBonusRewardPopup();
+                    }
+                    m_Start = false;
+                    this.enabled = false;
+                }
+                break;
+            }
+        }
+
+        m_Time = 0f;
+    }
+
+    public bool CheckNotHaveWater()
+    {
         bool aaa = false;
 
         for (int i = 0; i < g_Waters.Length; i++)
@@ -49,40 +93,6 @@ public class House : MonoBehaviour
             }
         }
 
-        if (!aaa)
-        {
-            SoundManager.Instance.OnSoundWin();
-            if (ProfileManager.GetKeys() < 3)
-            {
-                // if (((ProfileManager.GetLevel() - 1) % 5 == 0) && (GameData.Instance.GetEpicCharacterDataConfig().Count > 0))
-                // {
-                //     PopupCaller.OpenOutfitProgressPopup();
-                // }
-                // else
-                // {
-                //     PopupCaller.OpenWinPopup(false, true);
-                // }
-                PopupCaller.OpenWinPopup();
-            }
-            else
-            {
-                PopupCaller.OpenBonusRewardPopup();
-            }
-
-            this.enabled = false;
-            // Time.timeScale = 0;
-        }
-
-        for (int i = 0; i < g_Waters.Length; i++)
-        {
-            if (g_Waters[i].activeInHierarchy)
-            {
-                g_Waters[i].SetActive(false);
-                GameManager.Instance.Vibrate(0);
-                break;
-            }
-        }
-
-        m_Time = 0f;
+        return aaa;
     }
 }

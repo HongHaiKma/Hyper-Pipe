@@ -45,13 +45,7 @@ public class PopupOutfitReward : UICanvas
     public void RandomEpicCharacter()
     {
         List<CharacterDataConfig> randomEpicChar = GameData.Instance.GetEpicCharacterDataConfig();
-        for (int i = 0; i < randomEpicChar.Count; i++)
-        {
-            Helper.DebugLog("Char choose: " + randomEpicChar[i].m_Name);
-        }
         m_RandomEpicChar = Random.Range(0, randomEpicChar.Count);
-        Helper.DebugLog("Random Index List: " + m_RandomEpicChar);
-        Helper.DebugLog("Random Char: " + randomEpicChar[m_RandomEpicChar].m_Name.ToString());
 
         int charId = randomEpicChar[m_RandomEpicChar].m_Id;
         // img_Char.sprite = SpriteManager.Instance.m_CharCards[charId - 1];
@@ -69,6 +63,16 @@ public class PopupOutfitReward : UICanvas
     public override void OnClose()
     {
         base.OnClose();
+        PopupCaller.OpenWinPopup(false, false);
+        EventManager.CallEvent(GameEvent.POPUP_WIN_BUTTON_APPEAR);
+        // btn_AdsChar.gameObject.SetActive(false);
+        // btn_NextLevel.gameObject.SetActive(false);
+        // StartCoroutine(IEDelayClose());
+    }
+
+    IEnumerator IEDelayClose()
+    {
+        yield return Yielders.Get(2f);
         PopupCaller.OpenWinPopup(false, false);
         EventManager.CallEvent(GameEvent.POPUP_WIN_BUTTON_APPEAR);
     }

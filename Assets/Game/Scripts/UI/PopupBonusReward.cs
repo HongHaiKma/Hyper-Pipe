@@ -37,7 +37,6 @@ public class PopupBonusReward : UICanvas
     public override void OnEnable()
     {
         base.OnEnable();
-        Helper.DebugLog("POpup bonus reward on enableeeeeeeeeeeeeeeee");
         ResetPopup();
     }
 
@@ -53,6 +52,12 @@ public class PopupBonusReward : UICanvas
         // EventManager.AddListener(GameEvent.POPUP_BONUS_REWARD_UPDATE, UpdateKeys);
     }
 
+    public override void Setup()
+    {
+        base.Setup();
+        ResetPopup();
+    }
+
     // private void Update()
     // {
     //     if (Input.GetKeyDown(KeyCode.C))
@@ -65,6 +70,10 @@ public class PopupBonusReward : UICanvas
 
     public void ResetPopup()
     {
+        for (int i = 0; i < m_BonusCells.Count; i++)
+        {
+            m_BonusCells[i].Reset();
+        }
         SetupRandom();
         UpdateKeys();
         g_Keyss.SetActive(true);
@@ -221,6 +230,7 @@ public class PopupBonusReward : UICanvas
 
     public void Watch3Keys()
     {
+        btn_LoseIt.gameObject.SetActive(false);
         AdsManager.Instance.WatchRewardVideo(RewardType.KEYS3_1);
         // PopupCaller.OpenBonusRewardPopup();
     }

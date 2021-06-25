@@ -368,7 +368,7 @@ public class AdsManager : Singleton<AdsManager>
             //     EventManager.CallEvent(GameEvent.ADS_CHARACTER_2_ANIM);
             //     break;
             case RewardType.KEYS3_1:
-                PopupCaller.OpenBonusRewardPopup();
+                PopupCaller.OpenBonusRewardPopup(false, true);
                 // EventManager.CallEvent(GameEvent.ADS_3KEYS_1_ANIM);
                 break;
             case RewardType.START_LONGER:
@@ -405,7 +405,8 @@ public class AdsManager : Singleton<AdsManager>
                 break;
             case RewardType.GOLD_2:
                 m_WatchInter = false;
-                ProfileManager.AddGold(GameManager.Instance.m_GoldWin * 3);
+                ProfileManager.AddGold((GameManager.Instance.m_GoldWin / 2) * 3);
+                ProfileManager.Instance.PassLevel();
                 break;
             case RewardType.KEYS3_1:
                 EventManager.CallEvent(GameEvent.ADS_3KEYS_1_LOGIC);
