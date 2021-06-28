@@ -240,7 +240,7 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
         GameObject score = PrefabManager.Instance.SpawnScoreLine(ConfigKeys.m_ScoreLine, new Vector3(0f, 0f, ending.transform.position.z + 4f + 5f));
         score.GetComponent<Score>().SetScore(GameManager.Instance.m_ScoreLineColor[0]);
 
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 6; i++)
         {
             GameObject go = PrefabManager.Instance.SpawnScoreLine(ConfigKeys.m_ScoreLine, new Vector3(0f, 0f, InGameObjectsManager.Instance.g_Ending.transform.position.z + Score.m_Score * 2 * 7 + 9f));
             go.GetComponent<Score>().SetScore(GameManager.Instance.m_ScoreLineColor[Score.m_Score % 7]);

@@ -22,6 +22,10 @@ public class PopupBonusReward : UICanvas
 
     public bool m_OpenAgain;
 
+    [Header("Best Prize")]
+    public GameObject g_CharRender;
+    public GameObject g_GoldBest;
+
     private void Awake()
     {
         m_ID = UIID.POPUP_BONUS_REWARD;
@@ -188,12 +192,19 @@ public class PopupBonusReward : UICanvas
         int charId = 0;
         if (count > 0)
         {
+            g_CharRender.SetActive(true);
+            g_GoldBest.SetActive(false);
             int random = Random.Range(0, count - 1);
             charId = GameData.Instance.GetCharacterDataConfig(config[random].m_Id).m_Id - 1;
             MiniCharacter.Instance.SpawnMiniCharacter(charId);
             // img_Char.sprite = SpriteManager.Instance.m_CharCards[charId];
             m_Char = charId + 1;
             Helper.DebugLog("m_Char = " + m_Char);
+        }
+        else
+        {
+            g_CharRender.SetActive(false);
+            g_GoldBest.SetActive(true);
         }
 
         Dictionary<int, BonusRewardConfig> bonusLength = GameData.Instance.GetBonusRewardConfig();

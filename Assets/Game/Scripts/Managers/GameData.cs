@@ -196,7 +196,7 @@ public class GameData : Singleton<GameData>
         int count = m_CharacterDataConfigs.Count;
         for (int i = 1; i <= count; i++)
         {
-            if (m_CharacterDataConfigs[i].GetRatity() == (int)OutfitRarity.LEGEND)
+            if (m_CharacterDataConfigs[i].GetRatity() == (int)OutfitRarity.LEGEND && !ProfileManager.IsOwned(i))
             {
                 configs.Add(m_CharacterDataConfigs[i]);
             }

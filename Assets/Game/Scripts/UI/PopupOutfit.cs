@@ -236,8 +236,8 @@ public class PopupOutfit : UICanvas
 
     public void OnBuyByAds() //Remember to Update UICharacterCard when buy succeed
     {
-        // AdsManager.Instance.WatchRewardVideo(RewardType.CHARACTER);
-        OnByBuyAdsLogic();
+        AdsManager.Instance.WatchRewardVideo(RewardType.CHARACTER);
+        // OnByBuyAdsLogic();
     }
 
     public void OnByBuyAdsLogic()

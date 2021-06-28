@@ -6,9 +6,12 @@ using UnityEngine.UI;
 public class PopupOutfitReward : UICanvas
 {
     public static int m_RandomEpicChar;
+    // public bool int m_RandomEpicChar;
     public Image img_Char;
     public Button btn_AdsChar;
     public Button btn_NextLevel;
+
+    public Coroutine coroutine;
 
     private void Awake()
     {
@@ -20,7 +23,7 @@ public class PopupOutfitReward : UICanvas
 
     public override void OnEnable()
     {
-        StartCoroutine(IENextLevelAppear());
+        coroutine = StartCoroutine(IENextLevelAppear());
         RandomEpicCharacter();
         base.OnEnable();
     }
@@ -40,14 +43,19 @@ public class PopupOutfitReward : UICanvas
     public void OnWatchAdsChar()
     {
         AdsManager.Instance.WatchRewardVideo(RewardType.OUTFIT_PROGRESS);
+        // ProfileManager.UnlockEpicNewCharacter(PopupOutfitReward.m_RandomEpicChar);
+        // ProfileManager.SetSelectedCharacter(PopupOutfitReward.m_RandomEpicChar);
+        // OnClose();
     }
 
     public void RandomEpicCharacter()
     {
         List<CharacterDataConfig> randomEpicChar = GameData.Instance.GetEpicCharacterDataConfig();
-        m_RandomEpicChar = Random.Range(0, randomEpicChar.Count);
+        // m_RandomEpicChar = Random.Range(0, randomEpicChar.Count);
 
-        int charId = randomEpicChar[m_RandomEpicChar].m_Id;
+        int charId = randomEpicChar[Random.Range(0, randomEpicChar.Count)].m_Id;
+        m_RandomEpicChar = charId;
+        Helper.DebugLog("Char Epic: " + (CharacterType)charId);
         // img_Char.sprite = SpriteManager.Instance.m_CharCards[charId - 1];
         MiniCharacter.Instance.SpawnMiniCharacter(charId - 1);
     }
@@ -60,12 +68,21 @@ public class PopupOutfitReward : UICanvas
 
     public override void OnClose()
     {
-        base.OnClose();
-        PopupCaller.OpenWinPopup(false, false);
-        EventManager.CallEvent(GameEvent.POPUP_WIN_BUTTON_APPEAR);
+        StartCoroutine(DelayWinPopup());
         // btn_AdsChar.gameObject.SetActive(false);
         // btn_NextLevel.gameObject.SetActive(false);
         // StartCoroutine(IEDelayClose());
+    }
+
+    IEnumerator DelayWinPopup()
+    {
+        // StopCoroutine(coroutine);
+        btn_AdsChar.gameObject.SetActive(false);
+        btn_NextLevel.gameObject.SetActive(false);
+        yield return Yielders.Get(2f);
+        base.OnClose();
+        PopupCaller.OpenWinPopup(false, false);
+        EventManager.CallEvent(GameEvent.POPUP_WIN_BUTTON_APPEAR);
     }
 
     IEnumerator IEDelayClose()
