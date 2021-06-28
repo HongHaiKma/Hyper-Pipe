@@ -40,17 +40,9 @@ public class House : MonoBehaviour
     {
         if (!CheckNotHaveWater())
         {
-            SoundManager.Instance.OnSoundWin();
-            if (ProfileManager.GetKeys() < 3)
-            {
-                PopupCaller.OpenWinPopup();
-            }
-            else
-            {
-                PopupCaller.OpenBonusRewardPopup();
-            }
-
-            this.enabled = false;
+            Helper.DebugLog("STOPPPPPPPPPPPPPPPPPPPPPPPPPPP");
+            StartCoroutine(HandleWin());
+            CameraController.Instance.DoLastAction();
         }
 
         for (int i = 0; i < g_Waters.Length; i++)
@@ -61,23 +53,30 @@ public class House : MonoBehaviour
                 GameManager.Instance.Vibrate(0);
                 if (!CheckNotHaveWater())
                 {
-                    SoundManager.Instance.OnSoundWin();
-                    if (ProfileManager.GetKeys() < 3)
-                    {
-                        PopupCaller.OpenWinPopup();
-                    }
-                    else
-                    {
-                        PopupCaller.OpenBonusRewardPopup();
-                    }
-                    m_Start = false;
-                    this.enabled = false;
+                    StartCoroutine(HandleWin());
+                    CameraController.Instance.DoLastAction();
                 }
                 break;
             }
         }
 
         m_Time = 0f;
+    }
+
+    IEnumerator HandleWin()
+    {
+        yield return Yielders.Get(3f);
+        SoundManager.Instance.OnSoundWin();
+        if (ProfileManager.GetKeys() < 3)
+        {
+            PopupCaller.OpenWinPopup();
+        }
+        else
+        {
+            PopupCaller.OpenBonusRewardPopup();
+        }
+        m_Start = false;
+        this.enabled = false;
     }
 
     public bool CheckNotHaveWater()

@@ -30,6 +30,7 @@ public class PrefabManager : Singleton<PrefabManager>
 
     public GameObject[] g_Houses;
     public GameObject g_PlaneHouse;
+    public GameObject g_FireWork;
 
     private void Awake()
     {
@@ -248,6 +249,11 @@ public class PrefabManager : Singleton<PrefabManager>
     public GameObject SpawnHouse(int _index, Vector3 _pos)
     {
         return Instantiate(g_Houses[_index], new Vector3(_pos.x - 25.3f, g_Houses[0].transform.position.y, _pos.z), Quaternion.identity);
+    }
+
+    public GameObject SpawnFirework(Vector3 _pos)
+    {
+        return Instantiate(g_FireWork, new Vector3(_pos.x + 1f, _pos.y, _pos.z), Quaternion.identity);
     }
 
     public GameObject SpawnPlaneHouse(Vector3 _pos)

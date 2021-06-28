@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.004
   m_LinearFogStart: 0
   m_LinearFogEnd: 2000
-  m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
+  m_AmbientSkyColor: {r: 0.6036846, g: 0.6573771, b: 0.8962264, a: 1}
   m_AmbientEquatorColor: {r: 0.7176471, g: 0.47058824, b: 0.33333334, a: 1}
   m_AmbientGroundColor: {r: 0.078431375, g: 0.11372549, b: 0.14117648, a: 1}
   m_AmbientIntensity: 1
@@ -1054,6 +1054,7 @@ MonoBehaviour:
   - {fileID: 3868612264519724200, guid: 639d89d3c117bc946aa4cda9d207b955, type: 3}
   - {fileID: 2061848622062565187, guid: cebcb2ec659c88e4cbc30deb60cc02d7, type: 3}
   g_PlaneHouse: {fileID: 5638554018174828883, guid: 448a9db5438944b44a512b470142075a, type: 3}
+  g_FireWork: {fileID: 5607161101054550835, guid: b2d06eda98c45b74bafe64c8d4c99c26, type: 3}
 --- !u!1 &257752798
 GameObject:
   m_ObjectHideFlags: 0
@@ -13768,8 +13769,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.6
+  m_Color: {r: 0.9647059, g: 0.972549, b: 0.75686276, a: 1}
+  m_Intensity: 0.9
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -13778,7 +13779,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.2
     m_Bias: 0.02
     m_NormalBias: 0.1
     m_NearPlane: 0.1
@@ -13826,13 +13827,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2003817468}
-  m_LocalRotation: {x: 0.6346727, y: -0.08867749, z: -0.40143406, w: 0.65435284}
-  m_LocalPosition: {x: 124.6, y: 34.1, z: 308.8}
+  m_LocalRotation: {x: 0.5080826, y: -0.0016019588, z: -0.35186598, w: 0.78615516}
+  m_LocalPosition: {x: 124.6, y: 34.1, z: -18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 49.412, y: -74.062, z: -101.339}
+  m_LocalEulerAnglesHint: {x: 52.914, y: -36.665, z: -66.951}
 --- !u!1 &2009813009
 GameObject:
   m_ObjectHideFlags: 0

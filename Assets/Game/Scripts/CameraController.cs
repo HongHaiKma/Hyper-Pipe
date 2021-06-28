@@ -89,6 +89,19 @@ public class CameraController : Singleton<CameraController>
         StartCoroutine(ChangeCMOffsetLastAction());
     }
 
+    public void DoFinalAction()
+    {
+        tf_Owner.DORotate(new Vector3(0f, -270f, 0f), 1.5f, RotateMode.Fast).OnStart(
+            () =>
+            {
+                Vector3 pos = InGameObjectsManager.Instance.m_Char.tf_Owner.position;
+                PrefabManager.Instance.SpawnFirework(pos);
+            }
+        );
+        StartCoroutine(ChangeCMOffsetFinalAction());
+        EventManager1<bool>.CallEvent(GameEvent.WATER, false);
+    }
+
     public void UndoActionByPath()
     {
         tf_Owner.DORotate(new Vector3(19f, 0f, 0f), 1.5f, RotateMode.Fast);
@@ -139,6 +152,40 @@ public class CameraController : Singleton<CameraController>
             timeElapsedLastActionX += Time.deltaTime;
         }
         yield return new WaitUntil(() => timeElapsedLastActionX >= lerpDurationLastActionX);
+        g_Wind.SetActive(false);
+    }
+
+    IEnumerator ChangeCMOffsetFinalAction()
+    {
+        float valueToLerpFinalActionX = 0f;
+        float valueToLerpFinalActionY = 0f;
+        float valueToLerpFinalActionZ = 0f;
+
+        float timeElapsedFinalActionX = 0f;
+        float lerpDurationFinalActionX = 3f;
+
+        float endValueFinalActionX = -3.25f;
+        float endValueFinalActionY = -0.44f;
+        float endValueFinalActionZ = -12.72f;
+
+        float startValueFinalActionX = m_CMOffset.m_Offset.x;
+        float startValueFinalActionY = m_CMOffset.m_Offset.y;
+        float startValueFinalActionZ = m_CMOffset.m_Offset.z;
+
+        CameraController.Instance.m_CMFreeLook.m_Lens.FieldOfView = 40f;
+        while (timeElapsedFinalActionX < lerpDurationFinalActionX)
+        {
+            valueToLerpFinalActionX = Mathf.Lerp(startValueFinalActionX, endValueFinalActionX, timeElapsedFinalActionX / lerpDurationFinalActionX);
+            valueToLerpFinalActionY = Mathf.Lerp(startValueFinalActionY, endValueFinalActionY, timeElapsedFinalActionX / lerpDurationFinalActionX);
+            valueToLerpFinalActionZ = Mathf.Lerp(startValueFinalActionZ, endValueFinalActionZ, timeElapsedFinalActionX / lerpDurationFinalActionX);
+
+            m_CMOffset.m_Offset.x = valueToLerpFinalActionX;
+            m_CMOffset.m_Offset.y = valueToLerpFinalActionY;
+            m_CMOffset.m_Offset.z = valueToLerpFinalActionZ;
+
+            timeElapsedFinalActionX += Time.deltaTime;
+        }
+        yield return new WaitUntil(() => timeElapsedFinalActionX >= lerpDurationFinalActionX);
         g_Wind.SetActive(false);
     }
 
