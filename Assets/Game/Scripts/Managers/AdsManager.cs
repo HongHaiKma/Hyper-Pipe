@@ -151,9 +151,9 @@ public class AdsManager : Singleton<AdsManager>
 
     public void RequestInter()
     {
-        // #if UNITY_ANDROID
-        // #elif UNITY_IPHONE
-        // #endif
+#if UNITY_ANDROID
+#elif UNITY_IPHONE
+#endif
         if (ProfileManager.CheckAds())
         {
             // Initialize an InterstitialAd.
@@ -273,7 +273,7 @@ public class AdsManager : Singleton<AdsManager>
         m_BannerLoaded = false;
         // LoadBanner();
 
-        LoadInter();
+        // LoadInter();
     }
 
     public void HandleOnAdOpened(object sender, EventArgs args)
@@ -306,8 +306,6 @@ public class AdsManager : Singleton<AdsManager>
         MonoBehaviour.print(
             "HandleRewardedAdFailedToLoad event received with message: "
                              + args.Message);
-
-        LoadRewardVideo();
     }
 
     public void HandleRewardedAdOpening(object sender, EventArgs args)
@@ -413,10 +411,14 @@ public class AdsManager : Singleton<AdsManager>
                 PopupCaller.GetBonusRewardPopup().m_OpenAgain = true;
                 ProfileManager.AddKeys(6);
                 break;
-                // case RewardType.START_LONGER:
-                //     // EventManager.CallEvent(GameEvent.ADS_3KEYS_1_LOGIC);
-                //     // ProfileManager.AddKeys(3);
-                //     break;
+            // case RewardType.START_LONGER:
+            //     // EventManager.CallEvent(GameEvent.ADS_3KEYS_1_LOGIC);
+            //     // ProfileManager.AddKeys(3);
+            //     break;
+            case RewardType.OUTFIT_PROGRESS:
+                ProfileManager.UnlockEpicNewCharacter(PopupOutfitReward.m_RandomEpicChar);
+                ProfileManager.SetSelectedCharacter(PopupOutfitReward.m_RandomEpicChar);
+                break;
         }
     }
 

@@ -57,9 +57,11 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
     public Button btn_AddKey;
     public Button btn_JumpLevel;
     public Button btn_Inter;
+    public GameObject g_Block;
 
     private void Awake()
     {
+        StartCoroutine(Blocking());
         AdsManager.Instance.m_WatchInter = true;
 
         GUIManager.Instance.AddClickEvent(btn_Outfit, OpenOutfitPopup);
@@ -90,39 +92,6 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
         base.OnEnable();
     }
 
-    private void Update()
-    {
-        // if (Input.GetKeyDown(KeyCode.Z))
-        // {
-        //     // if (ProfileManager.GetKeys() < 3)
-        //     // {
-        //     //     // ProfileManager.AddKeys(1);
-        //     //     // Event_ADD_KEY();
-
-        //     // }
-        //     PopupCaller.OpenBonusRewardPopup();
-        //     // PopupCaller.OpenOutfitPopup();
-        // }
-
-        // if (Input.GetKeyDown(KeyCode.X))
-        // {
-        //     ProfileManager.AddKeys(1);
-        // }
-
-        // if (Input.GetKeyDown(KeyCode.B))
-        // {
-        //     // Event_ADD_KEY();
-        //     PopupCaller.OpenWinPopup();
-        // }
-
-        // if (Input.GetKeyDown(KeyCode.V))
-        // {
-        //     // Event_ADD_KEY();
-        //     // PopupCaller.OpenOutfitPopup(false);
-        //     PopupCaller.OpenOutfitRewardPopup();
-        // }
-    }
-
     public override void StartListenToEvents()
     {
         EventManager.AddListener(GameEvent.LOAD_MAP, Event_LOAD_MAP);
@@ -137,6 +106,13 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
         EventManager.RemoveListener(GameEvent.END_GAME, Event_END_GAME);
         EventManager.RemoveListener(GameEvent.UPDATE_GOLD, Event_UPDATE_GOLD);
         // EventManager1<bool>.AddListener(GameEvent.GAME_START, Event_GAME_START);
+    }
+
+    IEnumerator Blocking()
+    {
+        g_Block.SetActive(true);
+        yield return Yielders.Get(0.2f);
+        g_Block.SetActive(false);
     }
 
     public void OnOpenSetting()

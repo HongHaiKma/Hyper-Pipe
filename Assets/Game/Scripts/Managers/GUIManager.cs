@@ -157,6 +157,7 @@ public class GUIManager : MonoBehaviour
         yield return Yielders.Get(0.1f);
 
         // InGameObjectsManager.Instance.DespawnAllPools();
+        GameManager.Instance.m_StartLonger = false;
         InGameObjectsManager.Instance.LoadMap();
 
         FindMainCanvas();
@@ -164,6 +165,7 @@ public class GUIManager : MonoBehaviour
         yield return Yielders.Get(0.1f);
 
         SoundManager.Instance.PlayBGM();
+
 
         yield return Yielders.Get(0.2f);
 

@@ -9,7 +9,8 @@ public class Test : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             // PopupCaller.OpenWinPopup();
-            ProfileManager.AddGold(1499);
+            // ProfileManager.AddGold(1499);
+            PopupCaller.OpenOutfitRewardPopup();
         }
     }
 }

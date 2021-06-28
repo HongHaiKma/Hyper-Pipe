@@ -224,9 +224,11 @@ public class GameData : Singleton<GameData>
         int count = m_CharacterDataConfigs.Count;
         for (int i = 1; i <= count; i++)
         {
-            if (m_CharacterDataConfigs[i].GetRatity() == (int)OutfitRarity.EPIC)
+            if (m_CharacterDataConfigs[i].GetRatity() == (int)OutfitRarity.EPIC && !ProfileManager.IsOwned(i))
+            // if (m_CharacterDataConfigs[i].GetRatity() == (int)OutfitRarity.EPIC)
             {
                 configs.Add(m_CharacterDataConfigs[i]);
+                Helper.DebugLog("Name: " + m_CharacterDataConfigs[i].m_Name);
             }
         }
         return configs;
