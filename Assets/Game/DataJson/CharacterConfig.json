@@ -10,7 +10,7 @@
     {
         "ID": 2,
         "Name": "Fire Fighter 1",
-        "Price": 4000,
+        "Price": 6000,
         "AdsCheck": 0,
         "AdsNumber": 0,
         "Rarity": 1
@@ -18,7 +18,7 @@
     {
         "ID": 3,
         "Name": "Fire Fighter 2",
-        "Price": 3000,
+        "Price": 4500,
         "AdsCheck": 0,
         "AdsNumber": 0,
         "Rarity": 1
@@ -26,7 +26,7 @@
     {
         "ID": 4,
         "Name": "Fire Fighter 3",
-        "Price": 3000,
+        "Price": 4500,
         "AdsCheck": 0,
         "AdsNumber": 0,
         "Rarity": 1
@@ -42,7 +42,7 @@
     {
         "ID": 6,
         "Name": "Santa",
-        "Price": 5000,
+        "Price": 7500,
         "AdsCheck": 0,
         "AdsNumber": 0,
         "Rarity": 1
@@ -98,7 +98,7 @@
     {
         "ID": 13,
         "Name": "Blue Boy",
-        "Price": 3000,
+        "Price": 4500,
         "AdsCheck": 0,
         "AdsNumber": 0,
         "Rarity": 1
@@ -114,7 +114,7 @@
     {
         "ID": 15,
         "Name": "Clown",
-        "Price": 5000,
+        "Price": 7500,
         "AdsCheck": 0,
         "AdsNumber": 0,
         "Rarity": 1
@@ -130,7 +130,7 @@
     {
         "ID": 17,
         "Name": "Green Boy",
-        "Price": 5000,
+        "Price": 7500,
         "AdsCheck": 0,
         "AdsNumber": 0,
         "Rarity": 1

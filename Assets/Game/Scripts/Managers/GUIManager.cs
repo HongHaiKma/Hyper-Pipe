@@ -172,14 +172,19 @@ public class GUIManager : MonoBehaviour
         if (_continue)
         {
             int level = ProfileManager.GetLevel();
-            if ((level >= 3) && (level % 2 == 1))
+            if (level == 4 || level == 8)
             {
-                AdsManager.Instance.WatchInterstitial();
-            }
-            else if ((level >= 3 && level <= 24) && (level % 4 == 0))
-            {
+                // PlaySceneManager.Instance.btn_MoveTruck.gameObject.SetActive(false);
                 PopupCaller.OpenRate();
             }
+            else
+            {
+                PlaySceneManager.Instance.btn_MoveTruck.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            PlaySceneManager.Instance.btn_MoveTruck.gameObject.SetActive(true);
         }
     }
 

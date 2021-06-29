@@ -98,7 +98,7 @@ public class PopupWin : UICanvas
         // txt_TotalGold.text = GameManager.Instance.m_GoldBeforeWin.ToString();
 
         txt_GoldWin.text = (GameManager.Instance.m_GoldWin / 2).ToString2();
-        txt_AdsGold.text = ((GameManager.Instance.m_GoldWin / 2) * 3).ToString2();
+        txt_AdsGold.text = (GameManager.Instance.m_GoldWin).ToString2();
         // txt_TotalGold.text = GameManager.Instance.m_GoldBeforeWin.ToString2();
         txt_TotalGold.text = ProfileManager.GetGold();
     }
@@ -132,7 +132,7 @@ public class PopupWin : UICanvas
     {
         btn_AdsGold.interactable = false;
         btn_NextLevel.interactable = false;
-        SpawnGoldEffect(tf_StartGoldAds.position, ((GameManager.Instance.m_GoldWin / 2) * 3) / 15);
+        SpawnGoldEffect(tf_StartGoldAds.position, (GameManager.Instance.m_GoldWin / 15));
     }
 
     public void SpawnGoldEffectFromClaim()

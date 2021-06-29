@@ -40,9 +40,14 @@ public class House : MonoBehaviour
     {
         if (!CheckNotHaveWater())
         {
-            Helper.DebugLog("STOPPPPPPPPPPPPPPPPPPPPPPPPPPP");
-            StartCoroutine(HandleWin());
-            CameraController.Instance.DoLastAction();
+            InGameObjectsManager.Instance.m_Char.m_LastAction = false;
+            PlaySceneManager.Instance.g_JoystickTrackPad.SetActive(false);
+            PlaySceneManager.Instance.g_Hand.SetActive(false);
+            Vector3 pos = InGameObjectsManager.Instance.m_Char.tf_Owner.position;
+            PrefabManager.Instance.SpawnFirework(pos);
+            CameraController.Instance.DoFinalAction();
+            m_Start = false;
+            return;
         }
 
         for (int i = 0; i < g_Waters.Length; i++)
@@ -53,8 +58,24 @@ public class House : MonoBehaviour
                 GameManager.Instance.Vibrate(0);
                 if (!CheckNotHaveWater())
                 {
-                    StartCoroutine(HandleWin());
-                    CameraController.Instance.DoLastAction();
+                    InGameObjectsManager.Instance.m_Char.m_LastAction = false;
+                    PlaySceneManager.Instance.g_JoystickTrackPad.SetActive(false);
+                    PlaySceneManager.Instance.g_Hand.SetActive(false);
+                    Vector3 pos = InGameObjectsManager.Instance.m_Char.tf_Owner.position;
+                    PrefabManager.Instance.SpawnFirework(pos);
+                    CameraController.Instance.DoFinalAction();
+                    m_Start = false;
+                    // SoundManager.Instance.OnSoundWin();
+                    // if (ProfileManager.GetKeys() < 3)
+                    // {
+                    //     PopupCaller.OpenWinPopup();
+                    // }
+                    // else
+                    // {
+                    //     PopupCaller.OpenBonusRewardPopup();
+                    // }
+                    // m_Start = false;
+                    // this.enabled = false;
                 }
                 break;
             }
@@ -63,10 +84,24 @@ public class House : MonoBehaviour
         m_Time = 0f;
     }
 
-    IEnumerator HandleWin()
+    public void HandleWin()
+    {
+        SoundManager.Instance.OnSoundWin();
+        StartCoroutine(IEHandleWin());
+    }
+
+    IEnumerator IEHandleWin()
     {
         yield return Yielders.Get(3f);
-        SoundManager.Instance.OnSoundWin();
+        SoundManager.Instance.PlaySoundWinLong(true);
+        // yield return Yielders.Get(3f);
+        int level = ProfileManager.GetLevel();
+
+        // if (level >= 3 && (level % 2 == 1))
+        // {
+        //     AdsManager.Instance.WatchInterstitial();
+        // }
+
         if (ProfileManager.GetKeys() < 3)
         {
             PopupCaller.OpenWinPopup();
@@ -75,7 +110,6 @@ public class House : MonoBehaviour
         {
             PopupCaller.OpenBonusRewardPopup();
         }
-        m_Start = false;
         this.enabled = false;
     }
 

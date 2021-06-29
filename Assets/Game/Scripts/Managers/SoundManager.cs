@@ -14,7 +14,9 @@ public class SoundManager : Singleton<SoundManager>
     public AudioClip m_SoundWin;
     public AudioClip m_SoundWinLong;
     public AudioClip m_SoundLose;
+    public AudioClip m_SoundCutPipe;
     public AudioClip m_ClipBGMInGame;
+
 
 
     public AudioClip m_WaterSpray;
@@ -150,7 +152,7 @@ public class SoundManager : Singleton<SoundManager>
 
     public void PlaySoundWin()
     {
-        // if (IsSoundOn && !IsLockSound)
+        // // if (IsSoundOn && !IsLockSound)
         if (IsSoundOn)
         {
             m_IngameShootingFx.PlayOneShot(m_SoundWin, 5);
@@ -159,11 +161,11 @@ public class SoundManager : Singleton<SoundManager>
 
     public void PlaySoundWinLong(bool _stop)
     {
-        if (_stop)
-        {
-            m_IngameShootingFx.Stop();
-            return;
-        }
+        // if (_stop)
+        // {
+        //     m_IngameShootingFx.Stop();
+        //     return;
+        // }
 
         if (IsSoundOn)
         {
@@ -180,6 +182,15 @@ public class SoundManager : Singleton<SoundManager>
         }
     }
 
+    public void PlaySoundCutPipe()
+    {
+        // if (IsSoundOn && !IsLockSound)
+        if (IsSoundOn)
+        {
+            m_IngameShootingFx.PlayOneShot(m_SoundCutPipe, 10);
+        }
+    }
+
     public void PlaySoundBigPrize()
     {
         // if (IsSoundOn && !IsLockSound)
@@ -188,8 +199,6 @@ public class SoundManager : Singleton<SoundManager>
             m_IngameShootingFx.PlayOneShot(m_SoundBigPrize, 5);
         }
     }
-
-
 
     public void OnSoundWin()
     {

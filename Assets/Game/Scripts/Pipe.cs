@@ -114,14 +114,15 @@ public class Pipe : InGameObject
                 m_Col.isTrigger = false;
                 EventManager1<int>.CallEvent(GameEvent.CUT_PIPE, m_PipeNo);
 
+                SoundManager.Instance.PlaySoundCutPipe();
                 GameManager.Instance.Vibrate(1);
 
                 IEnemyBlockable iEB = other.gameObject.GetComponent<IEnemyBlockable>();
 
-                if (iEB != null)
-                {
-                    iEB.BlockEnemy();
-                }
+                // if (iEB != null)
+                // {
+                //     iEB.BlockEnemy();
+                // }
 
                 StartCoroutine(DeathAction());
             }

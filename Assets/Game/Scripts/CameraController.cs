@@ -91,11 +91,13 @@ public class CameraController : Singleton<CameraController>
 
     public void DoFinalAction()
     {
-        tf_Owner.DORotate(new Vector3(0f, -270f, 0f), 1.5f, RotateMode.Fast).OnStart(
+        Character charrr = InGameObjectsManager.Instance.m_Char;
+        charrr.tf_PipeHolder.gameObject.SetActive(false);
+        charrr.anim_Owner.SetTrigger("Win");
+        tf_Owner.DORotate(new Vector3(0f, -270f, 0f), 1.5f, RotateMode.Fast).OnComplete(
             () =>
             {
-                Vector3 pos = InGameObjectsManager.Instance.m_Char.tf_Owner.position;
-                PrefabManager.Instance.SpawnFirework(pos);
+                InGameObjectsManager.Instance.m_House.HandleWin();
             }
         );
         StartCoroutine(ChangeCMOffsetFinalAction());

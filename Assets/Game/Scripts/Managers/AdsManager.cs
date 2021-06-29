@@ -403,7 +403,7 @@ public class AdsManager : Singleton<AdsManager>
                 break;
             case RewardType.GOLD_2:
                 m_WatchInter = false;
-                ProfileManager.AddGold((GameManager.Instance.m_GoldWin / 2) * 3);
+                ProfileManager.AddGold(GameManager.Instance.m_GoldWin);
                 ProfileManager.Instance.PassLevel();
                 break;
             case RewardType.KEYS3_1:

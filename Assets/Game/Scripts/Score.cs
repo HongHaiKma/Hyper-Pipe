@@ -51,7 +51,7 @@ public class Score : InGameObject
                     }
                     Vector3 planeHouse = InGameObjectsManager.Instance.m_House.transform.position;
                     PrefabManager.Instance.SpawnPlaneHouse(planeHouse);
-                    charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete
+                    charrr.tf_Owner.DOMove(tf_Owner.position, 0.7f).OnComplete
                     (
                         () =>
                         {
@@ -82,7 +82,7 @@ public class Score : InGameObject
                     }
                     Vector3 planeHouse = InGameObjectsManager.Instance.m_House.transform.position;
                     PrefabManager.Instance.SpawnPlaneHouse(planeHouse);
-                    charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete
+                    charrr.tf_Owner.DOMove(tf_Owner.position, 0.7f).OnComplete
                     (
                         () =>
                         {
@@ -113,7 +113,7 @@ public class Score : InGameObject
                     }
                     Vector3 planeHouse = InGameObjectsManager.Instance.m_House.transform.position;
                     PrefabManager.Instance.SpawnPlaneHouse(planeHouse);
-                    charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete
+                    charrr.tf_Owner.DOMove(tf_Owner.position, 0.7f).OnComplete
                     (
                         () =>
                         {
@@ -144,7 +144,7 @@ public class Score : InGameObject
                     }
                     Vector3 planeHouse = InGameObjectsManager.Instance.m_House.transform.position;
                     PrefabManager.Instance.SpawnPlaneHouse(planeHouse);
-                    charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete
+                    charrr.tf_Owner.DOMove(tf_Owner.position, 0.7f).OnComplete
                     (
                         () =>
                         {
@@ -175,7 +175,7 @@ public class Score : InGameObject
                     }
                     Vector3 planeHouse = InGameObjectsManager.Instance.m_House.transform.position;
                     PrefabManager.Instance.SpawnPlaneHouse(planeHouse);
-                    charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete
+                    charrr.tf_Owner.DOMove(tf_Owner.position, 0.7f).OnComplete
                     (
                         () =>
                         {
@@ -207,7 +207,7 @@ public class Score : InGameObject
                     }
                     Vector3 planeHouse = InGameObjectsManager.Instance.m_House.transform.position;
                     PrefabManager.Instance.SpawnPlaneHouse(planeHouse);
-                    charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete
+                    charrr.tf_Owner.DOMove(tf_Owner.position, 0.7f).OnComplete
                     (
                         () =>
                         {
@@ -229,7 +229,7 @@ public class Score : InGameObject
         {
             if (m_ScoreLine == 7)
             {
-                charrr.tf_Owner.DOMove(tf_Owner.position, 2f).OnComplete
+                charrr.tf_Owner.DOMove(tf_Owner.position, 0.7f).OnComplete
                 (
                     () =>
                     {

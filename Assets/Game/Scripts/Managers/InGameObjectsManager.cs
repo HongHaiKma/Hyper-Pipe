@@ -248,6 +248,14 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
 
         for (int i = 0; i < 3; i++)
         {
+            if (i == 2)
+            {
+                GameObject gos = PrefabManager.Instance.SpawnPathCell00(m_MapLength - 5f);
+                gos.transform.parent = PlaySceneManager.Instance.g_Map.transform;
+                PathCell cells = gos.GetComponent<PathCell>();
+                m_MapLength += cells.CalculateTotalLength();
+                continue;
+            }
             GameObject go = PrefabManager.Instance.SpawnPathCell0(m_MapLength - 5f);
             go.transform.parent = PlaySceneManager.Instance.g_Map.transform;
             PathCell cell = go.GetComponent<PathCell>();
@@ -268,7 +276,7 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
         PlaySceneManager.Instance.btn_Outfit.gameObject.SetActive(false);
         PlaySceneManager.Instance.btn_StartLonger.gameObject.SetActive(false);
         PlaySceneManager.Instance.g_LevelString.gameObject.SetActive(false);
-        g_Truck.transform.DOMove(new Vector3(0f, 0f, -54.2f), 2.5f).OnComplete
+        g_Truck.transform.DOMove(new Vector3(0f, 0f, -54.2f), 1f).OnComplete
         (
             () =>
             {
@@ -279,7 +287,7 @@ public class InGameObjectsManager : Singleton<InGameObjectsManager>
                 m_Char = charrr.GetComponent<Character>();
                 CameraController.Instance.m_CMFreeLook.Follow = null;
 
-                g_Truck.transform.DOMove(new Vector3(-25f, 0f, -54.2f), 0.5f).OnComplete(
+                g_Truck.transform.DOMove(new Vector3(-25f, 0f, -54.2f), 1f).OnComplete(
                     () =>
                     {
                         CameraController.Instance.Do1stAction();

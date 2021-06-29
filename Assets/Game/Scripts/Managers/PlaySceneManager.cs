@@ -78,7 +78,7 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
         GUIManager.Instance.AddClickEvent(btn_Vibrate, OnSetVibrate);
         GUIManager.Instance.AddClickEvent(btn_Replay, Replay);
 
-        GUIManager.Instance.AddClickEvent(btn_Inter, TestAds);
+        // GUIManager.Instance.AddClickEvent(btn_Inter, TestAds);
         // GUIManager.Instance.AddClickEvent(btn_TestAds, TestAds);
     }
 
@@ -300,10 +300,10 @@ public class PlaySceneManager : Singleton<PlaySceneManager>
         GUIManager.Instance.LoadPlayScene();
     }
 
-    public void TestAds()
-    {
-        AdsManager.Instance.WatchInterstitial();
-    }
+    // public void TestAds()
+    // {
+    //     AdsManager.Instance.WatchInterstitial();
+    // }
 
     public void Replay()
     {

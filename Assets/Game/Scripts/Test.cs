@@ -18,7 +18,11 @@ public class Test : MonoBehaviour
             // ProfileManager.UnlockNewCharacter(18);
             // ProfileManager.UnlockNewCharacter(20);
             // PopupCaller.OpenOutfitRewardPopup();
-            CameraController.Instance.DoFinalAction();
+            PopupCaller.OpenRate();
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            PopupCaller.OpenWinPopup();
         }
     }
 }

@@ -27,6 +27,7 @@ public class PrefabManager : Singleton<PrefabManager>
     public GameObject g_Ending;
 
     public GameObject g_PathCell_0;
+    public GameObject g_PathCell_00;
 
     public GameObject[] g_Houses;
     public GameObject g_PlaneHouse;
@@ -233,7 +234,7 @@ public class PrefabManager : Singleton<PrefabManager>
 
     public GameObject SpawnTruck(int _index)
     {
-        return Instantiate(m_TruckPrefabs[_index], new Vector3(25f, 0f, -54.2f), Quaternion.identity);
+        return Instantiate(m_TruckPrefabs[_index], new Vector3(29f, 0f, -54.2f), Quaternion.identity);
     }
 
     public GameObject SpawnEnding(float _zPos)
@@ -245,10 +246,14 @@ public class PrefabManager : Singleton<PrefabManager>
     {
         return Instantiate(g_PathCell_0, new Vector3(0f, 0f, _zPos), Quaternion.identity);
     }
+    public GameObject SpawnPathCell00(float _zPos)
+    {
+        return Instantiate(g_PathCell_0, new Vector3(0f, 0f, _zPos), Quaternion.identity);
+    }
 
     public GameObject SpawnHouse(int _index, Vector3 _pos)
     {
-        return Instantiate(g_Houses[_index], new Vector3(_pos.x - 25.3f, g_Houses[0].transform.position.y, _pos.z), Quaternion.identity);
+        return Instantiate(g_Houses[_index], new Vector3(_pos.x - 53f, g_Houses[0].transform.position.y, _pos.z), Quaternion.identity);
     }
 
     public GameObject SpawnFirework(Vector3 _pos)

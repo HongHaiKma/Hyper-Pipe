@@ -221,7 +221,7 @@ public class Character : InGameObject
             pipe.m_SpringBone.SetParentSpringManager();
 
             pipe.tf_Owner.parent = tf_PipeHolder;
-            pipe.tf_Owner.localPosition = Vector3.zero;
+            pipe.tf_Owner.localPosition = new Vector3(0f, 0f, 0f);
             pipe.tf_Owner.localEulerAngles = new Vector3(0f, 0f, 0f);
             pipe.m_SpringBone.localRotation = Quaternion.Euler(270f, 180f, 0f);
             // pipe.tf_Owner.transform.localScale = new Vector3(0.2f, 1f, 0.2f);
@@ -493,7 +493,7 @@ public class Character : InGameObject
         }
         else if (other.tag.Equals("DeadPlane"))
         {
-            GUIManager.Instance.LoadPlayScene(true);
+            GUIManager.Instance.LoadPlayScene();
         }
     }
 }
