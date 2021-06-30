@@ -6260,6 +6260,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2319647516801017501, guid: a530897b9d41f1843a88ad14478281f0, type: 3}
+      propertyPath: m_MapMaxConfig
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319647516801017501, guid: a530897b9d41f1843a88ad14478281f0, type: 3}
+      propertyPath: m_MapMinConfig
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319647516801017501, guid: a530897b9d41f1843a88ad14478281f0, type: 3}
+      propertyPath: m_MapPrefabMaxConfig
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319647516801017501, guid: a530897b9d41f1843a88ad14478281f0, type: 3}
+      propertyPath: m_MapPrefabMinConfig
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2319647517226244336, guid: a530897b9d41f1843a88ad14478281f0, type: 3}
       propertyPath: m_Name
       value: Managers

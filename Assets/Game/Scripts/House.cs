@@ -99,12 +99,12 @@ public class House : MonoBehaviour
         yield return Yielders.Get(3f);
         SoundManager.Instance.PlaySoundWinLong(true);
         // yield return Yielders.Get(3f);
-        int level = ProfileManager.GetLevel();
+        // int level = ProfileManager.GetLevel();
 
-        if (level >= 3 && (level % 2 == 1))
-        {
-            AdsManager.Instance.WatchInterstitial();
-        }
+        // if (level >= 3 && (level % 2 == 1))
+        // {
+        //     AdsManager.Instance.WatchInterstitial();
+        // }
 
         if (ProfileManager.GetKeys() < 3)
         {

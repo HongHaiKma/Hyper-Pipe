@@ -100,6 +100,12 @@ public class CameraController : Singleton<CameraController>
             () =>
             {
                 InGameObjectsManager.Instance.m_House.HandleWin();
+
+                int level = ProfileManager.GetLevel();
+                if (level >= 3 && (level % 2 == 1))
+                {
+                    AdsManager.Instance.WatchInterstitial();
+                }
             }
         );
 

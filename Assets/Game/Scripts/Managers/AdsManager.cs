@@ -430,7 +430,7 @@ public class AdsManager : Singleton<AdsManager>
 
     IEnumerator IEWatchRewardVideo(RewardType _rewardType)
     {
-        LoadRewardVideo();
+        // LoadRewardVideo();
 
         m_RewardType = _rewardType;
         openRwdAds = true;
