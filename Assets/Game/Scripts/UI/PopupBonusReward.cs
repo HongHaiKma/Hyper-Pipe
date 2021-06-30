@@ -241,7 +241,7 @@ public class PopupBonusReward : UICanvas
 
     public void Watch3Keys()
     {
-        btn_LoseIt.gameObject.SetActive(false);
+        // btn_LoseIt.gameObject.SetActive(false);
         AdsManager.Instance.WatchRewardVideo(RewardType.KEYS3_1);
         // PopupCaller.OpenBonusRewardPopup();
     }

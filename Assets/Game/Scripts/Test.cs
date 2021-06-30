@@ -18,11 +18,8 @@ public class Test : MonoBehaviour
             // ProfileManager.UnlockNewCharacter(18);
             // ProfileManager.UnlockNewCharacter(20);
             // PopupCaller.OpenOutfitRewardPopup();
-            PopupCaller.OpenRate();
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            PopupCaller.OpenWinPopup();
+            // PopupCaller.OpenRate();
+            Helper.DebugLog("Keys: " + ProfileManager.GetKeys());
         }
     }
 }

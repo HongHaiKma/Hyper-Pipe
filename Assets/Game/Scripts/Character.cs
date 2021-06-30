@@ -328,6 +328,8 @@ public class Character : InGameObject
         m_EState = EState.JUMP_UP;
         anim_Owner.SetTrigger(ConfigKeys.m_Hang);
         m_OnAir = true;
+        Character charrr = InGameObjectsManager.Instance.m_Char;
+        charrr.m_SpringManager.springBones[0].stiffnessForce = 10f;
         tf_Owner.DOMove(m_PathAction.tf_HangingPoint.position, 0.5f).OnComplete(
             () =>
             {
@@ -353,6 +355,8 @@ public class Character : InGameObject
     {
         m_EState = EState.JUMP_DOWN;
         anim_Owner.SetTrigger(ConfigKeys.m_JumpDown);
+        Character charrr = InGameObjectsManager.Instance.m_Char;
+        charrr.m_SpringManager.springBones[0].stiffnessForce = 0.08f;
         tf_Owner.DORotate(new Vector3(0f, 0f, 0f), 0f);
         tf_Owner.parent = null;
         tf_Owner.DOMoveY(0f, 0.5f).OnStart(
@@ -455,6 +459,8 @@ public class Character : InGameObject
         }
         else if (other.tag.Equals(ConfigKeys.m_PathAction))
         {
+            AddPipe();
+            EventManager1<int>.CallEvent(GameEvent.CHANGE_PIPE_COLOR, 0);
             m_PathAction = other.GetComponent<PathAction>();
             m_PathAction.col_Owner.enabled = false;
             ChangeState(JumpUpState.Instance);

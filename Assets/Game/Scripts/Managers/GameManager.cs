@@ -29,6 +29,8 @@ public class GameManager : Singleton<GameManager>
     private void Awake()
     {
         Application.targetFrameRate = 60;
+        ProfileManager.SetKeys(0);
+        Helper.DebugLog("Reset keyssssssssssssssssss");
     }
 
     public override void StartListenToEvents()
@@ -78,4 +80,11 @@ public class GameManager : Singleton<GameManager>
     {
         MMVibrationManager.StopAllHaptics(true);
     }
+
+    // private void OnApplicationQuit()
+    // {
+    //     ProfileManager.SetKeys(0);
+    //     Helper.DebugLog("OnApplicationQuit");
+    //     Helper.DebugLog("Keys: " + ProfileManager.GetKeys());
+    // }
 }

@@ -151,9 +151,9 @@ public class AdsManager : Singleton<AdsManager>
 
     public void RequestInter()
     {
-#if UNITY_ANDROID
-#elif UNITY_IPHONE
-#endif
+        // #if UNITY_ANDROID
+        // #elif UNITY_IPHONE
+        // #endif
         if (ProfileManager.CheckAds())
         {
             // Initialize an InterstitialAd.
@@ -306,6 +306,7 @@ public class AdsManager : Singleton<AdsManager>
         MonoBehaviour.print(
             "HandleRewardedAdFailedToLoad event received with message: "
                              + args.Message);
+        // LoadRewardVideo();
     }
 
     public void HandleRewardedAdOpening(object sender, EventArgs args)
@@ -324,7 +325,7 @@ public class AdsManager : Singleton<AdsManager>
 
     public void HandleRewardedAdClosed(object sender, EventArgs args)
     {
-        // MonoBehaviour.print("HandleRewardedAdClosed event received");
+        MonoBehaviour.print("HandleRewardedAdClosed event received");
         if (!openRwdAds)
         {
             StartCoroutine(IEProcessRewardVideoClosed());
@@ -429,7 +430,7 @@ public class AdsManager : Singleton<AdsManager>
 
     IEnumerator IEWatchRewardVideo(RewardType _rewardType)
     {
-        // LoadRewardVideo();
+        LoadRewardVideo();
 
         m_RewardType = _rewardType;
         openRwdAds = true;

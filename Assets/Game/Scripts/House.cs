@@ -56,6 +56,10 @@ public class House : MonoBehaviour
             {
                 g_Waters[i].SetActive(false);
                 GameManager.Instance.Vibrate(0);
+                // if (i == g_Waters.Length - 2)
+                // {
+                //     g_Waters[i + i].SetActive(false);
+                // }
                 if (!CheckNotHaveWater())
                 {
                     InGameObjectsManager.Instance.m_Char.m_LastAction = false;
@@ -97,10 +101,10 @@ public class House : MonoBehaviour
         // yield return Yielders.Get(3f);
         int level = ProfileManager.GetLevel();
 
-        // if (level >= 3 && (level % 2 == 1))
-        // {
-        //     AdsManager.Instance.WatchInterstitial();
-        // }
+        if (level >= 3 && (level % 2 == 1))
+        {
+            AdsManager.Instance.WatchInterstitial();
+        }
 
         if (ProfileManager.GetKeys() < 3)
         {

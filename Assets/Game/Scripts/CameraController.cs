@@ -94,13 +94,15 @@ public class CameraController : Singleton<CameraController>
         Character charrr = InGameObjectsManager.Instance.m_Char;
         charrr.tf_PipeHolder.gameObject.SetActive(false);
         charrr.anim_Owner.SetTrigger("Win");
-        tf_Owner.DORotate(new Vector3(0f, -270f, 0f), 1.5f, RotateMode.Fast).OnComplete(
+        tf_Owner.DORotate(new Vector3(0f, -270f, 0f), 1.5f, RotateMode.Fast).OnStart(
+            () => StartCoroutine(ChangeCMOffsetFinalAction())
+        ).SetDelay(0.5f).OnComplete(
             () =>
             {
                 InGameObjectsManager.Instance.m_House.HandleWin();
             }
         );
-        StartCoroutine(ChangeCMOffsetFinalAction());
+
         EventManager1<bool>.CallEvent(GameEvent.WATER, false);
     }
 
