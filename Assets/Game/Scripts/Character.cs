@@ -467,6 +467,7 @@ public class Character : InGameObject
         }
         else if (other.tag.Equals(ConfigKeys.m_Ending))
         {
+            AdsManager.Instance.LoadBanner();
             SetGameManagerGoldWin();
             CameraController.Instance.g_Wind.SetActive(true);
             m_ReachEnding = true;

@@ -18,6 +18,8 @@ public class GameManager : Singleton<GameManager>
 
     public bool m_StartLonger = false;
 
+    public bool m_CanClaimKeyInGame;
+
     bool IsVibrateOn
     {
         get
@@ -30,7 +32,7 @@ public class GameManager : Singleton<GameManager>
     {
         Application.targetFrameRate = 60;
         ProfileManager.SetKeys(0);
-        Helper.DebugLog("Reset keyssssssssssssssssss");
+        m_CanClaimKeyInGame = true;
     }
 
     public override void StartListenToEvents()

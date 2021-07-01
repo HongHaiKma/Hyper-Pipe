@@ -63,7 +63,7 @@ public class AdsManager : Singleton<AdsManager>
                 }
             }
             //MediationTestSuite.OnMediationTestSuiteDismissed += this.HandleMediationTestSuiteDismissed;
-            // this.RequestBanner();
+            this.RequestBanner();
             this.RequestInter();
             this.RequestRewardVideo();
         });
@@ -197,14 +197,14 @@ public class AdsManager : Singleton<AdsManager>
 
     public void LoadBanner()
     {
-        // if (!Helper.NoAds())
-        // {
-        // AdSize adSize = new AdSize(320, 35);
-        // this.m_BannerView = new BannerView(m_BannerId, adSize, AdPosition.Bottom);
-        // this.m_BannerView.Destroy();
-        AdRequest request = new AdRequest.Builder().Build();
-        this.m_BannerView.LoadAd(request);
-        // }
+        if (ProfileManager.CheckAds())
+        {
+            // AdSize adSize = new AdSize(320, 35);
+            // this.m_BannerView = new BannerView(m_BannerId, adSize, AdPosition.Bottom);
+            // this.m_BannerView.Destroy();
+            AdRequest request = new AdRequest.Builder().Build();
+            this.m_BannerView.LoadAd(request);
+        }
     }
 
     public void DestroyBanner()
@@ -417,8 +417,15 @@ public class AdsManager : Singleton<AdsManager>
             //     // ProfileManager.AddKeys(3);
             //     break;
             case RewardType.OUTFIT_PROGRESS:
-                ProfileManager.UnlockEpicNewCharacter(PopupOutfitReward.m_RandomEpicChar);
-                ProfileManager.SetSelectedCharacter(PopupOutfitReward.m_RandomEpicChar);
+                if (PopupOutfitReward.m_RandomEpicChar == -1)
+                {
+                    ProfileManager.AddGold(10000);
+                }
+                else
+                {
+                    ProfileManager.UnlockEpicNewCharacter(PopupOutfitReward.m_RandomEpicChar);
+                    ProfileManager.SetSelectedCharacter(PopupOutfitReward.m_RandomEpicChar);
+                }
                 break;
         }
     }

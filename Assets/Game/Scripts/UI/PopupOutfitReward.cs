@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PopupOutfitReward : UICanvas
 {
@@ -12,7 +13,9 @@ public class PopupOutfitReward : UICanvas
 
     public GameObject g_LoseIt;
 
-    public Coroutine coroutine;
+    public GameObject g_RenderChar;
+    public GameObject g_Gold;
+    public TextMeshProUGUI txt_Title;
 
     private void Awake()
     {
@@ -54,10 +57,22 @@ public class PopupOutfitReward : UICanvas
     public void RandomEpicCharacter()
     {
         List<CharacterDataConfig> randomEpicChar = GameData.Instance.GetEpicCharacterDataConfig();
-
-        int charId = randomEpicChar[Random.Range(0, randomEpicChar.Count)].m_Id;
-        m_RandomEpicChar = charId;
-        MiniCharacter.Instance.SpawnMiniCharacter(charId - 1);
+        if (randomEpicChar.Count > 0)
+        {
+            txt_Title.text = "OUTFIT UNLOCKED";
+            g_RenderChar.SetActive(true);
+            g_Gold.SetActive(false);
+            int charId = randomEpicChar[Random.Range(0, randomEpicChar.Count)].m_Id;
+            m_RandomEpicChar = charId;
+            MiniCharacter.Instance.SpawnMiniCharacter(charId - 1);
+        }
+        else
+        {
+            txt_Title.text = "PRIZE";
+            m_RandomEpicChar = -1;
+            g_RenderChar.SetActive(false);
+            g_Gold.SetActive(true);
+        }
     }
 
     IEnumerator IENextLevelAppear()

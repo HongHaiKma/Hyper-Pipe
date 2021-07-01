@@ -195,6 +195,7 @@ public class PopupWin : UICanvas
         yield return Yielders.Get(2f);
 
         float aaa = ((ProfileManager.GetLevel()) % 5f) / 5f;
+        List<CharacterDataConfig> configs = GameData.Instance.GetEpicCharacterDataConfig();
         if (aaa == 0f)
         {
             PopupCaller.OpenOutfitRewardPopup();
